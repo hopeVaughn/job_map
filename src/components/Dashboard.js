@@ -7,7 +7,8 @@ function Dashboard() {
 }
 
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
+height: 30vh;
 background: black;
 padding: 1.5rem 2rem;
 `
