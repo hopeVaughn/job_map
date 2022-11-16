@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import 'animate.css';
 
 function Home() {
 
@@ -18,7 +19,6 @@ const Wrapper = styled.section`
   .job {
     margin: 0;
     padding: 0;
-    background: #000;
     color: antiquewhite;
 
     display: flex;
@@ -27,7 +27,10 @@ const Wrapper = styled.section`
     align-items: center;
     font-size: 5vw;
     width: 100%;
-    height: 95vh;    
+    height: 95vh;  
+    
+    animation: zoomInDown; 
+    animation-duration: 2s;
   }
 
  .logsig {
