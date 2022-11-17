@@ -5,15 +5,13 @@ import { Home, LandingPage, ListedCompanies, SingleCompany } from './pages'
 function App() {
   return (
     <Router>
-      <Navbar />      
-      
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='landing' element={<LandingPage />} />
-        <Route path='companies' element={<ListedCompanies />} />
-        <Route path='companies/:id' element={<SingleCompany />} />
-      </Routes>
-
+      <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='landing' element={<LandingPage />} />
+          <Route path='companies' element={<ListedCompanies />} />
+          <Route path='companies/:id' element={<SingleCompany />} />
+        </Routes>
       <Footer />
     </Router>
 
