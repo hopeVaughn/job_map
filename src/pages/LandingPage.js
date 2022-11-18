@@ -3,7 +3,7 @@ import 'animate.css';
 import styled from 'styled-components';
 import Axios from 'axios';
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 
 function LandingPage() {
