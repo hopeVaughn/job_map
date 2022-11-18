@@ -1,39 +1,25 @@
 import React from "react";
 import 'animate.css';
 import styled from 'styled-components';
-
-
-/*
-function LandingPage() {
-  return (
-    <div className="landing">
-      <div className="charts">
-        <div>
-          reserved for the bar graph
-        </div>
-
-        <div >
-          reserved for the donut graph
-        </div>
-      </div>
-      
-
-      <div className="statistic">
-        <div className="statistic_btn all_companies_btn">All Companies</div>
-        <div className="statistic_btn offers_btn">5 offers</div>
-        <div className="statistic_btn tech_iterviews_btn">10 Tech Interviews</div>
-        <div className="statistic_btn hr_iterviews_btn">15 HR Interviews</div>
-        <div className="statistic_btn resume_btn">20 Resumes Sent</div>    
-      </div>
-      
-  </div>
-  )
-}
-*/
-
+import Axios from 'axios';
+import { useEffect, useState } from "react";
 
 
 function LandingPage() {
+
+  const [state, setState] = useState([]);
+
+  const fetchData = () => {
+    Axios.get(`http://localhost:8080/api/applications`).then((res) => {
+      setState(res.data)
+    })
+
+  };
+    useEffect(() => {
+      fetchData()
+    }, []);
+  
+
   return (
     <Wrapper>
       <div className="charts">
@@ -47,12 +33,12 @@ function LandingPage() {
       </div>
       
 
-      <div className="statistic">
-        <div className="statistic_btn all_companies_btn">All Companies</div>
-        <div className="statistic_btn offers_btn">5 offers</div>
-        <div className="statistic_btn tech_iterviews_btn">10 Tech Interviews</div>
-        <div className="statistic_btn hr_iterviews_btn">15 HR Interviews</div>
-        <div className="statistic_btn resume_btn">20 Resumes Sent</div>  
+      <div className="statistics">
+        <div className="statistics_btn all_companies_btn">All Companies</div>
+        <div className="statistics_btn offers_btn">{`${state[3]} Offers`}</div>
+        <div className="statistics_btn tech_iterviews_btn">{`${state[2]} Tech Interviews`}</div>
+        <div className="statistics_btn hr_iterviews_btn">{`${state[1]} HR Interviews`}</div>
+        <div className="statistics_btn resume_btn">{`${state[0]} Resumes Sent`}</div>        
       </div>
       
   </Wrapper>
@@ -69,7 +55,7 @@ const Wrapper = styled.div`
   height: 40vh;
   background-color: hsl(209, 23%, 60%);
 }
-.statistic {
+.statistics {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -79,9 +65,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 40vh;
   background-color:darkseagreen;
-  align-items: flex-start;
-  content: delay: 2s;
-  
+  align-items: flex-start;  
 }
 
 .landing {
@@ -91,21 +75,20 @@ const Wrapper = styled.div`
   align-items: center;
 }
 
-.statistic_btn {
+.statistics_btn {
   width: 80%;
   height: 6vh;
   font-size: min(3vh, 4vw);
   background-color: black;
   transition-property: color;
   transition-duration: 0s;
-  transition-delay: 5s; 
-  animation: progress 0.8s ease-in, font 0.6s;
+  transition-delay: 5s;
+  animation: progress 0.8s ease-in, font 1s;
   color: white; 
- 
 }
 
 .resume_btn {
-  width: 70%; 
+  width: 70%;
   margin-left: 15%;
 }
 
@@ -145,15 +128,10 @@ const Wrapper = styled.div`
   }
 }
 
-
 @keyframes font {
   0% {color: transparent;}
   75%{color: transparent;}
   100% {color: inherit;}
 }
-
 `
-
-
-
 export default LandingPage;
