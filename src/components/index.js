@@ -6,7 +6,7 @@ import Loading from "./Loading";
 import Resume from "./Resume";
 import Sidebar from "./Sidebar";
 import Contact from "./Contact";
-
+import Networks from "./Networks";
 export {
   Navbar,
   Footer,
@@ -15,5 +15,6 @@ export {
   Loading,
   Resume,
   Contact,
+  Networks,
   Sidebar
 }
