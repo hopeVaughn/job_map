@@ -3,6 +3,7 @@ import 'animate.css';
 import styled from 'styled-components';
 import Axios from 'axios';
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function LandingPage() {
@@ -18,6 +19,8 @@ function LandingPage() {
     useEffect(() => {
       fetchData()
     }, []);
+
+    const navigate = useNavigate();
   
 
   return (
@@ -34,8 +37,8 @@ function LandingPage() {
       
 
       <div className="statistics">
-        <div className="statistics_btn all_companies_btn">All Companies</div>
-        <div className="statistics_btn offers_btn">{`${state[3]} Offers`}</div>
+        <div className="statistics_btn all_companies_btn" onClick={() => navigate("/companies")}>All Companies</div>
+        <div className="statistics_btn offers_btn" onClick={() => navigate("/companies/:id")}>{`${state[3]} Offers`}</div>
         <div className="statistics_btn tech_iterviews_btn">{`${state[2]} Tech Interviews`}</div>
         <div className="statistics_btn hr_iterviews_btn">{`${state[1]} HR Interviews`}</div>
         <div className="statistics_btn resume_btn">{`${state[0]} Resumes Sent`}</div>        
@@ -50,10 +53,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;  
-  border: 3px solid #73AD21;
   width: 100%;
   height: 40vh;
-  background-color: hsl(209, 23%, 60%);
+  background-color: #a6b570;
 }
 .statistics {
   display: flex;
@@ -61,10 +63,9 @@ const Wrapper = styled.div`
   text-align: center;
   justify-content: space-around;
   column-gap: 40px;
-  border: 3px solid #73AD21; 
   width: 100%;
   height: 40vh;
-  background-color:darkseagreen;
+  background-color:#9dab6a;
   align-items: flex-start;  
 }
 
@@ -79,12 +80,17 @@ const Wrapper = styled.div`
   width: 80%;
   height: 6vh;
   font-size: min(3vh, 4vw);
-  background-color: black;
+  
   transition-property: color;
   transition-duration: 0s;
   transition-delay: 5s;
   animation: progress 0.8s ease-in, font 1s;
-  color: white; 
+  color: white;
+  
+}
+.statistics_btn:hover {
+  background-color: #041f0b;
+  cursor: pointer;
 }
 
 .resume_btn {
