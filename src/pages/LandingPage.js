@@ -3,6 +3,7 @@ import 'animate.css';
 import styled from 'styled-components';
 import Axios from 'axios';
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function LandingPage() {
@@ -15,10 +16,10 @@ function LandingPage() {
     })
 
   };
-    useEffect(() => {
-      fetchData()
-    }, []);
-  
+  useEffect(() => {
+    fetchData()
+  }, []);
+
 
   return (
     <Wrapper>
@@ -31,17 +32,17 @@ function LandingPage() {
           reserved for the donut graph
         </div>
       </div>
-      
+
 
       <div className="statistics">
         <div className="statistics_btn all_companies_btn">All Companies</div>
         <div className="statistics_btn offers_btn">{`${state[3]} Offers`}</div>
         <div className="statistics_btn tech_iterviews_btn">{`${state[2]} Tech Interviews`}</div>
         <div className="statistics_btn hr_iterviews_btn">{`${state[1]} HR Interviews`}</div>
-        <div className="statistics_btn resume_btn">{`${state[0]} Resumes Sent`}</div>        
+        <div className="statistics_btn resume_btn">{`${state[0]} Resumes Sent`}</div>
       </div>
-      
-  </Wrapper>
+
+    </Wrapper>
   )
 }
 
