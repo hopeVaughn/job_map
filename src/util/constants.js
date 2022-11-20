@@ -1,9 +1,9 @@
 export const links = [
-  {
-    id: 1,
-    text: 'home',
-    url: '/landing',
-  },
+  // {
+  //   id: 1,
+  //   text: 'home',
+  //   url: '/landing',
+  // },
   {
     id: 2,
     text: 'Add/Edit Company',

@@ -1,26 +1,42 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { links } from '../util/constants'
-function Navbar() {
+import { FaBars } from 'react-icons/fa'
+// import { logo } from '../assets/logo.png'
+
+const Navbar = () => {
+  const openSidebar = () => {
+    //dosomething
+  }
+
   return (
-    <Wrapper>
-      <div className="nav-center">
-        <ul className="nav-links">
-          {links.map((link) => {
-            const { id, text, url } = link;
-            return <li key={id}>
-              <Link to={url}>
-                {text}
-              </Link>
-            </li>
-          })}
-        </ul>
+    <NavContainer><div className="nav-center">
+      <div className="nav-header">
+        <Link to='/landing'>
+          <span>home</span>
+          {/* <img src={logo} alt="job map main svg" /> */}
+        </Link>
+        <button type="button" className="nav-toggle" onClick={openSidebar}>
+          <FaBars />
+        </button>
       </div>
-    </Wrapper>
+      <ul className="nav-links">
+        {links.map((link) => {
+          const { id, text, url } = link;
+          return <li key={id}>
+            <Link to={url}>
+              {text}
+            </Link>
+          </li>
+        })}
+      </ul>
+    </div>
+      <Link to="/" className='logout'>logout</Link>
+    </NavContainer>
   )
 }
 
-const Wrapper = styled.nav`
+const NavContainer = styled.nav`
   height: 5rem;
   display: flex;
   align-items: center;
@@ -39,7 +55,27 @@ const Wrapper = styled.nav`
       margin-left: -15px;
     }
   }
+  .nav-toggle {
+    background: transparent;
+    border: transparent;
+    color: var(--clr-primary-5);
+    cursor: pointer;
+    svg {
+      font-size: 2rem;
+    }
+  }
+  .nav-links {
+    display: none;
+  }
+  .logout {
+    justify-content: end;
+    text-decoration: none;
+    padding-right: 2rem;
+  }
   @media (min-width: 992px) {
+    .nav-toggle {
+      display: none;
+    }
     .nav-center {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -47,7 +83,6 @@ const Wrapper = styled.nav`
     }
     .nav-links {
       display: flex;
-      align-items:center;
       justify-content: center;
       li {
         margin: 0 0.5rem;
@@ -63,7 +98,6 @@ const Wrapper = styled.nav`
         }
       }
     }
-
   }
 `
 
