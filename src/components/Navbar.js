@@ -39,23 +39,7 @@ const Wrapper = styled.nav`
       margin-left: -15px;
     }
   }
-  .nav-toggle {
-    background: transparent;
-    border: transparent;
-    color: var(--clr-primary-5);
-    cursor: pointer;
-    svg {
-      font-size: 2rem;
-    }
-  }
-  .nav-links {
-    display: none;
-  }
-
   @media (min-width: 992px) {
-    .nav-toggle {
-      display: none;
-    }
     .nav-center {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -63,6 +47,7 @@ const Wrapper = styled.nav`
     }
     .nav-links {
       display: flex;
+      align-items:center;
       justify-content: center;
       li {
         margin: 0 0.5rem;
