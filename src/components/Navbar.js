@@ -45,6 +45,7 @@ const NavContainer = styled.nav`
     width: 90vw;
     margin: 0 auto;
     max-width: var(--max-width);
+     
   }
   .nav-header {
     display: flex;
@@ -70,6 +71,7 @@ const NavContainer = styled.nav`
   .logout {
     justify-content: end;
     text-decoration: none;
+    color: var(--clr-white);
     padding-right: 2rem;
   }
   @media (min-width: 992px) {
@@ -88,7 +90,7 @@ const NavContainer = styled.nav`
         margin: 0 0.5rem;
       }
       a {
-        color: var(--clr-grey-3);
+       color: var(--clr-white);
         font-size: 1rem;
         text-transform: capitalize;
         letter-spacing: var(--spacing);
