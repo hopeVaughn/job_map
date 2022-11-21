@@ -71,7 +71,6 @@ const Wrapper = styled.section`
 }
 
 
-
 .container .b {
   background-color: rgb(238, 0, 70);
 }
