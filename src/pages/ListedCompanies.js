@@ -35,8 +35,8 @@ function ListedCompanies() {
   const filterCompany = (event) => {
     if(true){
       const data = companylist.filter((item) => {
-      return item.name === "Google"  
-                           // its just a exemple call, has to be returnd based on Button from page before
+      return item.name === "LHL"  // change the 'Google' for 'Tesla' and Css change
+                           // its just a example call, has to be returnd based on Button from page before
     })
       setList(data);
     }
@@ -47,7 +47,7 @@ function ListedCompanies() {
   const getList = async () => {
     try {
           const res = await axios.get("http://localhost:8080/api/companies/")
-            console.log(res.data);
+            // console.log(res.data);
           setCompanylist(res.data);
           
           setLoading(true);
