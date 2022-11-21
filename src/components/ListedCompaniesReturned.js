@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 function ListedCompaniesReturned(props) {
 
-
+  const name = props.lis.name
+  console.log(name);
 
   return (
     <Wrapper>
         <div className='container'>
-              <button className='child'>
-                {props.lis.title}  
+
+              <button className={`${name === 'Google' ? 'child' : 'childlhl'}`}>
+                {name}  
               </button>
               <div className='child b'>
                 Information requested {/*base on the request*/}
@@ -32,6 +34,19 @@ const Wrapper = styled.section`
   height: 2.5vw;
   border-radius: 0.5rem;
   background-color: rgb(238, 160, 70);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5vw;
+  font-size: 1.5vw;
+}
+
+.container .childlhl {
+  flex-basis: calc(50% - 40px);
+  height: 2.5vw;
+  border-radius: 0.5rem;
+  background-color: green;
   color: #FFFFFF;
   display: flex;
   align-items: center;
