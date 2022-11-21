@@ -2,13 +2,23 @@ import styled from 'styled-components';
 
 function ListedCompaniesReturned(props) {
 
-
+  const name = props.lis.name
+  // console.log(name);
 
   return (
     <Wrapper>
         <div className='container'>
-              <button className='child'>
-                {props.lis.title}  
+
+              <button className={`
+              
+              ${name === 'Amazon' ? 'child a' : ''}
+              ${name === 'Google' ? 'child g' : ''}
+              ${name === 'Tesla' ? 'child t' : ''}
+              ${name === 'Twitter' ? 'child tw' : ''}
+              ${name === 'LHL' ? 'child l' : ''}
+              
+              `}>
+                {name}  
               </button>
               <div className='child b'>
                 Information requested {/*base on the request*/}
@@ -17,6 +27,7 @@ function ListedCompaniesReturned(props) {
     </Wrapper>
   );  
 }
+
 
 const Wrapper = styled.section`
 .container {
@@ -27,11 +38,10 @@ const Wrapper = styled.section`
   font-size: 1.5vw;
 }
 
-.container .child {
+.child {
   flex-basis: calc(50% - 40px);
   height: 2.5vw;
   border-radius: 0.5rem;
-  background-color: rgb(238, 160, 70);
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -39,6 +49,28 @@ const Wrapper = styled.section`
   margin-bottom: 0.5vw;
   font-size: 1.5vw;
 }
+
+.a {
+  background-color: purple;
+}
+
+.g {
+  background-color: green;
+}
+
+.t {
+  background-color: blue;
+}
+
+.tw {
+  background-color: orange;
+}
+
+.l {
+  background-color: red;
+}
+
+
 
 .container .b {
   background-color: rgb(238, 0, 70);
