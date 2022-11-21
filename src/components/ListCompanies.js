@@ -38,13 +38,11 @@ const test = [
 
   return (
     <>
-      <Wrapper1>
+      <Wrapper>
         <div className='childa'>
           <span className="quantity">{test.length}</span>   Hr Interview
         </div>
-      </Wrapper1>
-
-      <Wrapper2>
+    
         <div className='container'>
           <div className='childb'>
              Company Name    {/*Fixed*/}
@@ -53,9 +51,7 @@ const test = [
             Resume Submission Date {/*base on the request*/}
           </div>
         </div>
-      </Wrapper2>
-
-      <Wrapper3>
+      
         {test.map((t) =>
         <div className='container'>
               <button className='child a'>
@@ -66,7 +62,7 @@ const test = [
               </div>      
         </div>
        )}
-      </Wrapper3>
+      </Wrapper>
 
       
   
@@ -76,7 +72,7 @@ const test = [
 
 export default ListCompanies
 
-const Wrapper1 = styled.section`
+const Wrapper = styled.section`
 .childa {
   flex-basis: calc(100% - 40px);
   height: 8vw;
@@ -94,9 +90,8 @@ const Wrapper1 = styled.section`
  .childa .quantity{
   font-size:5vw
  }
- `
+ 
 
- const Wrapper2 = styled.section`
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -115,16 +110,6 @@ const Wrapper1 = styled.section`
   align-items: center;
   justify-content: center;
   margin-bottom: 2vw;
-}
-`
-
-const Wrapper3 = styled.section`
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  font-size: 1.5vw;
 }
 
 .child {
