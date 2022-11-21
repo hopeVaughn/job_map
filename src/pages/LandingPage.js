@@ -15,18 +15,22 @@ function LandingPage() {
   const [state, setState] = useState([]);
 
   const fetchData = () => {
-    Axios.get(`http://localhost:8080/api/applications`).then((res) => {
-      setState(res.data)
-    })
+    try {
+      Axios.get(`http://localhost:8080/api/applications`).then((res) => {
+        setState(res.data)
+      })
 
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
-    useEffect(() => {
-      fetchData()
-    }, []);
+  useEffect(() => {
+    fetchData()
+  }, []);
 
-    const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+
 
 
 
