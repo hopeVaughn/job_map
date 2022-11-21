@@ -1,32 +1,12 @@
 import React from "react";
 import 'animate.css';
 import styled from 'styled-components';
-import Axios from 'axios';
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import Levels from "../components/Levels";
 
 function LandingPage() {
 
-  const [state, setState] = useState([]);
-
-  const fetchData = () => {
-    try {
-      Axios.get(`http://localhost:8080/api/applications`).then((res) => {
-        setState(res.data)
-      })
-
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchData()
-  }, []);
-
-  const navigate = useNavigate();
-
+  
   return (
     <Wrapper>
       <div className="charts">
@@ -39,7 +19,7 @@ function LandingPage() {
         </div>
       </div>
 
-      <Levels state={state} navigate={navigate}/>      
+      <Levels/>      
 
     </Wrapper>
   )
@@ -77,7 +57,7 @@ const Wrapper = styled.div`
   width: 80%;
   height: 6vh;
   font-size: min(3vh, 4vw);
-  
+  background-color: #75640c;
   transition-property: color;
   transition-duration: 0s;
   transition-delay: 5s;
