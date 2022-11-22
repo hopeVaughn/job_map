@@ -7,7 +7,7 @@ function Home() {
     <Wrapper>
       <div className="job">
         <div> job.map(</div>
-          <button className="logsig">Login/Signup</button>
+          <button className="logsig" >Login/Signup</button>
         <div>)</div>
       </div>
     </Wrapper>
