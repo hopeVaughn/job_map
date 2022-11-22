@@ -7,7 +7,7 @@ import { useState } from "react";
 function App() {
 
   const [levelClicked, setLevelClicked] = useState("");
-
+  const [Auth, setAuth] = useState(false);
 
 
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path='landing' element={<LandingPage setLevelClicked={setLevelClicked}/>} />
         <Route path='companies' element={<ListedCompanies levelClicked={levelClicked}  />} />
         <Route path='companies/:id' element={<CompanyPage />} />
-        <Route path='login' element={<Login />} />
+        <Route path='login' element={<Login setAuth={setAuth}/>} />
 
       </Routes>
       <Footer />
