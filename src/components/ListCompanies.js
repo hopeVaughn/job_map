@@ -1,52 +1,80 @@
+import axios from "axios";
+import { useEffect, useState} from "react";
 import styled from 'styled-components';
 
 
 function ListCompanies() {
 
+  const [list, setList] = useState([])
+  const [stage, setStage] = useState([])
 
+  const x = 0   //change the parameter depends how is configurate on Landing Page  props
 
+// case 0 = AllCompanies
+// case 1 = Offers
+// case 2 = Tech interviews
+// case 3 = Hr Interviews
+// case 4 = resume sent
+  const getList = async (stage) => {
+    try {
+          switch (stage) {
+            case 0:
+              const all = await axios.get("http://localhost:8080/api/companies/")
+              //console.log(res.data[0]);
+              setList(all.data);
+              setStage('  All Companies')
+              break;
+            
+            case 1:
+              const offers = await axios.get("http://localhost:8080/api/applications/job_offers")
+              console.log(offers.data[1]);
+              setList(offers.data);
+              setStage('  Job Offers')
+              break;
 
-const test = [
-  {
-    id: 1,
-    user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
-    name: "Amazon", 
-  },
-  {
-    id: 2,
-    user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
-    name: "Google",
-  },
-  {
-    id: 3,
-    user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
-    name: "Tesla",
-  },
-  {
-    id: 4,
-    user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
-    name: "Twitter",
-  },
-  {
-    id: 5,
-    user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
-    name: "LHL",
-  },
-  {
-    id: 6,
-    user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
-    name: "Sisco",
+             case 2:
+              const tech = await axios.get("http://localhost:8080/api/applications/tech_interviews")
+              console.log(tech.data);
+              setList(tech.data);
+              setStage('  Tech Interviews')
+            break;
+
+            case 3:
+              const hr = await axios.get("http://localhost:8080/api/applications/hr_interviews")
+              console.log(hr.data);
+              setList(hr.data);
+              setStage('  HR Interviews')
+            break;
+
+            case 4:
+              const resumesent = await axios.get("http://localhost:8080/api/applications/resumes")
+              console.log(resumesent.data);
+              setList(resumesent.data);
+              setStage('  Resumes Sent')
+            break;
+            
+            default:
+            
+            break;
+          }
+
+    } catch (err) {
+          alert(err.message);
+      }
   }
 
-]
 
+  useEffect(() => {
+    getList(x)   
+    
+  }, []);
 
 
   return (
     <>
       <Wrapper>
         <div className='childa'>
-          <span className="quantity">{test.length}</span>   Hr Interview
+          <span className="quantity">{list.length}</span>   {stage}
         </div>
     
         <div className='container'>
@@ -58,7 +86,7 @@ const test = [
           </div>
         </div>
       
-        {test.map((t) =>
+      {list.map((t) =>
         <div className='container'>
               <button className='child a'>
                 {t.name}  
@@ -93,7 +121,6 @@ const Wrapper = styled.section`
  .childa .quantity{
   font-size:5vw
  }
- 
 
 .container {
   display: flex;
