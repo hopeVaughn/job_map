@@ -31,7 +31,13 @@ const test = [
     id: 5,
     user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
     name: "LHL",
+  },
+  {
+    id: 6,
+    user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
+    name: "Sisco",
   }
+
 ]
 
 
@@ -63,9 +69,6 @@ const test = [
         </div>
        )}
       </Wrapper>
-
-      
-  
     </>
   )
 }
