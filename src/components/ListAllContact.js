@@ -13,6 +13,9 @@ function ListAllContact() {
       {id: 6, name: 'Eduardo Cesconetto', image: 'https://media-exp1.licdn.com/dms/image/C5603AQEeD8y12M9gEA/profile-displayphoto-shrink_200_200/0/1658772472251?e=1671062400&v=beta&t=liwzekkO3CPQLIcsULENoUA_3lqBNRFg9lFrwVE_EPg'},
   ]
   
+  const click = (id) =>{
+     console.log('HEREEE');
+  }
 
 
   return (
@@ -21,11 +24,11 @@ function ListAllContact() {
       <Wrapper>
         <h1>List of All Contacts</h1>
         {db.map((d) =>
-        <div className='list' key={d.id}>
+        <div className='list' key={d.id} onClick={click}>
             <Avatar
               alt="contact photo"
               src={d.image}
-              size="93"
+              size="85"
               round={true}
             />
             
@@ -44,17 +47,25 @@ export default ListAllContact
 const Wrapper = styled.section`
 h1{
   text-align: -webkit-center;
+  color: #eff1e4;
 }
 
 .list {
+  color: #eff1e4;
   display: flex;
   flex-direction: row; 
   height: 10vh;
-  background-color: gray;
+  border-style: outset;
   margin-top: 4vh;
   margin: 4% 30% 4% 30%;
   border-radius: 0.5rem;
   align-items: center;
+  cursor: pointer;
+}
+
+.list:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 5px rgba(233, 233, 233, 0.6);
 }
 
 .nick {
@@ -62,7 +73,7 @@ h1{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(231, 34, 34);
+  background-color: #5480a2;
   flex-basis: calc(65% - -30px);
   border-radius: 0.5rem;
   height: 3vh;
