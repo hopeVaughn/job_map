@@ -7,6 +7,7 @@ import Resume from "./Resume";
 import Sidebar from "./Sidebar";
 import Contact from "./Contact";
 import Networks from "./Networks";
+import ListAllContact from "./ListAllContact";
 export {
   Navbar,
   Footer,
@@ -16,5 +17,6 @@ export {
   Resume,
   Contact,
   Networks,
-  Sidebar
+  Sidebar,
+  ListAllContact
 }
