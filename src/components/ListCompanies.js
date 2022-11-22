@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 
 
@@ -7,6 +8,8 @@ function ListCompanies(props) {
 
   const [list, setList] = useState([])
   const [stage, setStage] = useState([])
+  const [color, setColor] = useState([])
+  
 
   //const x = 0   //change the parameter depends how is configurate on Landing Page  props
 
@@ -23,34 +26,36 @@ function ListCompanies(props) {
               //console.log(res.data[0]);
               setList(all.data);
               setStage('  All Companies')
+              setColor('purple')
               break;
             
             case 1:
               const offers = await axios.get("http://localhost:8080/api/applications/job_offers")
-              console.log(offers.data[1]);
+              //console.log(offers.data[1]);
               setList(offers.data);
               setStage('  Job Offers')
+              setColor('green')
               break;
 
              case 2:
               const tech = await axios.get("http://localhost:8080/api/applications/tech_interviews")
-              console.log(tech.data);
               setList(tech.data);
               setStage('  Tech Interviews')
+              setColor('blue')
             break;
 
             case 3:
               const hr = await axios.get("http://localhost:8080/api/applications/hr_interviews")
-              console.log(hr.data);
               setList(hr.data);
               setStage('  HR Interviews')
+              setColor('orange')
             break;
 
             case 4:
               const resumesent = await axios.get("http://localhost:8080/api/applications/resumes")
-              console.log(resumesent.data);
               setList(resumesent.data);
               setStage('  Resumes Sent')
+              setColor('red')
             break;
             
             default:
@@ -59,7 +64,7 @@ function ListCompanies(props) {
           }
 
     } catch (err) {
-          alert(err.message);
+      console.error(err.message);
       }
   }
 
@@ -67,13 +72,21 @@ function ListCompanies(props) {
   useEffect(() => {
     getList(props.levelClicked || 0)   
     
-  }, []);
+  }, [props.levelClicked]);
 
+
+  const navigate = useNavigate();
+
+  //pass the id 
+  const btnSingleCompanie = (id) =>{
+    // console.log(props);
+    navigate(`/companies/${id}`)
+  }
 
   return (
     <>
       <Wrapper>
-        <div className='childa'>
+        <div className={`${color} childa`}>
           <span className="quantity">{list.length}</span>   {stage}
         </div>
     
@@ -87,8 +100,8 @@ function ListCompanies(props) {
         </div>
       
       {list.map((t) =>
-        <div className='container'>
-              <button className='child a'>
+        <div className='container' key={t.id}>
+             <button className={`${color} child `} onClick={() => btnSingleCompanie(t.id)}>
                 {t.name}  
               </button>
               <div className='child b'>
@@ -131,7 +144,7 @@ const Wrapper = styled.section`
 }
 
 .container .childb {
-  background-color: rgb(93, 158, 40);
+  background-color: gray;
   flex-basis: calc(50% - 40px);
   height: 3vw;
   border-radius: 0.5rem;
@@ -154,28 +167,28 @@ const Wrapper = styled.section`
   font-size: 1.5vw;
 }
 
-.a {
+.purple {
   background-color: purple;
 }
 
-.g {
+.green {
   background-color: green;
 }
 
-.t {
+.blue {
   background-color: blue;
 }
 
-.tw {
+.orange {
   background-color: orange;
 }
 
-.l {
+.red {
   background-color: red;
 }
 
 .container .b {
-  background-color: rgb(238, 0, 70);
+  background-color: rgb(189,183,107);
 }
 
 button {
