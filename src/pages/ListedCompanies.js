@@ -6,7 +6,7 @@ function ListedCompanies(props) {
  
   return (
     <>
-     <ListCompanies />
+     <ListCompanies levelClicked={props.levelClicked}/>
     </>
   )
 }
