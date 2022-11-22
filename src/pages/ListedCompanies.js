@@ -1,11 +1,12 @@
 import ListCompanies from "../components/ListCompanies";
 
-function ListedCompanies() {
+function ListedCompanies(props) {
 
+  console.log(props.levelClicked)
  
   return (
     <>
-     <ListCompanies />
+     <ListCompanies levelClicked={props.levelClicked}/>
     </>
   )
 }

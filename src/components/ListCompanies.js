@@ -3,12 +3,12 @@ import { useEffect, useState} from "react";
 import styled from 'styled-components';
 
 
-function ListCompanies() {
+function ListCompanies(props) {
 
   const [list, setList] = useState([])
   const [stage, setStage] = useState([])
 
-  const x = 0   //change the parameter depends how is configurate on Landing Page  props
+  //const x = 0   //change the parameter depends how is configurate on Landing Page  props
 
 // case 0 = AllCompanies
 // case 1 = Offers
@@ -65,7 +65,7 @@ function ListCompanies() {
 
 
   useEffect(() => {
-    getList(x)   
+    getList(props.levelClicked || 0)   
     
   }, []);
 

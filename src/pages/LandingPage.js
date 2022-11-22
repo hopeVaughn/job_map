@@ -1,10 +1,9 @@
 import React from "react";
 import 'animate.css';
 import styled from 'styled-components';
-
 import Levels from "../components/Levels";
 
-function LandingPage() {
+function LandingPage(props) {
 
   
   return (
@@ -19,7 +18,7 @@ function LandingPage() {
         </div>
       </div>
 
-      <Levels/>      
+      <Levels setLevelClicked={props.setLevelClicked}/>      
 
     </Wrapper>
   )
