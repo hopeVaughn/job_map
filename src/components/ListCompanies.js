@@ -31,20 +31,24 @@ const test = [
     id: 5,
     user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
     name: "LHL",
+  },
+  {
+    id: 6,
+    user_id: "5c2ea821-8462-4c2b-8bb7-eb1b30739837",
+    name: "Sisco",
   }
+
 ]
 
 
 
   return (
     <>
-      <Wrapper1>
+      <Wrapper>
         <div className='childa'>
           <span className="quantity">{test.length}</span>   Hr Interview
         </div>
-      </Wrapper1>
-
-      <Wrapper2>
+    
         <div className='container'>
           <div className='childb'>
              Company Name    {/*Fixed*/}
@@ -53,9 +57,7 @@ const test = [
             Resume Submission Date {/*base on the request*/}
           </div>
         </div>
-      </Wrapper2>
-
-      <Wrapper3>
+      
         {test.map((t) =>
         <div className='container'>
               <button className='child a'>
@@ -66,17 +68,14 @@ const test = [
               </div>      
         </div>
        )}
-      </Wrapper3>
-
-      
-  
+      </Wrapper>
     </>
   )
 }
 
 export default ListCompanies
 
-const Wrapper1 = styled.section`
+const Wrapper = styled.section`
 .childa {
   flex-basis: calc(100% - 40px);
   height: 8vw;
@@ -94,9 +93,8 @@ const Wrapper1 = styled.section`
  .childa .quantity{
   font-size:5vw
  }
- `
+ 
 
- const Wrapper2 = styled.section`
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -115,16 +113,6 @@ const Wrapper1 = styled.section`
   align-items: center;
   justify-content: center;
   margin-bottom: 2vw;
-}
-`
-
-const Wrapper3 = styled.section`
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  font-size: 1.5vw;
 }
 
 .child {
