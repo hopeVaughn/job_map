@@ -92,11 +92,11 @@ function ListCompanies(props) {
     
         <div className='container'>
           <div className='childb'>
-             Company Name    {/*Fixed*/}
+             Company Name   
           </div>
-          <div className='childb'>
-            Resume Submission Date {/*base on the request*/}
-          </div>
+
+          {/* <div className='childb'> Resume Submission Date base on the request </div> */}
+
         </div>
       
       {list.map((t) =>
@@ -104,9 +104,9 @@ function ListCompanies(props) {
              <button className={`${color} child `} onClick={() => btnSingleCompanie(t.id)}>
                 {t.name}  
               </button>
-              <div className='child b'>
-                Information requested {/*base on the request*/}
-              </div>      
+              
+              {/* <div className='child b'> Information requested </div> */}
+
         </div>
        )}
       </Wrapper>

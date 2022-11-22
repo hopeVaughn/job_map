@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 function CompanyPage(props) {
   const [company, setCompany] = useState({})
    
-  //take the id   
+  // take the id   
   let {id} = useParams();
   console.log("id:", id);
  
@@ -14,7 +14,7 @@ function CompanyPage(props) {
   async function getCompany () {
     const result = await axios.get(`http://localhost:8080/api/companies/${id}`)
     console.log('++++', result);
-    setCompany(result.data[0])
+    setCompany(result.data[0]) //if backend send just a object, maybe is better 
   }
 
   useEffect(() => {
