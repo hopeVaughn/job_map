@@ -34,31 +34,31 @@ function Levels(props) {
       <div className="statistics">
         <div 
           className="statistics_btn all_companies_btn" 
-          onClick={() => buttonClicked("all")}
+          onClick={() => buttonClicked(0)}
           >All Companies
         </div>
         
         <div 
         className="statistics_btn offers_btn" 
-        onClick={() => buttonClicked("offers")}
+        onClick={() => buttonClicked(1)}
         >{`${quantity[3]} Offers`}
         </div>
 
         <div 
         className="statistics_btn tech_iterviews_btn"
-        onClick={() => buttonClicked("tech")}
+        onClick={() => buttonClicked(2)}
         >{`${quantity[2]} Tech Interviews`}
         </div>
 
         <div 
         className="statistics_btn hr_iterviews_btn"
-        onClick={() => buttonClicked("hr")}
+        onClick={() => buttonClicked(3)}
         >{`${quantity[1]} HR Interviews`}
         </div>
 
         <div 
         className="statistics_btn resume_btn"
-        onClick={() => buttonClicked("resumes")}
+        onClick={() => buttonClicked(4)}
         >{`${quantity[0]} Resumes Sent`}
         </div>
 
