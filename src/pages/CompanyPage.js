@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { useParams } from 'react-router-dom';
-import { companies, applications } from '../util/constants'
-
+import { companies, applications, contacts } from '../util/constants'
+import { Networks, Notes, Stages } from '../components';
+import styled from 'styled-components'
 function CompanyPage(props) {
   const [company, setCompany] = useState({})
 
@@ -24,14 +25,16 @@ function CompanyPage(props) {
 
 
   return (
-    <>
+    <Wrapper>
       <div>
         <h1>{company.name}</h1>
-        <h3>  {company.stack}  </h3>
-
+        <h3>{company.stack}</h3>
       </div>
-    </>
+      <Notes />
+      <Stages />
+      <Networks />
+    </Wrapper>
   )
 }
-
+const Wrapper = styled.main``
 export default CompanyPage
