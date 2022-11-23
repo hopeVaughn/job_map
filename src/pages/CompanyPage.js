@@ -7,13 +7,13 @@ function CompanyPage(props) {
    
   // take the id   
   let {id} = useParams();
-  console.log("id:", id);
+  
  
 
   // get all information about the company by id
   async function getCompany () {
     const result = await axios.get(`http://localhost:8080/api/companies/${id}`)
-    console.log('++++', result);
+    
     setCompany(result.data[0]) //if backend send just a object, maybe is better 
   }
 

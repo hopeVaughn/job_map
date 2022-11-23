@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Avatar from 'react-avatar';
+import { useNavigate } from "react-router-dom";
 
 function ListAllContact() {
 
@@ -15,10 +16,11 @@ function ListAllContact() {
 
 
 
-  const click = (id) => {
-    console.log('HEREEE');
+  const navigate = useNavigate();
+  //pass the id 
+  const btnSingleNetwork = (id) =>{
+    navigate(`/network/${id}`)
   }
-
 
 
   return (
@@ -27,7 +29,7 @@ function ListAllContact() {
       <Wrapper>
         <h1>List of All Contacts</h1>
         {db.map((d) =>
-          <div className='list' key={d.id} onClick={click}>
+          <div className='list' key={d.id} onClick={() => btnSingleNetwork(d.id)}>
             <Avatar
               alt="contact photo"
               src={d.image}
