@@ -1,8 +1,29 @@
-import React from 'react'
+//import React, { useEffect, useState } from 'react'
+//import axios from "axios";
+import { useParams } from 'react-router-dom';
+
 import Avatar from 'react-avatar';
 import styled from 'styled-components';
 
 function Contact() {
+  //const[contact, setContact] = useState({})
+  
+  // take the id   
+  let {id} = useParams();
+  console.log(id);
+
+
+  // // get all information about the company by id
+  // async function getContact () {
+  //   const result = await axios.get(`http://localhost:8080/api/contact/${id}`)
+    
+  //   setContact(result.data[0])  
+  // }
+
+  // useEffect(() => {
+  //   getContact()      
+  // }, []);
+
 
 
   return (
@@ -24,13 +45,13 @@ function Contact() {
             />
             
           <div className='nick'>
-            <div>Link to LinkedIn</div>
+            <div>Id that Contact:<h1>{id}</h1></div>
             <br/>
             <div>Link to Github</div>
             <br/>
-            <div>Link to ....</div>
+            <div>Link to LinkedIn</div>
             <br/>
-            <div>Link to ....</div>
+            <div>Link to Twitter</div>
           </div>
           
 
