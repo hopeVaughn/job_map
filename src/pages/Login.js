@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 
 function Login(props) {
@@ -9,6 +11,8 @@ function Login(props) {
   const [password, setPassword] = useState("");
 
   /*---------------------*/
+  const navigate = useNavigate();
+
   const onSubmitForm = async e => {
     e.preventDefault();
     try {
@@ -20,6 +24,7 @@ function Login(props) {
             localStorage.setItem("token", parseRes.jwtToken);
             props.setAuth(true);
             console.log("Logged in Successfully");
+            navigate("/landing")
           } else {
             props.setAuth(false);
             console.log(parseRes);
