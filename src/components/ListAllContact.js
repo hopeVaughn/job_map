@@ -13,10 +13,13 @@ function ListAllContact() {
       {id: 6, name: 'Eduardo Cesconetto', image: 'https://media-exp1.licdn.com/dms/image/C5603AQEeD8y12M9gEA/profile-displayphoto-shrink_200_200/0/1658772472251?e=1671062400&v=beta&t=liwzekkO3CPQLIcsULENoUA_3lqBNRFg9lFrwVE_EPg'},
   ]
   
+
+
   const click = (id) =>{
      console.log('HEREEE');
   }
 
+  
 
   return (
 
