@@ -9,11 +9,11 @@ function Contact() {
     <>
       <Wrapper>
         <div>
-          <button> EDIT</button>
-          <button> DELETE</button>
+          <button type="button" className='edit'> EDIT</button>
+          <button type="button" className='delete'> DELETE</button>
         </div>
 
-        <h1>Jack Nicholson</h1>
+        <p>Jack Nicholson</p>
       
         <div className='single' >
             <Avatar
@@ -32,6 +32,7 @@ function Contact() {
             <br/>
             <div>Link to ....</div>
           </div>
+          
 
         </div>
       </Wrapper>
@@ -42,7 +43,8 @@ function Contact() {
 export default Contact
 
 const Wrapper = styled.section`
-h1{
+p{
+  font-size: 7vh;
   text-align: -webkit-center;
   color: #eff1e4;
   padding-top: 4vh;
