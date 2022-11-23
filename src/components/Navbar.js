@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { links } from '../util/constants'
+import { navLinks } from '../util/constants'
 import { FaBars } from 'react-icons/fa'
 // import { logo } from '../assets/logo.png'
 
 const Navbar = () => {
   const openSidebar = () => {
-    //dosomething
+    //do something
   }
 
   return (
@@ -21,7 +21,7 @@ const Navbar = () => {
         </button>
       </div>
       <ul className="nav-links">
-        {links.map((link) => {
+        {navLinks.map((link) => {
           const { id, text, url } = link;
           return <li key={id}>
             <Link to={url}>
@@ -90,7 +90,7 @@ const NavContainer = styled.nav`
         margin: 0 0.5rem;
       }
       a {
-       color: var(--clr-white);
+        color: var(--clr-white);
         font-size: 1rem;
         text-transform: capitalize;
         letter-spacing: var(--spacing);
