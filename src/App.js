@@ -20,11 +20,10 @@ function App() {
         <Route path='landing' element={<LandingPage setLevelClicked={setLevelClicked} />} />
         <Route path='companies' element={<ListedCompanies levelClicked={levelClicked} />} />
         <Route path='companies/:id' element={<CompanyPage />} />
-        <Route path='login' element={<Login setAuth={setAuth}/>} />
+        <Route path='login' element={<Login setAuth={setAuth} />} />
         <Route path='register' element={<Register setAuth={setAuth} />} />
         <Route path='network' element={<Network />} />
         <Route path='network/:id' element={<SingleNetwork />} />
-
       </Routes>
       <Footer />
     </Router>

@@ -15,7 +15,7 @@ const Wrapper = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   background: var(--clr-black);
   text-align: center;
   span {

@@ -13,9 +13,9 @@ function CompanyPage(props) {
 
   // get all information about the company by id
   async function getCompany() {
-    const result = await axios.get(`http://localhost:8080/api/companies/${id}`)
-
-    setCompany(result.data[0]) //if backend send just a object, maybe is better 
+    const response = await axios.get(`http://localhost:8080/api/applications/custom/${id}`)
+    console.log(response.data[0]);
+    setCompany(response.data[0]) //if backend send just a object, maybe is better 
   }
 
   useEffect(() => {
@@ -26,10 +26,9 @@ function CompanyPage(props) {
   return (
     <>
       <div>
-        <h1>CompanyPage</h1>
-        <h3>  Just Exemplos, can delete the div </h3>
-        ___  {company.name}
-        ___  {company.user_id}
+        <h1>{company.name}</h1>
+        <h3>  {company.stack}  </h3>
+
       </div>
     </>
   )
