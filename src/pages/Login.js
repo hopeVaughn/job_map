@@ -13,9 +13,9 @@ function Login(props) {
     e.preventDefault();
     try {
       const body = { email, password };
-      const response = Axios.post(`http://localhost:8080/api/authentication/login`)
+      const response = Axios.post(`http://localhost:8080/api/authentication/login`, body)
         .then((res) => {
-          const parseRes = res.json();
+          const parseRes = res.data;
           if (parseRes.jwtToken) {
             localStorage.setItem("token", parseRes.jwtToken);
             props.setAuth(true);

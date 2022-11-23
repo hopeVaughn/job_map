@@ -25,7 +25,8 @@ function Register(props) {
       const body = { email, password, name };
       const response = Axios.post(`http://localhost:8080/api/authentication/register`, body)
         .then((res) => {
-          const parseRes = res.json();
+          console.log(res, typeof res)
+          const parseRes = res.data;
           if (parseRes.jwtToken) {
             localStorage.setItem("token", parseRes.jwtToken);
             props.setAuth(true);
