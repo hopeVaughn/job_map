@@ -12,15 +12,15 @@ const Footer = () => {
 
 const Wrapper = styled.footer`
   display: flex;
-  position: absolute;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  z-index: 1;
   bottom: 0;
   width: 100%;
-  height: 5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: end;
+  height: 4rem;
   background: var(--clr-black);
-  text-align: center;
 
   span {
     color: var(--clr-primary-5);
