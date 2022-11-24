@@ -9,6 +9,7 @@ import Contact from "./Contact";
 import Networks from "./Networks";
 import ListAllContact from "./ListAllContact";
 import Stages from "./Stages";
+import Charts from "./Charts";
 export {
   Navbar,
   Footer,
@@ -20,5 +21,6 @@ export {
   Networks,
   Sidebar,
   Stages,
+  Charts,
   ListAllContact
 }

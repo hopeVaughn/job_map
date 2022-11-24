@@ -1,22 +1,14 @@
 import React from "react";
 import 'animate.css';
 import styled from 'styled-components';
-import Levels from "../components/Levels";
+import { Levels, Charts } from "../components/";
 
 function LandingPage(props) {
 
 
   return (
     <Wrapper>
-      <div className="charts">
-        <div>
-          reserved for the bar graph
-        </div>
-
-        <div >
-          reserved for the donut graph
-        </div>
-      </div>
+      <Charts />
 
       <Levels setLevelClicked={props.setLevelClicked} />
 

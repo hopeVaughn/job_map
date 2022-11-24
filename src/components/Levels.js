@@ -34,35 +34,27 @@ function Levels(props) {
     <Wrapper>
       <div className="statistics">
         <div
-          className="statistics_btn all_companies_btn btn"
-          onClick={() => buttonClicked(0)}
-        >All Companies
+          className="statistics_btn all_companies_btn btn" onClick={() => buttonClicked(0)}>
+          <h5>Companies</h5>
         </div>
 
         <div
-          className="statistics_btn offers_btn btn"
-          onClick={() => buttonClicked(1)}
-        >{`${quantity[3]} Offers`}
+          className="statistics_btn offers_btn btn" onClick={() => buttonClicked(1)}>
+          <h4>{`${quantity[3]} Offers`}</h4>
         </div>
 
         <div
-          className="statistics_btn tech_iterviews_btn btn"
-          onClick={() => buttonClicked(2)}
-        >{`${quantity[2]} Tech Interviews`}
+          className="statistics_btn tech_iterviews_btn btn" onClick={() => buttonClicked(2)}>
+          <h4>{`${quantity[2]} Tech Interviews`}</h4>
         </div>
 
-        <div
-          className="statistics_btn hr_iterviews_btn btn"
-          onClick={() => buttonClicked(3)}
-        >{`${quantity[1]} HR Interviews`}
+        <div className="statistics_btn hr_iterviews_btn btn" onClick={() => buttonClicked(3)}>
+          <h4>{`${quantity[1]} HR Interviews`}</h4>
         </div>
 
-        <div
-          className="statistics_btn resume_btn btn"
-          onClick={() => buttonClicked(4)}
-        >{`${quantity[0]} Resumes Sent`}
+        <div className="statistics_btn resume_btn btn" onClick={() => buttonClicked(4)}>
+          <h4>{`${quantity[0]} Resumes Sent`}</h4>
         </div>
-
       </div>
     </Wrapper>
   )
@@ -80,13 +72,16 @@ const Wrapper = styled.section`
   align-items: flex-start;  
 }
 .statistics_btn {
+  display: flex;
   width: 80%;
   height: 6vh;
+  justify-content:center;
+  align-items:center;
   font-size: min(3vh, 4vw);
   transition-property: color;
   transition-duration: 0s;
   transition-delay: 5s;
-  animation: progress 2s ease-in, font 2s;
+  animation: progress 2s ease-in, font 2.25s;
   color: white;
   
 }
@@ -98,6 +93,7 @@ const Wrapper = styled.section`
 .resume_btn {
   width: 70%;
   margin-left: 15%;
+  
   background-color: red;
 }
 
@@ -125,7 +121,10 @@ const Wrapper = styled.section`
   font-size: min(2vh, 2vw);
   background:purple;
 }
-
+ h4, h5{
+  margin:0;
+  line-height:0;
+ }
 @keyframes progress {
   from {width: 0%;}
   0% {
@@ -146,5 +145,6 @@ const Wrapper = styled.section`
   75%{color: transparent;}
   100% {color: inherit;}
 }
+
 `
 export default Levels

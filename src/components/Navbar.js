@@ -58,8 +58,8 @@ const Navbar = () => {
 
 
 const Wrapper = styled.nav`
- nav-center {
-  background: var(--clr-grey-3);
+ .nav-center {
+  background: var(--clr-black);
   box-shadow: var(--light-shadow);
 }
 
@@ -120,7 +120,9 @@ const Wrapper = styled.nav`
 
 @media screen and (min-width: 800px) {
   .nav-center {
-    max-width: 1170px;
+    /* background: var(--clr-grey-3); */
+
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
