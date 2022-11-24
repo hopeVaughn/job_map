@@ -21,8 +21,8 @@ const Navbar = () => {
 
 
   return (
-    <NavContainer>
-      <div className="nav-center">
+    <Wrapper>
+      <div className="nav-center ">
         <div className="nav-header">
           <img src={logo} className='logo' alt="navigation logo" />
           <button className='nav-toggle' onClick={() => setShowLinks(!showLinks)}>
@@ -51,15 +51,15 @@ const Navbar = () => {
           })}
         </ul>
       </div>
-    </NavContainer>
+    </Wrapper>
   )
 }
 
 
 
-const NavContainer = styled.nav`
- nav {
-  background: var(--clr-primary-5);
+const Wrapper = styled.nav`
+ nav-center {
+  background: var(--clr-grey-3);
   box-shadow: var(--light-shadow);
 }
 
@@ -99,8 +99,8 @@ const NavContainer = styled.nav`
 }
 
 .links a:hover {
-  background: var(--clr-primary-8);
-  color: var(--clr-primary-5);
+  background: var(--clr-grey-5);
+  color: var(--clr-grey-9);
   padding-left: 1.5rem;
 }
 

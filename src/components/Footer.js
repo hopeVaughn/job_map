@@ -16,7 +16,7 @@ const Wrapper = styled.footer`
   justify-content: center;
   text-align: center;
   position: fixed;
-  z-index: 1;
+  /* z-index: 1; */
   bottom: 0;
   width: 100%;
   height: 4rem;
