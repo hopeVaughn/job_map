@@ -1,4 +1,4 @@
-import Pie3D from './Pie3D'
+import PieChart from './PieChart'
+import SimpleBarChart from './SimpleBarChart'
 
-
-export { Pie3D }
+export { PieChart, SimpleBarChart }

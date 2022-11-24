@@ -337,3 +337,37 @@ export const contacts = [
     twitter: 'https://twitter.com/ania_kubow'
   }
 ];
+
+export const barChartData = [
+  {
+    month: 'Jan',
+    Resumes: 2400,
+    amt: 2400,
+  },
+  {
+    month: 'Feb',
+    Resumes: 1398,
+    amt: 2210,
+  },
+  {
+    month: 'Mar',
+    Resumes: 9800,
+    amt: 2290,
+  },
+  {
+    month: 'Apr',
+    Resumes: 3908,
+    amt: 2000,
+  },
+  {
+    month: 'May',
+    Resumes: 4800,
+    amt: 2181,
+  },
+  {
+    month: 'Jun',
+    Resumes: 3800,
+    amt: 2500,
+  },
+
+];

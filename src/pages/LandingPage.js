@@ -9,22 +9,12 @@ function LandingPage(props) {
   return (
     <Wrapper>
       <Charts />
-
       <Levels setLevelClicked={props.setLevelClicked} />
-
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-.charts {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;  
-  width: 100%;
-  height: 40vh;
-  background-color: black;
-}
 
 .landing {
   width: 100vw;  
