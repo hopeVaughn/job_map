@@ -10,7 +10,10 @@ import Networks from "./Networks";
 import ListAllContact from "./ListAllContact";
 import Stages from "./Stages";
 import Charts from "./Charts";
+import FormRow from "./FormRow";
+import Logo from "./Logo"
 export {
+  Logo,
   Navbar,
   Footer,
   Levels,
@@ -22,5 +25,6 @@ export {
   Sidebar,
   Stages,
   Charts,
+  FormRow,
   ListAllContact
 }
