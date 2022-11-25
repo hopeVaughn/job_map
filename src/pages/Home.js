@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import 'animate.css';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
@@ -7,7 +8,7 @@ function Home() {
     <Wrapper>
       <div className="job">
         <div> job.map(</div>
-          <button className="logsig" >Login/Signup</button>
+        <Link to="/register" className="logsig">Login/Signup</Link>
         <div>)</div>
       </div>
     </Wrapper>

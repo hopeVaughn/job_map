@@ -85,9 +85,9 @@ function Register() {
           value={values.password}
           handleChange={handleChange}
         />
-        <button type='submit' className='btn btn-block'>
+        <Link to="/landing" className='btn btn-block'>
           submit
-        </button>
+        </Link>
         <p>
           {values.isMember ? 'Not a user yet?' : 'Already a user'}
           <button type='button' onClick={toggleMember} className="member=btn">

@@ -1,15 +1,16 @@
 import React from "react";
 import 'animate.css';
 import styled from 'styled-components';
-import { Levels, Charts } from "../components/";
+import { Levels, Navbar, Footer } from "../components/";
 
 function LandingPage(props) {
 
 
   return (
     <Wrapper>
-      <Charts />
+      <Navbar />
       <Levels setLevelClicked={props.setLevelClicked} />
+      <Footer />
     </Wrapper>
   )
 }

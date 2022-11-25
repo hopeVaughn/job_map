@@ -14,7 +14,6 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='landing' element={<LandingPage setLevelClicked={setLevelClicked} />} />
@@ -25,7 +24,6 @@ function App() {
         <Route path='network' element={<Network />} />
         <Route path='network/:id' element={<SingleNetwork />} />
       </Routes>
-      <Footer />
     </Router>
 
   );
