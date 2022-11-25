@@ -17,7 +17,7 @@ function Login(props) {
     e.preventDefault();
     try {
       const body = { email, password };
-      const response = Axios.post(`http://localhost:8080/api/authentication/login`, body)
+      Axios.post(`http://localhost:8080/api/authentication/login`, body)
         .then((res) => {
           const parseRes = res.data;
           if (parseRes.jwtToken) {
@@ -30,10 +30,10 @@ function Login(props) {
             console.log(parseRes);
           }
         })
-        
-      } catch (err) {
-        console.error(err.message);
-      }
+
+    } catch (err) {
+      console.error(err.message);
+    }
 
   };
 
@@ -46,19 +46,19 @@ function Login(props) {
           type="text"
           name="email"
           placeholder='email'
-          className="form-control my-3"          
-          onChange={(event) => setEmail(event.target.value)            
-          }       
-          
+          className="form-control my-3"
+          onChange={(event) => setEmail(event.target.value)
+          }
+
         />
         <input
           type="password"
           name="password"
           placeholder='password'
-          className="form-control my-3" 
+          className="form-control my-3"
           onChange={(event) => setPassword(event.target.value)
           }
-          
+
         />
         <button className="btn btn-success btn-block">Submit</button>
       </form>
