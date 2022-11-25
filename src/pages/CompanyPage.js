@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { useParams } from 'react-router-dom';
-import { Networks, Notes, Stages } from '../components';
+import { Networks, Notes, Stages, Navbar, Footer } from '../components';
 import styled from 'styled-components'
+
+
 function CompanyPage(props) {
   const [company, setCompany] = useState({})
 
@@ -25,6 +27,7 @@ function CompanyPage(props) {
 
   return (
     <Wrapper>
+      <Navbar />
       <div>
         <h1>{company.name}</h1>
         <h3>{company.stack}</h3>
@@ -32,6 +35,7 @@ function CompanyPage(props) {
       <Notes />
       <Stages />
       <Networks />
+      <Footer />
     </Wrapper>
   )
 }
