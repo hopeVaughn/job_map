@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React, { useState, useRef, useEffect } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { navLinks, social } from '../util/constants'
@@ -19,12 +19,14 @@ const Navbar = () => {
     }
   }, [showLinks])
 
+  const navigate = useNavigate();
 
   return (
     <Wrapper>
       <div className="nav-center ">
-        <div className="nav-header">
+        <div className="nav-header"><Link to="/landing">
           <img src={logo} className='logo' alt="navigation logo" />
+        </Link>
           <button className='nav-toggle' onClick={() => setShowLinks(!showLinks)}>
             <FaBars />
           </button>
