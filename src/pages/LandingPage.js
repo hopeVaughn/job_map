@@ -14,7 +14,7 @@ function LandingPage(props) {
   )
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
 
 .landing {
   width: 100vw;  

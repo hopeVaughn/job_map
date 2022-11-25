@@ -2,12 +2,12 @@ import { FaBehance, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa'
 export const navLinks = [
   {
     id: 1,
-    text: 'Add/Edit Company',
-    url: '/add_edit',
+    text: 'Add Application     ',
+    url: '/create',
   },
   {
     id: 2,
-    text: 'Network',
+    text: 'Networks',
     url: '/network',
   },
 ]

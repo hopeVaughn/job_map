@@ -36,7 +36,7 @@ const Navbar = () => {
             {navLinks.map((link) => {
               const { id, url, text } = link;
               return <li key={id}>
-                <Link to={url}>
+                <Link to={url} className="link-padding">
                   {text}
                 </Link>
               </li>
@@ -105,9 +105,12 @@ const Wrapper = styled.nav`
   color: var(--clr-grey-9);
   padding-left: 1.5rem;
 }
-
+.link-padding{
+  padding-right:2 rem;
+}
 .social-icons {
   display: none;
+  padding-right: 10rem;
 }
 
 .links-container {
