@@ -9,7 +9,8 @@ import Axios from 'axios';
 const initialState = {
   name: '',
   email: '',
-  password: ''
+  password: '',
+  isMember: true
 }
 
 function Register() {
@@ -23,72 +24,77 @@ function Register() {
     setValues({ ...values, [name]: value });
   };
 
+  const toggleMember = () => {
+    setValues({ ...values, isMember: !values.isMember });
+  };
 
   const onSubmit = async e => {
     e.preventDefault();
     const { name, email, password } = values;
-    if (!email || !password || !!name) {
+    if (!email || !password || !name) {
       toast.error('please fill out all fields');
       return
     }
-    try {
-      const body = { email, password, name };
-      const response = Axios.post(`http://localhost:8080/api/authentication/register`, body)
-        .then((res) => {
-          const parseRes = res.data;
-          if (parseRes.jwtToken) {
-            localStorage.setItem("token", parseRes.jwtToken);
-            console.log("Registered Successfully")
-            navigate("/landing")
-              ;
-          } else {
-            console.log(parseRes);
-          }
-        })
-
-    } catch (err) {
-      console.error(err.message);
+    if (!values.isMember) {
+      try {
+        const body = { email, password, name };
+        const response = Axios.post(`http://localhost:8080/api/authentication/register`, body)
+          .then((res) => {
+            const parseRes = res.data;
+            if (parseRes.jwtToken) {
+              localStorage.setItem("token", parseRes.jwtToken);
+              console.log("Registered Successfully")
+              navigate("/landing")
+                ;
+            } else {
+              console.log(parseRes);
+            }
+          })
+      } catch (err) {
+        console.error(err.message);
+      }
     }
-
   };
 
   return (
-    <Wrapper>
-      <Logo />
-      <div >
-        <h1 className="title title-top">Register</h1>
-        <Wrapper className='full-page'>
-          <form className='form' onSubmit={onSubmit}>
-            <h3 className='title'>Register</h3>
-            {/* name field */}
-            <FormRow
-              type='text'
-              name='name'
-              value={values.name}
-              handleChange={handleChange}
-            />
-            {/* email field */}
-            <FormRow
-              type='email'
-              name='email'
-              value={values.email}
-              handleChange={handleChange}
-            />
-            {/* password field */}
-            <FormRow
-              type='password'
-              name='password'
-              value={values.password}
-              handleChange={handleChange}
-            />
-            <button type='submit' className='btn btn-block'>
-              submit
-            </button>
-          </form>
-        </Wrapper>
 
-        <Link to="/login" className="btn btn-warning">login</Link>
-      </div>
+    <Wrapper className='full-page'>
+      <form className='form' onSubmit={onSubmit}>
+        <Logo />
+        <h3>{values.isMember ? 'Login' : 'Register'}</h3>
+        {/* name field */}
+        {!values.isMember && (
+          <FormRow
+            type='text'
+            name='name'
+            value={values.name}
+            handleChange={handleChange}
+          />
+        )}
+        {/* email field */}
+        <FormRow
+          type='email'
+          name='email'
+          value={values.email}
+          handleChange={handleChange}
+        />
+        {/* password field */}
+        <FormRow
+          type='password'
+          name='password'
+          value={values.password}
+          handleChange={handleChange}
+        />
+        <button type='submit' className='btn btn-block'>
+          submit
+        </button>
+        <p>
+          {values.isMember ? 'Not a user yet?' : 'Already a user'}
+          <button type='button' onClick={toggleMember} className="member=btn">
+            {values.isMember ? 'Register' : 'Login'}
+          </button>
+        </p>
+      </form>
     </Wrapper>
   )
 }
@@ -122,10 +128,9 @@ const Wrapper = styled.section`
   .member-btn {
     background: transparent;
     border: transparent;
-    color: var(--primary-500);
+    color: var(--clr-primary-500);
     cursor: pointer;
     letter-spacing: var(--letterSpacing);
   }
 `
-
 export default Register

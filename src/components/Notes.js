@@ -24,7 +24,7 @@ function Notes() {
 
     setShowAdd(false);
     if (!newNote) return;
-    setNotes([{timestamp: Date.now(), text: newNote}, ...notes]);
+    setNotes([{ timestamp: Date.now(), text: newNote }, ...notes]);
     setNewNote("");
   };
 
@@ -45,6 +45,7 @@ function Notes() {
               </span>
               <input
                 type="text"
+                name="note"
                 id="typeText"
                 className="input"
                 placeholder="Add Note"
@@ -64,10 +65,10 @@ function Notes() {
         </div>
 
         <button className="btn"
-          onClick={() => 
+          onClick={() =>
             showAdd ? saveClicked() : addNewNoteClicked()
           }>
-          {showAdd ? "Save Note"  : "Add New Note"}
+          {showAdd ? "Save Note" : "Add New Note"}
         </button>
       </div>
     </Wrapper>
