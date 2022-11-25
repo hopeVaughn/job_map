@@ -2,7 +2,7 @@ import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar, Footer } from "./components"
 
-import { Home, LandingPage, ListedCompanies, CompanyPage, Login, Register, Network, SingleNetwork, Create } from './pages';
+import { Home, LandingPage, ListedCompanies, CompanyPage, Login, Register, Network, SingleNetwork, Create, CreateContact } from './pages';
 
 import { useState } from "react";
 
@@ -23,6 +23,7 @@ function App() {
         <Route path='create' element={<Create />} />
         <Route path='network' element={<Network />} />
         <Route path='network/:id' element={<SingleNetwork />} />
+        <Route path='contacts' element={<CreateContact />} />
       </Routes>
     </Router>
 
