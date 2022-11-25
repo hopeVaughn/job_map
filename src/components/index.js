@@ -10,6 +10,7 @@ import Networks from "./Networks";
 import ListAllContact from "./ListAllContact";
 import Stages from "./Stages";
 import Charts from "./Charts";
+import AddContact from "./AddContact"
 export {
   Navbar,
   Footer,
@@ -22,5 +23,6 @@ export {
   Sidebar,
   Stages,
   Charts,
-  ListAllContact
+  ListAllContact,
+  AddContact
 }

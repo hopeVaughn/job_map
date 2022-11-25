@@ -7,6 +7,8 @@ import Network from "./Network";
 import SingleNetwork from "./SingleNetwork";
 import Login from "./Login";
 import Register from "./Register";
+import CreateContact from "./CreateContact";
+
 export {
   Home,
   LandingPage,
@@ -16,6 +18,7 @@ export {
   SingleNetwork,
   Login,
   Register,
-  Network
+  Network,
+  CreateContact
 }
 
