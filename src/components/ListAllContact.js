@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import axios from "axios";
 import Avatar from 'react-avatar';
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function ListAllContact() {
 
@@ -25,7 +25,7 @@ const [allContact, setAllContact] = useState([])
 
   const navigate = useNavigate();
   //pass the id 
-  const btnSingleNetwork = (id) =>{
+  const btnSingleContact = (id) =>{
     navigate(`/network/${id}`)
   }
 
@@ -34,9 +34,16 @@ const [allContact, setAllContact] = useState([])
 
     <>
       <Wrapper>
+
+        <Link to="/contacts">
+          <div className='addbtn'>
+             <button type="button" > ADD </button>
+          </div>
+        </Link>
+
         <h1>List of All Contacts</h1>
         {allContact.map((c) =>
-          <div className='list' key={c.id} onClick={() => btnSingleNetwork(c.id)}>
+          <div className='list' key={c.id} onClick={() => btnSingleContact(c.id)}>
             <Avatar
               alt="contact photo"
               src={c.image}
@@ -94,5 +101,16 @@ h1{
 .cover{
   object-fit: cover;
    width: 100%;
+}
+
+.addbtn {
+  padding: 8px;
+  width: 30%;
+  text-align: center;
+  border: 3px solid green;
+  width: 100px;
+  height: 50px;
+  margin: auto;
+  background: forestgreen;
 }
 `

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import Avatar from 'react-avatar';
 import styled from 'styled-components';
@@ -10,21 +10,39 @@ import { FaLinkedin, FaGithub, FaTwitterSquare } from "react-icons/fa";
 
 function Contact() {
   const[contact, setContact] = useState({})
+  const navigate = useNavigate();
   
   // take the id   
   let {id} = useParams();
-  // console.log(id);
+  
 
-
-  // get all information about the company by id
+  
   async function getContact () {
     const result = await axios.get(`http://localhost:8080/api/contacts/${id}`)
     setContact(result.data[0])  
   }
+  
 
-  useEffect(() => {
-    getContact()      
-  }, []);
+  const deleteContact =  (id) => {
+    try{
+     axios.delete(`http://localhost:8080/api/contacts/${id}`)
+    .then((res) => {
+          
+      alert("Contact Deleted")
+      navigate('/network');
+     
+    })
+    
+  } catch (err) {
+    console.error(err.message);
+  }  
+  }
+  
+  
+  
+    useEffect(() => {
+      getContact()      
+    }, []);
 
 
 
@@ -32,8 +50,8 @@ function Contact() {
     
     <Wrapper>
       <div className='press'>
-        <button type="button" className="btn"> EDIT</button>
-        <button type="button" className="btn"> DELETE</button>
+        <button type="button" className="btn" > EDIT</button>
+        <button type="button" className="btn" onClick={() => deleteContact(id)}> DELETE</button>
       </div>
 
       <p>{contact.name}</p>
