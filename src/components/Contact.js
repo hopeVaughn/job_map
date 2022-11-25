@@ -1,63 +1,67 @@
-//import React, { useEffect, useState } from 'react'
-//import axios from "axios";
+import React, { useEffect, useState } from 'react'
+import axios from "axios";
 import { useParams } from 'react-router-dom';
 
 import Avatar from 'react-avatar';
 import styled from 'styled-components';
+import { FaLinkedin, FaGithub, FaTwitterSquare } from "react-icons/fa";
+
+
 
 function Contact() {
-  //const[contact, setContact] = useState({})
+  const[contact, setContact] = useState({})
   
   // take the id   
   let {id} = useParams();
-  console.log(id);
+  // console.log(id);
 
 
-  // // get all information about the company by id
-  // async function getContact () {
-  //   const result = await axios.get(`http://localhost:8080/api/contact/${id}`)
-    
-  //   setContact(result.data[0])  
-  // }
+  // get all information about the company by id
+  async function getContact () {
+    const result = await axios.get(`http://localhost:8080/api/contacts/${id}`)
+    setContact(result.data[0])  
+  }
 
-  // useEffect(() => {
-  //   getContact()      
-  // }, []);
+  useEffect(() => {
+    getContact()      
+  }, []);
 
 
 
   return (
-    <>
-      <Wrapper>
-        <div>
-          <button type="button" className='edit'> EDIT</button>
-          <button type="button" className='delete'> DELETE</button>
-        </div>
+    
+    <Wrapper>
+      <div className='press'>
+        <button type="button" className="btn"> EDIT</button>
+        <button type="button" className="btn"> DELETE</button>
+      </div>
 
-        <p>Jack Nicholson</p>
+      <p>{contact.name}</p>
       
-        <div className='single' >
-            <Avatar
-              alt="contact photo"
-              src='https://nudelmania.vteximg.com.br/arquivos/ids/187520-1000-1000/Caricatura-Preto---Branco---somente-Face---1-pessoa.jpg?v=637436337593070000'
-              size="300"
-              round={true}
-            />
+      <div className='single' >
+        <Avatar
+          alt="contact photo"
+          src={contact.image}
+          size="300"
+          round={true}
+        />
             
-          <div className='nick'>
-            <div>Id that Contact:<h1>{id}</h1></div>
-            <br/>
-            <div>Link to Github</div>
-            <br/>
-            <div>Link to LinkedIn</div>
-            <br/>
-            <div>Link to Twitter</div>
-          </div>
-          
+        <div className='nick'>
+          <div>Id that Contact:<h1>{id}</h1></div> 
 
+          <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+            <h2><FaLinkedin/></h2>
+          </a>      
+          <a href={contact.github} target="_blank" rel="noopener noreferrer">
+            <h2><FaGithub/></h2>
+          </a>
+          <a href={contact.twitter} target="_blank" rel="noopener noreferrer" >
+            <h2><FaTwitterSquare/></h2>
+          </a>           
         </div>
-      </Wrapper>
-    </>
+      </div>
+    </Wrapper>
+  
   )
 }
 
@@ -80,5 +84,9 @@ p{
   padding-bottom: 4vh;
 }
 
+.press{
+  display: flex;
+  justify-content: space-evenly;
+}
 
 `

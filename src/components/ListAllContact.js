@@ -1,19 +1,26 @@
 import styled from 'styled-components';
+import axios from "axios";
 import Avatar from 'react-avatar';
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ListAllContact() {
 
 
-  const db = [
-    { id: 1, name: 'Jack Nicholson', image: 'https://nudelmania.vteximg.com.br/arquivos/ids/187520-1000-1000/Caricatura-Preto---Branco---somente-Face---1-pessoa.jpg?v=637436337593070000' },
-    { id: 2, name: 'Michael Jordan', image: 'https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY2Njc5NDYzOTQ4NDYxNDA4/michael-jordan.jpg' },
-    { id: 3, name: 'Steven Spielberg', image: 'https://image.tmdb.org/t/p/w500/tZxcg19YQ3e8fJ0pOs7hjlnmmr6.jpg' },
-    { id: 4, name: 'Chewbacca', image: 'https://lumiere-a.akamaihd.net/v1/images/5e94826f7d7499000120d564-image_f9b9d30e.jpeg?region=0%2C48%2C1536%2C768&width=960' },
-    { id: 5, name: 'Bruce Dickinson', image: 'https://www.mesaartscenter.com/sysimg/main-image-shows-performing-live-bruce-dickinson-media-box-image-1-image.jpg' },
-    { id: 6, name: 'Eduardo Cesconetto', image: 'https://media-exp1.licdn.com/dms/image/C5603AQEeD8y12M9gEA/profile-displayphoto-shrink_200_200/0/1658772472251?e=1671062400&v=beta&t=liwzekkO3CPQLIcsULENoUA_3lqBNRFg9lFrwVE_EPg' },
-  ]
+const [allContact, setAllContact] = useState([])
 
+
+
+ async function getAllContact () {
+  const result = await axios.get(`http://localhost:8080/api/contacts/`)
+  setAllContact(result.data) 
+}
+
+
+
+ useEffect(() => {
+  getAllContact()      
+  }, []);
 
 
   const navigate = useNavigate();
@@ -28,17 +35,17 @@ function ListAllContact() {
     <>
       <Wrapper>
         <h1>List of All Contacts</h1>
-        {db.map((d) =>
-          <div className='list' key={d.id} onClick={() => btnSingleNetwork(d.id)}>
+        {allContact.map((c) =>
+          <div className='list' key={c.id} onClick={() => btnSingleNetwork(c.id)}>
             <Avatar
               alt="contact photo"
-              src={d.image}
+              src={c.image}
               size="85"
               round={true}
               className="cover"
             />
 
-            <div className='nick'>{d.name}</div>
+            <div className='nick'>{c.name}</div>
           </div>
         )}
       </Wrapper>
