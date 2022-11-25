@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import { useNavigate, links } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
+import {Navbar, Footer } from '../components';
+
+
 function Create() {
 const [companyName, setCompanyName] = useState({ name:''});
 
@@ -34,6 +37,7 @@ const [companyName, setCompanyName] = useState({ name:''});
  
   return (
     <Wrapper>
+      <Navbar />
       <div className="title">
         <h2>Create Application</h2>
       </div>
@@ -44,7 +48,7 @@ const [companyName, setCompanyName] = useState({ name:''});
         </label>
         <input type="submit" value="Submit" />
       </form>
-      
+      <Footer />
     </Wrapper>
   )
 }
