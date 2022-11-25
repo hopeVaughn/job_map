@@ -7,7 +7,7 @@ export const navLinks = [
   },
   {
     id: 2,
-    text: 'Networks',
+    text: 'Contacts',
     url: '/network',
   },
 ]

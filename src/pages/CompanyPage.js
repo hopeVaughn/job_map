@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { useParams } from 'react-router-dom';
-//import { companies, applications, contacts } from '../util/constants'
 import { Networks, Notes, Stages } from '../components';
 import styled from 'styled-components'
 function CompanyPage(props) {
