@@ -35,7 +35,7 @@ function Contact() {
     .then((res) => {
           
       alert("Contact Deleted")
-      navigate('/network');
+      navigate('/contacts');
      
     })
     

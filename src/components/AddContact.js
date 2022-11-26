@@ -21,7 +21,7 @@ function AddContact() {
         .then((res) => {
           
           alert("Contact Added")
-          navigate('/network');
+          navigate('/contacts');
          
         })
         
