@@ -2,18 +2,22 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 function Notes() {
+
+
+  // the api call to the back to create a note needs to send the time stamp info as in integer
   const fakeNotes = [
     {
+      id: 1,
       timestamp: 1669262514,
       text: "No need to run No need to runNo need to runNo need to runNo need to runNo need to runNo need to runNo need to runNo need to run No need to runNo need to runNo need to runNo need to runNo need to runNo need to runNo need to runNo need to run",
     },
-    { timestamp: 1669262915, text: "and hide," },
-    { timestamp: 1669272516, text: "it's a wonderful," },
-    { timestamp: 1669362514, text: "wonderful life" },
-    { timestamp: 1669262514, text: "No need to run" },
-    { timestamp: 1669262915, text: "and hide," },
-    { timestamp: 1669272516, text: "it's a wonderful," },
-    { timestamp: 1669362514, text: "wonderful life" },
+    { id: 2, timestamp: 1669262915, text: "and hide," },
+    { id: 3, timestamp: 1669272516, text: "it's a wonderful," },
+    { id: 4, timestamp: 1669362514, text: "wonderful life" },
+    { id: 5, timestamp: 1669262514, text: "No need to run" },
+    { id: 6, timestamp: 1669262915, text: "and hide," },
+    { id: 7, timestamp: 1669272516, text: "it's a wonderful," },
+    { id: 8, timestamp: 1669362514, text: "wonderful life" },
   ];
 
   const [notes, setNotes] = useState(fakeNotes);
@@ -53,10 +57,11 @@ function Notes() {
               />
             </div>
           )}
-
+          {/* the return here needs to use the id on the children that are being rendered */}
           {notes.map((note, key) => (
             <div className="note" key={key}>
               <span className="note-date">
+                {/* the time stap being rendered here needs to come from the back end as an integer and be rendered here as a readable date */}
                 {new Date(note.timestamp).toISOString().split("T")[0]}
               </span>
               <span>{note.text}</span>
@@ -118,7 +123,7 @@ const Wrapper = styled.div`
   background-color: #ae88d1;
   border-radius: 10px;
   margin: 2px 7px;
-  padding 0 5px;
+  padding: 0 5px;
   width: 6em;
   min-width: 6em;
   height: 1.6em;
