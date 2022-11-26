@@ -6,7 +6,7 @@ function CreateContact() {
     
     <>
       <Navbar />
-      <AddContact />
+        <AddContact />
       <Footer />
     </>
     

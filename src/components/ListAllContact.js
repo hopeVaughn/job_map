@@ -35,11 +35,11 @@ const [allContact, setAllContact] = useState([])
     <>
       <Wrapper>
 
-        <Link to="/contacts">
           <div className='addbtn'>
-             <button type="button" > ADD </button>
-          </div>
+        <Link to="/contacts">
+             <button type="button" className="btn" > ADD </button>
         </Link>
+          </div>
 
         <h1>List of All Contacts</h1>
         {allContact.map((c) =>
@@ -108,9 +108,8 @@ h1{
   width: 30%;
   text-align: center;
   border: 3px solid green;
-  width: 100px;
+  width: 80px;
   height: 50px;
   margin: auto;
-  background: forestgreen;
-}
+  }
 `
