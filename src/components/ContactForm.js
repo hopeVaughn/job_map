@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components';
 
 function ContactForm(props) {
 
@@ -29,6 +30,7 @@ function ContactForm(props) {
 }, [props.contact]);
 
   return (
+    <Wrapper>
     <form onSubmit={handleSubmit}>
           <div className='form-control'>
             <label htmlFor="name">Name:  </label>
@@ -86,9 +88,19 @@ function ContactForm(props) {
             />
           </div>
 
-          <input type="submit" value={props.action} />
+          <input type="submit" className="btn" value={props.action} />
       </form>
+      </Wrapper>
   )
 }
 
 export default ContactForm
+
+const Wrapper = styled.section`
+color: white;
+text-align: center;
+
+.form-control{
+  font-size: 30px;
+}
+`

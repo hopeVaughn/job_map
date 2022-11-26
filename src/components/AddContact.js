@@ -40,7 +40,9 @@ function AddContact() {
       <div className="Appform">
       <div className='form-add'>
         <h2>ADD New contact:</h2>
+
        <ContactForm onSubmit={handleSubmit} action="AddContact"/> 
+      
       </div>
       <Link to="/network">
         <div className='addbtn'>

@@ -7,17 +7,28 @@ import styled from 'styled-components';
 import { FaLinkedin, FaGithub, FaTwitterSquare } from "react-icons/fa";
 import ContactForm from './ContactForm';
 
-
+const initialState = {
+  name: '',
+  email: '',
+  password: '',
+  isMember: true
+}
 
 function Contact() {
   const[contact, setContact] = useState({})
+  const[showEdit, setShowEdit] = useState(false)
   const navigate = useNavigate();
   
   // take the id   
   let {id} = useParams();
   
+  const toggleEdit = () => {
+    setShowEdit(true);
+    getContact()
+    
+    
+  };
 
-  
   async function getContact () {
     const result = await axios.get(`http://localhost:8080/api/contacts/${id}`)
     setContact(result.data[0])  
@@ -54,6 +65,10 @@ function Contact() {
      .then((res) => {
         getContact() 
     })
+    .then(() => {
+      setShowEdit(false); 
+      
+  })
     
   } catch (err) {
     console.error(err.message);
@@ -71,14 +86,18 @@ function Contact() {
   return (
     
     <Wrapper>
+      {showEdit && 
+      <ContactForm onSubmit={updateContact} contact={contact} action="Submit"  />
+      }
+
+      {contact &&
+      <>
       <div className='press'>
-        <button type="button" className="btn" onClick={() => updateContact(id)}> EDIT</button>
+        <button type="button" className="btn" onClick={() => toggleEdit(id)} > EDIT</button>
         <button type="button" className="btn" onClick={() => deleteContact(id)}> DELETE</button>
       </div>
 
       <p>{contact.name}</p>
-      
-      <ContactForm onSubmit={updateContact} contact={contact} action="EditContact"/>
       
       <div className='single' >
         <Avatar
@@ -102,6 +121,8 @@ function Contact() {
           </a>           
         </div>
       </div>
+      </>
+      }
     </Wrapper>
   
   )
