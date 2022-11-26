@@ -24,7 +24,7 @@ const [allContact, setAllContact] = useState([])
 
 
   const navigate = useNavigate();
-  //pass the id 
+  //pass the id to btn
   const btnSingleContact = (id) =>{
     navigate(`/contacts/${id}`)
   }
