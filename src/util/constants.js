@@ -8,7 +8,7 @@ export const navLinks = [
   {
     id: 2,
     text: 'Contacts',
-    url: '/network',
+    url: '/contacts',
   },
 ]
 export const social = [

@@ -44,7 +44,7 @@ function AddContact() {
        <ContactForm onSubmit={handleSubmit} action="AddContact"/> 
       
       </div>
-      <Link to="/network">
+      <Link to="/contacts">
         <div className='addbtn'>
           <button type="button" > CANCEL </button>
         </div>
