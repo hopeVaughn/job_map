@@ -17,6 +17,7 @@ const initialState = {
 function Contact() {
   const[contact, setContact] = useState({})
   const[showEdit, setShowEdit] = useState(false)
+  const[showEditDelBtn, setshowEditDelBtn] = useState(true)
   const navigate = useNavigate();
   
   // take the id   
@@ -24,8 +25,8 @@ function Contact() {
   
   const toggleEdit = () => {
     setShowEdit(true);
-    getContact()
-    
+    getContact();
+    setshowEditDelBtn(false);
     
   };
 
@@ -57,7 +58,7 @@ function Contact() {
      axios.put(`http://localhost:8080/api/contacts/${id}`,
      {
       name: body.name,
-      image: body.linkedin,
+      image: body.image,
       linkedin: body.linkedin,
       github: body.github,
       twitter: body.twitter
@@ -67,6 +68,7 @@ function Contact() {
     })
     .then(() => {
       setShowEdit(false); 
+      setshowEditDelBtn(true);
       
   })
     
@@ -89,13 +91,14 @@ function Contact() {
       {showEdit && 
       <ContactForm onSubmit={updateContact} contact={contact} action="Submit"  />
       }
-
-      {contact &&
-      <>
+      {showEditDelBtn &&
       <div className='press'>
         <button type="button" className="btn" onClick={() => toggleEdit(id)} > EDIT</button>
         <button type="button" className="btn" onClick={() => deleteContact(id)}> DELETE</button>
       </div>
+      }
+      {contact &&
+      <>
 
       <p>{contact.name}</p>
       
