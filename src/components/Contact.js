@@ -7,13 +7,6 @@ import styled from 'styled-components';
 import { FaLinkedin, FaGithub, FaTwitterSquare } from "react-icons/fa";
 import ContactForm from './ContactForm';
 
-const initialState = {
-  name: '',
-  email: '',
-  password: '',
-  isMember: true
-}
-
 function Contact() {
   const[contact, setContact] = useState({})
   const[showEdit, setShowEdit] = useState(false)
@@ -91,24 +84,18 @@ function Contact() {
       {showEdit && 
       <ContactForm onSubmit={updateContact} contact={contact} action="Submit"  />
       }
-      {showEditDelBtn &&
-      <div className='press'>
-        <button type="button" className="btn" onClick={() => toggleEdit(id)} > EDIT</button>
-        <button type="button" className="btn" onClick={() => deleteContact(id)}> DELETE</button>
-      </div>
-      }
-      {contact &&
-      <>
 
-      <p>{contact.name}</p>
-      
+
+      {!showEdit && 
+      <>
+      <p>{contact.name}</p>   
       <div className='single' >
         <Avatar
           alt="contact photo"
           src={contact.image}
           size="300"
           round={true}
-        />
+          />
             
         <div className='nick'>
           
@@ -124,6 +111,12 @@ function Contact() {
         </div>
       </div>
       </>
+      }
+      {showEditDelBtn &&
+      <div className='press'>
+        <button type="button" className="btn" onClick={() => toggleEdit(id)} > EDIT</button>
+        <button type="button" className="btn" onClick={() => deleteContact(id)}> DELETE</button>
+      </div>
       }
     </Wrapper>
   

@@ -21,9 +21,9 @@ function App() {
         <Route path='companies' element={<ListedCompanies levelClicked={levelClicked} />} />
         <Route path='companies/:id' element={<CompanyPage />} />
         <Route path='create' element={<Create />} />
-        <Route path='network' element={<Network />} />
-        <Route path='network/:id' element={<SingleNetwork />} />
-        <Route path='contacts' element={<CreateContact />} />
+        <Route path='contacts' element={<Network />} />
+        <Route path='contacts/:id' element={<SingleNetwork />} />
+        <Route path='contact' element={<CreateContact />} />
       </Routes>
     </Router>
 
