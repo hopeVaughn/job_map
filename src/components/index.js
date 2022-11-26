@@ -12,7 +12,7 @@ import Stages from "./Stages";
 import Charts from "./Charts";
 import FormRow from "./FormRow";
 import Logo from "./Logo";
-import AddContact from "./AddContact"
+import AddContact from "./AddContact";
 export {
   Logo,
   Navbar,
@@ -28,5 +28,5 @@ export {
   Charts,
   FormRow,
   ListAllContact,
-  AddContact
+  AddContact,
 }

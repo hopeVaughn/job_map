@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import styled from 'styled-components';
 import { FaLinkedin, FaGithub, FaTwitterSquare } from "react-icons/fa";
+import ContactForm from './ContactForm';
 
 
 
@@ -38,8 +39,29 @@ function Contact() {
   }  
   }
   
-  
-  
+
+ ///////////////////////////////////////////////////////////
+  const updateContact =  (body) => {
+    try{
+     axios.put(`http://localhost:8080/api/contacts/${id}`,
+     {
+      name: body.name,
+      image: body.linkedin,
+      linkedin: body.linkedin,
+      github: body.github,
+      twitter: body.twitter
+     })
+     .then((res) => {
+        getContact() 
+    })
+    
+  } catch (err) {
+    console.error(err.message);
+  }  
+  }
+
+  /////////////////////////////////////////////////////////////
+
     useEffect(() => {
       getContact()      
     }, []);
@@ -50,11 +72,13 @@ function Contact() {
     
     <Wrapper>
       <div className='press'>
-        <button type="button" className="btn" > EDIT</button>
+        <button type="button" className="btn" onClick={() => updateContact(id)}> EDIT</button>
         <button type="button" className="btn" onClick={() => deleteContact(id)}> DELETE</button>
       </div>
 
       <p>{contact.name}</p>
+      
+      <ContactForm onSubmit={updateContact} contact={contact} action="EditContact"/>
       
       <div className='single' >
         <Avatar
