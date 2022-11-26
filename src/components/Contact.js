@@ -111,8 +111,7 @@ function Contact() {
         />
             
         <div className='nick'>
-          <div>Id that Contact:<h1>{id}</h1></div> 
-
+          
           <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
             <h2><FaLinkedin/></h2>
           </a>      
