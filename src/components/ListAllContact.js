@@ -35,8 +35,8 @@ const [allContact, setAllContact] = useState([])
     <>
       <Wrapper>
 
-          <div className='addbtn'>
-        <Link to="/contacts">
+          <div className='addbtn '>
+        <Link to="/contact">
              <button type="button" className="btn" > ADD </button>
         </Link>
           </div>
@@ -107,7 +107,6 @@ h1{
   padding: 8px;
   width: 30%;
   text-align: center;
-  border: 3px solid green;
   width: 80px;
   height: 50px;
   margin: auto;
