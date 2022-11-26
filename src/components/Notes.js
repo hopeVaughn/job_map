@@ -90,25 +90,19 @@ const Wrapper = styled.div`
     &::-webkit-scrollbar-track { background: #9aa69c; }
     &::-webkit-scrollbar-thumb { background: grey; }
     &::-webkit-scrollbar-thumb:hover { background: white; }
-
 }
-
 .input {
   width: 100%;
   background-color: transparent;
   border: none;
   outline: none;
   color: white;
-
 }
-
 .notes-component {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
-
 .note {
   width: 100%;
   background-color: #c5d0e6;
@@ -119,9 +113,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   width: 100%;
   align-items: center;
-
 }
-
 .note-date {
   background-color: #ae88d1;
   border-radius: 10px;
@@ -131,11 +123,9 @@ const Wrapper = styled.div`
   min-width: 6em;
   height: 1.6em;
 }
-
 .new-note {
   background-color: #b1b7c4;
 }
-
 `;
 
 export default Notes;
