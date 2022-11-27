@@ -39,5 +39,8 @@ function CompanyPage(props) {
     </Wrapper>
   )
 }
-const Wrapper = styled.main``
+const Wrapper = styled.main`
+color: antiquewhite;
+text-align: center;
+`
 export default CompanyPage

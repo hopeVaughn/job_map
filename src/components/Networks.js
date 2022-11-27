@@ -78,13 +78,17 @@ function Networks() {
         <button className='prev' onClick={prevSlide}> <FiChevronLeft /></button>
         <button className='next' onClick={nextSlide}> <FiChevronRight /></button>
       </div>
+      <button className="btn">Add New Network</button>
+
     </Wrapper>
   )
 }
 const Wrapper = styled.section`
+
 .title {
   text-align: center;
   margin-bottom: 2rem;
+  
 }
 
 .title h2 {
@@ -92,6 +96,7 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: center;
   font-weight: 500;
+  
 }
 
 .title span {
@@ -102,12 +107,11 @@ const Wrapper = styled.section`
 }
 
 .section-center {
-  color: antiquewhite;
   margin: 0 auto;
   margin-top: 4rem;
   width: 80vw;
   /* have to have a height */
-  height: 450px;
+  height: 220px;
   max-width: 800px;
   text-align: center;
   position: relative;
@@ -136,6 +140,7 @@ article h4 {
   text-transform: capitalize;
   margin-bottom: 0.75rem;
   color: var(--clr-grey-3);
+  
 }
 
 .text {
@@ -144,6 +149,7 @@ article h4 {
   margin-top: 2rem;
   line-height: 2;
   color: var(--clr-grey-5);
+  
 }
 
 .icon {
