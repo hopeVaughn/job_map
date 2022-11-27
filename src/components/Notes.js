@@ -1,35 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Axios from 'axios';
 
-function Notes() {
+function Notes(props) {
 
+  const applicationID = props.applicationID;
 
   // the api call to the back to create a note needs to send the time stamp info as in integer
-  const fakeNotes = [
-    {
-      id: 1,
-      timestamp: 1669262514,
-      text: "No need to run No need to runNo need to runNo need to runNo need to runNo need to runNo need to runNo need to runNo need to run No need to runNo need to runNo need to runNo need to runNo need to runNo need to runNo need to runNo need to run",
-    },
-    { id: 2, timestamp: 1669262915, text: "and hide," },
-    { id: 3, timestamp: 1669272516, text: "it's a wonderful," },
-    { id: 4, timestamp: 1669362514, text: "wonderful life" },
-    { id: 5, timestamp: 1669262514, text: "No need to run" },
-    { id: 6, timestamp: 1669262915, text: "and hide," },
-    { id: 7, timestamp: 1669272516, text: "it's a wonderful," },
-    { id: 8, timestamp: 1669362514, text: "wonderful life" },
-  ];
-
-  const [notes, setNotes] = useState(fakeNotes);
+  
+  const [notes, setNotes] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
-  const [newNote, setNewNote] = useState("");
+  const [newNote, setNewNote] = useState("");  
+
+  useEffect(() => {
+    Axios.get(`http://localhost:8080/api/applications/${applicationID}/notes`).then((res) => {
+    console.log(res);  
+    setNotes(res.data)
+    })
+  }, []);
 
   const saveClicked = () => {
 
     setShowAdd(false);
     if (!newNote) return;
-    setNotes([{ timestamp: Date.now(), text: newNote }, ...notes]);
+    
     setNewNote("");
+    const data = {note: newNote }
+
+    Axios.post(`http://localhost:8080/api/applications/${applicationID}/notes`, data).then((res) => {
+      console.log("reeeeees", res);
+      const {id, timestamp, note} = res.data[0];
+      setNotes([{ id: id, timestamp: timestamp, note: note }, ...notes]);
+    })
   };
 
   const addNewNoteClicked = () => {
@@ -45,7 +47,7 @@ function Notes() {
           {showAdd && (
             <div className="note new-note">
               <span className="note-date">
-                {new Date().toISOString().split("T")[0]}
+                {Date(Date.now()).toString().split(" ").slice(1,4).join('-')}
               </span>
               <input
                 type="text"
@@ -57,14 +59,14 @@ function Notes() {
               />
             </div>
           )}
-          {/* the return here needs to use the id on the children that are being rendered */}
-          {notes.map((note, key) => (
-            <div className="note" key={key}>
+          
+          {notes.map((note) => (
+            <div className="note" key={note.id}>
               <span className="note-date">
-                {/* the time stap being rendered here needs to come from the back end as an integer and be rendered here as a readable date */}
-                {new Date(note.timestamp).toISOString().split("T")[0]}
+               
+                {Date(note.timestamp).toString().split(" ").slice(1,4).join('-')}
               </span>
-              <span>{note.text}</span>
+              <span>{note.note}</span>
             </div>
           ))}
         </div>
@@ -79,7 +81,6 @@ function Notes() {
     </Wrapper>
   );
 }
-
 const Wrapper = styled.div`
 .notes-container {
   height: 30vh;
@@ -118,14 +119,14 @@ const Wrapper = styled.div`
   flex-direction: row;
   width: 100%;
   align-items: center;
+  font-size: min(2vh, 2vw)
 }
 .note-date {
   background-color: #ae88d1;
   border-radius: 10px;
   margin: 2px 7px;
-  padding: 0 5px;
-  width: 6em;
-  min-width: 6em;
+  padding: 0 0.5em;
+  min-width: 7em;
   height: 1.6em;
 }
 .new-note {
