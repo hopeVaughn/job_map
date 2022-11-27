@@ -32,7 +32,7 @@ function CompanyPage(props) {
         <h1>{company.name}</h1>
         <h3>{company.stack}</h3>
       </div>
-      <Notes />
+      <Notes applicationID={id} />
       <Stages />
       <Networks />
       <Footer />
