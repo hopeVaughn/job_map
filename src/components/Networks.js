@@ -3,9 +3,14 @@ import axios from "axios";
 import styled from 'styled-components'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { contacts } from '../util/constants'
+import { useNavigate } from "react-router-dom";
+
+
+
 function Networks() {
   const [network, setNetwork] = useState(contacts);
   const [index, setIndex] = React.useState(0);
+  const navigate = useNavigate();
 
   const nextSlide = () => {
     setIndex((oldIndex) => {
@@ -24,6 +29,10 @@ function Networks() {
       }
       return index
     })
+  }
+
+  const imgClicked = (id) => {
+    navigate(`/contacts/${id}`)
   }
 
   useEffect(() => {
@@ -50,7 +59,7 @@ function Networks() {
       </div>
       <div className="section-center">
         {network.map((person, personIndex) => {
-          const { id, name, image } = person;
+          const { id, name, image } = person;   
 
           let position = 'nextSlide';
           if (personIndex === index) {
@@ -61,7 +70,7 @@ function Networks() {
           }
           return (
             <article className={position} key={id}>
-              <img src={image} alt={name} className='person-img' />
+              <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
               <h4>{name}</h4>
             </article>
           )
@@ -93,6 +102,7 @@ const Wrapper = styled.section`
 }
 
 .section-center {
+  color: antiquewhite;
   margin: 0 auto;
   margin-top: 4rem;
   width: 80vw;
@@ -113,6 +123,7 @@ const Wrapper = styled.section`
   object-fit: cover;
   border: 4px solid var(--clr-grey-8);
   box-shadow: var(--dark-shadow);
+  cursor: pointer;
 }
 
 article h4 {
