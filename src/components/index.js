@@ -13,6 +13,7 @@ import Charts from "./Charts";
 import FormRow from "./FormRow";
 import Logo from "./Logo";
 import AddContact from "./AddContact";
+import Company from './Company'
 export {
   Logo,
   Navbar,
@@ -29,4 +30,5 @@ export {
   FormRow,
   ListAllContact,
   AddContact,
+  Company
 }

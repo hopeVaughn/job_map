@@ -1,15 +1,12 @@
 import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navbar, Footer } from "./components"
-
-import { Home, LandingPage, ListedCompanies, CompanyPage, Login, Register, Network, SingleNetwork, Create, CreateContact } from './pages';
+import { Home, LandingPage, ListedCompanies, ApplicationPage, Register, Network, SingleNetwork, Create, CreateContact, CreateApplication } from './pages';
 
 import { useState } from "react";
 
 function App() {
 
   const [levelClicked, setLevelClicked] = useState("");
-  const [Auth, setAuth] = useState(false);
 
 
   return (
@@ -19,8 +16,9 @@ function App() {
         <Route path='landing' element={<LandingPage setLevelClicked={setLevelClicked} />} />
         <Route path='register' element={<Register />} />
         <Route path='companies' element={<ListedCompanies levelClicked={levelClicked} />} />
-        <Route path='companies/:id' element={<CompanyPage />} />
+        <Route path='application/:id' element={<ApplicationPage />} />
         <Route path='create' element={<Create />} />
+        <Route path='create/:id' element={<CreateApplication />} />
         <Route path='contacts' element={<Network />} />
         <Route path='contacts/:id' element={<SingleNetwork />} />
         <Route path='contact' element={<CreateContact />} />

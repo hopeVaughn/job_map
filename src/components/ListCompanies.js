@@ -83,7 +83,7 @@ function ListCompanies(props) {
   //pass the id 
   const btnSingleCompanie = (id) => {
     // console.log(props);
-    navigate(`/companies/${id}`)
+    navigate(`/application/${id}`)
   }
 
   return (

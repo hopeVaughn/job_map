@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 const Footer = () => {
   return <Wrapper>
@@ -19,7 +18,7 @@ const Wrapper = styled.footer`
   /* z-index: 1; */
   bottom: 0;
   width: 100%;
-  height: 3rem;
+  height: 5rem;
   background: var(--clr-black);
 
   span {
