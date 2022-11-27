@@ -17,7 +17,7 @@ function CompanyPage(props) {
   async function getCompany() {
     const response = await axios.get(`http://localhost:8080/api/applications/custom/${id}`)
     // console.log(response.data[0]);
-    setCompany(response.data[0]) //if backend send just a object, maybe is better 
+    setCompany(response.data[0])  
   }
 
   useEffect(() => {
@@ -39,5 +39,8 @@ function CompanyPage(props) {
     </Wrapper>
   )
 }
-const Wrapper = styled.main``
+const Wrapper = styled.main`
+color: antiquewhite;
+text-align: center;
+`
 export default CompanyPage

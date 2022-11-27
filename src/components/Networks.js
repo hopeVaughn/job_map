@@ -3,9 +3,14 @@ import axios from "axios";
 import styled from 'styled-components'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { contacts } from '../util/constants'
+import { useNavigate } from "react-router-dom";
+
+
+
 function Networks() {
   const [network, setNetwork] = useState(contacts);
   const [index, setIndex] = React.useState(0);
+  const navigate = useNavigate();
 
   const nextSlide = () => {
     setIndex((oldIndex) => {
@@ -24,6 +29,10 @@ function Networks() {
       }
       return index
     })
+  }
+
+  const imgClicked = (id) => {
+    navigate(`/contacts/${id}`)
   }
 
   useEffect(() => {
@@ -50,7 +59,7 @@ function Networks() {
       </div>
       <div className="section-center">
         {network.map((person, personIndex) => {
-          const { id, name, image } = person;
+          const { id, name, image } = person;   
 
           let position = 'nextSlide';
           if (personIndex === index) {
@@ -61,7 +70,7 @@ function Networks() {
           }
           return (
             <article className={position} key={id}>
-              <img src={image} alt={name} className='person-img' />
+              <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
               <h4>{name}</h4>
             </article>
           )
@@ -69,13 +78,17 @@ function Networks() {
         <button className='prev' onClick={prevSlide}> <FiChevronLeft /></button>
         <button className='next' onClick={nextSlide}> <FiChevronRight /></button>
       </div>
+      <button className="btn">Add New Network</button>
+
     </Wrapper>
   )
 }
 const Wrapper = styled.section`
+
 .title {
   text-align: center;
   margin-bottom: 2rem;
+  
 }
 
 .title h2 {
@@ -83,6 +96,7 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: center;
   font-weight: 500;
+  
 }
 
 .title span {
@@ -97,7 +111,7 @@ const Wrapper = styled.section`
   margin-top: 4rem;
   width: 80vw;
   /* have to have a height */
-  height: 450px;
+  height: 220px;
   max-width: 800px;
   text-align: center;
   position: relative;
@@ -113,6 +127,7 @@ const Wrapper = styled.section`
   object-fit: cover;
   border: 4px solid var(--clr-grey-8);
   box-shadow: var(--dark-shadow);
+  cursor: pointer;
 }
 
 article h4 {
@@ -125,6 +140,7 @@ article h4 {
   text-transform: capitalize;
   margin-bottom: 0.75rem;
   color: var(--clr-grey-3);
+  
 }
 
 .text {
@@ -133,6 +149,7 @@ article h4 {
   margin-top: 2rem;
   line-height: 2;
   color: var(--clr-grey-5);
+  
 }
 
 .icon {
