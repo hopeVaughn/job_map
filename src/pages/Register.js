@@ -44,8 +44,7 @@ function Register() {
             if (parseRes.jwtToken) {
               localStorage.setItem("token", parseRes.jwtToken);
               console.log("Registered Successfully")
-              navigate("/landing")
-                ;
+              navigate("/landing");
             } else {
               console.log(parseRes);
             }
