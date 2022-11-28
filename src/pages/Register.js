@@ -89,7 +89,7 @@ function Register() {
         </Link>
         <p>
           {values.isMember ? 'Not a user yet?' : 'Already a user'}
-          <button type='button' onClick={toggleMember} className="member=btn">
+          <button type='button' onClick={toggleMember} className="member-btn">
             {values.isMember ? 'Register' : 'Login'}
           </button>
         </p>
@@ -122,9 +122,12 @@ const Wrapper = styled.section`
     text-align: center;
   }
   .btn {
+    display:flex;
+    justify-content:center;
     margin-top: 1rem;
   }
   .member-btn {
+  
     background: transparent;
     border: transparent;
     color: var(--clr-primary-500);

@@ -19,7 +19,7 @@ const Wrapper = styled.footer`
   bottom: 0;
   width: 100%;
   height: 5rem;
-  background: var(--clr-black);
+  background: var(--clr-primary-400);
 
   span {
     color: var(--clr-primary-5);

@@ -61,13 +61,14 @@ const Navbar = () => {
 
 const Wrapper = styled.nav`
  .nav-center {
-  background: var(--clr-black);
-  box-shadow: var(--light-shadow);
+  display:flex;
+  justify-content:center;
+  background: var(--clr-primary-400);
+  box-shadow: var(--shadow-1);
 }
 
 .nav-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 1rem;
 }
@@ -82,7 +83,7 @@ const Wrapper = styled.nav`
 }
 
 .nav-toggle:hover {
-  color: var(--clr-grey-8);
+  color: var(--clr-grey-800);
   transform: rotate(90deg);
 }
 
@@ -125,8 +126,6 @@ const Wrapper = styled.nav`
 
 @media screen and (min-width: 800px) {
   .nav-center {
-    /* background: var(--clr-grey-3); */
-
     max-width: 100%;
     margin: 0 auto;
     display: flex;

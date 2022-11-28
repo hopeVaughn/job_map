@@ -8,7 +8,7 @@ function Home() {
     <Wrapper>
       <div className="job">
         <div> job.map(</div>
-        <Link to="/register" className="logsig">Login/Signup</Link>
+        <Link to="/register" className="login">Login</Link>
         <div>)</div>
       </div>
     </Wrapper>
@@ -34,12 +34,12 @@ const Wrapper = styled.section`
     animation-duration: 2s;
   }
 
- .logsig {
+ .login {
     border-radius: 0.5rem;
-    background: rgb(26 26 26);
+    background: var(--clr-primary-900);
     font-size: 2vw;
     margin-top: 0.3em;
-    color: antiquewhite;
+    color: white;
     position: relative;
     z-index: 0;
   } 

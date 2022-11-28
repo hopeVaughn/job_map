@@ -34,11 +34,6 @@ function Levels(props) {
     <Wrapper>
       <div className="statistics">
         <div
-          className="statistics_btn all_companies_btn btn" onClick={() => buttonClicked(0)}>
-          <h5>Companies</h5>
-        </div>
-
-        <div
           className="statistics_btn offers_btn btn" onClick={() => buttonClicked(1)}>
           <h4>{`${quantity[3]} Offers`}</h4>
         </div>
@@ -67,8 +62,8 @@ const Wrapper = styled.section`
   justify-content: space-around;
   column-gap: 40px;
   width: 100%;
-  height: 40vh;
-  background-color:black;
+  height: 80vh;
+  background: var(--clr-primary-900);
   align-items: flex-start;  
 }
 .statistics_btn {
