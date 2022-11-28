@@ -9,6 +9,8 @@ import Login from "./Login";
 import Register from "./Register";
 import CreateContact from "./CreateContact";
 import CreateApplication from "./CreateApplication";
+import Contacts from "./Contacts";
+import SingleContact from "./SingleContact";
 export {
   Home,
   LandingPage,
@@ -20,6 +22,8 @@ export {
   Register,
   Network,
   CreateContact,
-  CreateApplication
+  CreateApplication,
+  SingleContact,
+  Contacts
 }
 
