@@ -8,6 +8,7 @@ function ListCompanies(props) {
 
   const [list, setList] = useState([])
   const [stage, setStage] = useState([])
+  const [strstage, setStrstage] = useState([])
   const [color, setColor] = useState([])
 
 
@@ -23,9 +24,10 @@ function ListCompanies(props) {
       switch (stage) {
         case 0:
           const all = await axios.get("http://localhost:8080/api/companies/")
-          //console.log(res.data[0]);
+          console.log(all.data);
           setList(all.data);
-          setStage('  All Companies')
+          setStage(0)
+          setStrstage('  All Companies')
           setColor('purple')
           break;
 
@@ -33,7 +35,8 @@ function ListCompanies(props) {
           const offers = await axios.get("http://localhost:8080/api/applications/job_offers")
           console.log(offers.data);
           setList(offers.data);
-          setStage('  Job Offers')
+          setStage(1)
+          setStrstage('  Job Offers')
           setColor('green')
           break;
 
@@ -41,7 +44,8 @@ function ListCompanies(props) {
           const tech = await axios.get("http://localhost:8080/api/applications/tech_interviews")
           console.log(tech.data);
           setList(tech.data);
-          setStage('  Tech Interviews')
+          setStage(2)
+          setStrstage('  Tech Interviews')
           setColor('blue')
           break;
 
@@ -49,7 +53,8 @@ function ListCompanies(props) {
           const hr = await axios.get("http://localhost:8080/api/applications/hr_interviews")
           console.log(hr.data);
           setList(hr.data);
-          setStage('  HR Interviews')
+          setStage(3)
+          setStrstage('  HR Interviews')
           setColor('orange')
           break;
 
@@ -57,7 +62,8 @@ function ListCompanies(props) {
           const resumesent = await axios.get("http://localhost:8080/api/applications/resumes")
           console.log(resumesent.data);
           setList(resumesent.data);
-          setStage('  Resumes Sent')
+          setStage(4)
+          setStrstage('  Resumes Sent')
           setColor('red')
           break;
 
@@ -74,23 +80,25 @@ function ListCompanies(props) {
 
   useEffect(() => {
     getList(props.levelClicked || 0)
-
   }, [props.levelClicked]);
 
 
   const navigate = useNavigate();
-
   //pass the id 
   const btnSingleCompanie = (id) => {
-    // console.log(props);
+    console.log(stage);
+    if(stage == 0){
+      navigate(`/companies/${id}`)
+    } else {
     navigate(`/application/${id}`)
+    }
   }
 
   return (
     <>
       <Wrapper>
         <div className={`${color} childa`}>
-          <span className="quantity">{list.length}</span>   {stage}
+          <span className="quantity">{list.length}</span>   {strstage}
         </div>
 
         <div className='container'>
@@ -103,13 +111,11 @@ function ListCompanies(props) {
         </div>
 
         {list.map((info) =>
+        
           <div className='container' key={info.id}>
             <button className={`${color} child `} onClick={() => btnSingleCompanie(info.id)}>
               {info.name} {info.stack}
             </button>
-
-            {/* <div className='child b'> Information requested </div> */}
-
           </div>
         )}
       </Wrapper>

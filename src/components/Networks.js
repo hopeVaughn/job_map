@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import styled from 'styled-components'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
-import { contacts } from '../util/constants'
+//import { contacts } from '../util/constants'
 import { useNavigate } from "react-router-dom";
 
 
 
 function Networks() {
-  const [network, setNetwork] = useState(contacts);
+  const [network, setNetwork] = useState([]);
   const [index, setIndex] = React.useState(0);
   const navigate = useNavigate();
+
+
+  async function getNetworks () {
+    const result = await axios.get(`http://localhost:8080/api/networks/`)
+    setNetwork(result.data) 
+  }
 
   const nextSlide = () => {
     setIndex((oldIndex) => {
@@ -36,6 +42,7 @@ function Networks() {
   }
 
   useEffect(() => {
+    getNetworks()
     let slider = setInterval(() => {
       setIndex((oldIndex) => {
         let index = oldIndex + 1;
