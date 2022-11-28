@@ -61,6 +61,7 @@ function ContactForm(props) {
               type="text" 
               name='linkedin'
               placeholder='https://' 
+              pattern='https://.*' 
               onChange={(e) => setLinkedin(e.target.value)}
               value={linkedin || ""}  
             />
@@ -71,7 +72,8 @@ function ContactForm(props) {
             <input 
               type="text" 
               name='github'
-              placeholder='https://' 
+              placeholder='https://'
+              pattern='https://.*' 
               onChange={(e) => setGithub(e.target.value)}
               value={github || ""}  
             />
@@ -82,7 +84,8 @@ function ContactForm(props) {
             <input 
               type="text" 
               name='twitter'
-              placeholder='https://' 
+              placeholder='https://'
+              pattern='https://.*' 
               onChange={(e) => setTwitter(e.target.value)}
               value={twitter || ""}  
             />

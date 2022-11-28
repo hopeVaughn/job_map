@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 function Networks() {
   const [network, setNetwork] = useState([]);
   const [index, setIndex] = React.useState(0);
+  const [carousel, setCarousel] = useState(true);
+  const [addNetwork, setAddNetwork] = useState(false);
   const navigate = useNavigate();
 
 
@@ -59,15 +61,17 @@ function Networks() {
 
   return (
     <Wrapper className='section'>
+      
       <div className="title">
         <h2>
           <span>Network</span>
         </h2>
       </div>
+      
+      {carousel &&
       <div className="section-center">
         {network.map((person, personIndex) => {
           const { id, name, image } = person;   
-
           let position = 'nextSlide';
           if (personIndex === index) {
             position = 'activeSlide';
@@ -85,8 +89,18 @@ function Networks() {
         <button className='prev' onClick={prevSlide}> <FiChevronLeft /></button>
         <button className='next' onClick={nextSlide}> <FiChevronRight /></button>
       </div>
-      <button className="btn">Add New Network</button>
+      }
+      {carousel &&
+      <button className="btn" onClick={() => {
+        if (carousel) {
+          setCarousel(false)
+        }
+          setAddNetwork(true)
+          getNetworks()
 
+        }}   
+      >Add New Network</button>
+      }
     </Wrapper>
   )
 }
