@@ -18,7 +18,7 @@ const Wrapper = styled.article`
   flex-direction:column;
   align-items:center;
   color:white;
-  background: black;
+  background: var(--clr-primary-900);
   }
   footer {
     margin-top: 1rem;

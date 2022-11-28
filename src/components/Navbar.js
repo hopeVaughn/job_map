@@ -61,14 +61,14 @@ const Navbar = () => {
 
 const Wrapper = styled.nav`
  .nav-center {
-  display:flex;
-  justify-content:center;
+ 
   background: var(--clr-primary-400);
   box-shadow: var(--shadow-1);
 }
 
 .nav-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 1rem;
 }
@@ -111,7 +111,6 @@ const Wrapper = styled.nav`
 }
 .social-icons {
   display: none;
-  padding-right: 10rem;
 }
 
 .links-container {

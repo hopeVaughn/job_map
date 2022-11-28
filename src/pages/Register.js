@@ -110,7 +110,7 @@ const Wrapper = styled.section`
   }
   .form {
     max-width: 400px;
-    border-top: 5px solid var(--clr-white);
+    border-top: 5px solid var(--clr-primary-200);
   }
 
   h3 {

@@ -87,39 +87,32 @@ function ListCompanies(props) {
   //pass the id 
   const btnSingleCompanie = (id) => {
     console.log(stage);
-    if(stage == 0){
+    if (stage == 0) {
       navigate(`/companies/${id}`)
     } else {
-    navigate(`/application/${id}`)
+      navigate(`/application/${id}`)
     }
   }
 
   return (
-    <>
-      <Wrapper>
-        <div className={`${color} childa`}>
-          <span className="quantity">{list.length}</span>   {strstage}
+    <Wrapper>
+      <div className={`${color} childa`}>
+        <span className="quantity">{list.length}</span>   {strstage}
+      </div>
+      <div className='container'>
+        <div className='childb'>
+          Company Name
         </div>
-
-        <div className='container'>
-          <div className='childb'>
-            Company Name
-          </div>
-
-          {/* <div className='childb'> Resume Submission Date base on the request </div> */}
-
+        {/* <div className='childb'> Resume Submission Date base on the request </div> */}
+      </div>
+      {list.map((info) =>
+        <div className='container' key={info.id}>
+          <button className={`${color} child `} onClick={() => btnSingleCompanie(info.id)}>
+            {info.name} {info.stack}
+          </button>
         </div>
-
-        {list.map((info) =>
-        
-          <div className='container' key={info.id}>
-            <button className={`${color} child `} onClick={() => btnSingleCompanie(info.id)}>
-              {info.name} {info.stack}
-            </button>
-          </div>
-        )}
-      </Wrapper>
-    </>
+      )}
+    </Wrapper>
   )
 }
 

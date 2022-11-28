@@ -30,6 +30,7 @@ const Wrapper = styled.footer`
     font-weight: 400;
     text-transform: none;
     line-height: 1.25;
+    margin-bottom: 0;
   }
   @media (min-width: 776px) {
     flex-direction: row;
