@@ -113,7 +113,7 @@ padding-bottom:1rem;
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   width: 100%;
   height: 5rem;
