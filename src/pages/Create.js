@@ -4,8 +4,8 @@ import { useNavigate, Links } from "react-router-dom";
 import axios from 'axios';
 import { Navbar, Footer, Company } from '../components';
 
-
 function Create() {
+  const url = '/create/'
   const navigate = useNavigate()
   const [companyName, setCompanyName] = useState('');
   const [addNew, setAddNew] = useState(false)
@@ -77,7 +77,7 @@ function Create() {
       {addExisting &&
         <ul className="company-container">
           {companies.map((company) => {
-            return <Company key={company.id}{...company} />
+            return <Company key={company.id}{...company} url={url} />
           })}
         </ul>
       }

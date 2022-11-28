@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom'
-const Company = ({ id, name }) => {
+import { useNavigate } from "react-router-dom";
+const Company = ({ id, name, url }) => {
   const navigate = useNavigate()
   return (
     <Wrapper>
       <div className="container btn">
         <footer>
-          <h5 onClick={() => navigate(`/create/${id}`)} className="btn">{name}</h5>
+          <h5 className="btn" onClick={() => navigate(`${url}${id}`)}>{name}</h5>
         </footer>
       </div>
     </Wrapper>

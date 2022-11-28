@@ -7,15 +7,17 @@ function Notes(props) {
   const applicationID = props.applicationID;
 
   // the api call to the back to create a note needs to send the time stamp info as in integer
-  
+
   const [notes, setNotes] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
-  const [newNote, setNewNote] = useState("");  
+  const [newNote, setNewNote] = useState("");
 
   useEffect(() => {
     Axios.get(`http://localhost:8080/api/applications/${applicationID}/notes`).then((res) => {
+
       
     setNotes(res.data)
+
     })
   }, []);
 
@@ -23,13 +25,13 @@ function Notes(props) {
 
     setShowAdd(false);
     if (!newNote) return;
-    
+
     setNewNote("");
-    const data = {note: newNote }
+    const data = { note: newNote }
 
     Axios.post(`http://localhost:8080/api/applications/${applicationID}/notes`, data).then((res) => {
       console.log("reeeeees", res);
-      const {id, timestamp, note} = res.data[0];
+      const { id, timestamp, note } = res.data[0];
       setNotes([{ id: id, timestamp: timestamp, note: note }, ...notes]);
     })
   };
@@ -47,7 +49,7 @@ function Notes(props) {
           {showAdd && (
             <div className="note new-note">
               <span className="note-date">
-                {Date(Date.now()).toString().split(" ").slice(1,4).join('-')}
+                {Date(Date.now()).toString().split(" ").slice(1, 4).join('-')}
               </span>
               <input
                 type="text"
@@ -59,12 +61,11 @@ function Notes(props) {
               />
             </div>
           )}
-          
+
           {notes.map((note) => (
             <div className="note" key={note.id}>
               <span className="note-date">
-               
-                {Date(note.timestamp).toString().split(" ").slice(1,4).join('-')}
+                {Date(note.timestamp).toString().split(" ").slice(1, 4).join('-')}
               </span>
               <span>{note.note}</span>
             </div>
