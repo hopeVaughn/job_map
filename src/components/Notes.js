@@ -14,8 +14,10 @@ function Notes(props) {
 
   useEffect(() => {
     Axios.get(`http://localhost:8080/api/applications/${applicationID}/notes`).then((res) => {
-      console.log(res);
-      setNotes(res.data)
+
+      
+    setNotes(res.data)
+
     })
   }, []);
 
