@@ -309,7 +309,6 @@ ul {
 
 .btn:hover {
   background: var(--clr-primary-700);
-  background: var(--clr-primary-700);
   box-shadow: var(--clr-shadow-3);
 }
 
