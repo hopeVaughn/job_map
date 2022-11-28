@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import { FormRow } from '../components'
+import { logDOM } from '@testing-library/react';
 
 const initialState = {
   stack: '',
@@ -24,6 +25,7 @@ const CreateApplication = () => {
   today = mm + '/' + dd + '/' + yyyy;
   // end of format day
   let { company_id } = useParams();
+  console.log(company_id);
   let stack = values.stack;
   let front_end = values.front_end;
   let back_end = values.back_end;
@@ -39,8 +41,8 @@ const CreateApplication = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    const body = { company_id, stack, resume_sent, resume_sent_date, front_end, back_end, full_stack }
-    const response = await axios.post('http://localhost:8080/api/applications', body)
+    const body = { stack, resume_sent, resume_sent_date, front_end, back_end, full_stack }
+    const response = await axios.post('http://localhost:8080/api/applications/', body)
     //do something
   }
   return (
