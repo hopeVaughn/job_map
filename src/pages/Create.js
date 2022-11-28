@@ -12,6 +12,7 @@ function Create() {
   const [addExisting, setAddExisting] = useState(false)
   const [companies, setCompanies] = useState([])
 
+
   const handleChange = (e) => {
     setCompanyName(e.target.value);
   }

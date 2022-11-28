@@ -1,5 +1,5 @@
 import ListCompanies from "../components/ListCompanies";
-import { Navbar, Footer } from '../components';
+import { Navbar } from '../components';
 import styled from 'styled-components';
 
 function ListedCompanies(props) {
@@ -29,7 +29,7 @@ const Wrapper = styled.main`
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: fixed;
+  /* position: fixed; */
   /* z-index: 1; */
   bottom: 0;
   width: 100%;

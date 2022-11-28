@@ -15,8 +15,8 @@ function Notes(props) {
   useEffect(() => {
     Axios.get(`http://localhost:8080/api/applications/${applicationID}/notes`).then((res) => {
 
-      
-    setNotes(res.data)
+
+      setNotes(res.data)
 
     })
   }, []);
@@ -43,7 +43,7 @@ function Notes(props) {
   return (
     <Wrapper>
       <div className="notes-component">
-        <h5>Historic</h5>
+        <h5>Notes</h5>
 
         <div className="notes-container">
           {showAdd && (
