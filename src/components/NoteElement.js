@@ -58,9 +58,15 @@ function NoteElement(props) {
       {!editMode && (
         <div className="note-show-wrapper">
           <span className="note-text">{noteText}</span>
-          <div className="note-buttons">      
-            <FaRegEdit onClick={editNote} />          
-            <MdDeleteOutline onClick={deleteNote}/>
+          <div className="note-buttons">   
+          <button className='editNote-toggle' onClick={editNote} >
+            <FaRegEdit/>
+          </button> 
+
+          <button className='deleteNote-toggle' onClick={deleteNote} >
+            <MdDeleteOutline/>
+          </button>                    
+            
           </div>
 
         </div>
@@ -114,6 +120,9 @@ const Wrapper = styled.div`
 
 .note-text {
   width: 70%;
+ 
+  
+ 
 }
 
 .note-show-wrapper {
@@ -121,6 +130,34 @@ const Wrapper = styled.div`
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+}
+
+.editNote-toggle {
+  font-size: 1.2rem;
+  color: var(--clr-black);
+  background: transparent;
+  border-color: transparent;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.editNote-toggle:hover {
+  color: var(--clr-red-dark);
+ 
+}
+
+.deleteNote-toggle {
+  font-size: 1.2rem;
+  color: var(--clr-black);
+  background: transparent;
+  border-color: transparent;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.deleteNote-toggle:hover {
+  color: var(--clr-red-dark);
+ 
 }
 `
 
