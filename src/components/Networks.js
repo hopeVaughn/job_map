@@ -253,7 +253,7 @@ article h4 {
   color: #eff1e4;
   display: flex;
   flex-direction: row; 
-  width: 28vw;
+  width: 300px;
   justify-content: center;
   border-radius: 0.5rem;
   align-items: center;
