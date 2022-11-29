@@ -10,7 +10,6 @@ const initialState = {
 
 function Stages({ stage }) {
   const [values, setValues] = useState(initialState)
-  console.log(values);
   return (
     <Wrapper>
       <div className="stages">
@@ -32,7 +31,7 @@ function Stages({ stage }) {
               tech_interview: false,
               job_offer: false
             })}>hr interview</div>
-        <div className={`hr btn ${values.tech_interview ? 'active' : ''}`} onClick={() =>
+        <div className={`tech btn ${values.tech_interview ? 'active' : ''}`} onClick={() =>
           setValues({
             ...values,
             sent_resume: false,
@@ -40,13 +39,13 @@ function Stages({ stage }) {
             tech_interview: true,
             job_offer: false
           })}>tech interview</div>
-        <div className={`hr btn ${values.hr_interview ? 'active' : ''}`} onClick={() =>
+        <div className={`offer btn ${values.job_offer ? 'active' : ''}`} onClick={() =>
           setValues({
             ...values,
             sent_resume: false,
-            hr_interview: true,
+            hr_interview: false,
             tech_interview: false,
-            job_offer: false
+            job_offer: true
           })}>job offer</div>
       </div>
     </Wrapper>

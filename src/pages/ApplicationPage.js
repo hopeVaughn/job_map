@@ -29,7 +29,7 @@ function CompanyPage(props) {
       <Navbar />
       <div>
         <h1>{company.name}</h1>
-        <h3>{company.stack}</h3>
+        <h3>{company.stack} Stack</h3>
       </div>
       <Notes applicationID={id} />
       <Stages />
