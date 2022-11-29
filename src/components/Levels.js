@@ -13,6 +13,7 @@ function Levels(props) {
       Axios.get(`http://localhost:8080/api/applications`).then((res) => {
         setQuantity(res.data)
       })
+      .catch(err => console.log(err))
 
     } catch (error) {
       console.error(error.message);
