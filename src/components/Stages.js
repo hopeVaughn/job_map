@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 
-const initialState = {
-  sent_resume: false,
-  hr_interview: false,
-  tech_interview: false,
-  job_offer: false,
-}
 
-function Stages({ stage }) {
-  const [values, setValues] = useState(initialState)
+
+function Stages(props) {
+  // console.log('stage prop:', props.stage);
+  const [values, setValues] = useState({})
+
+  const { resume_sent, hr_interview, tech_interview, job_offer } = props.stage;
+  const initialState = {
+    resume_sent,
+    hr_interview,
+    tech_interview,
+    job_offer,
+  }
+
+  useEffect(() => {
+    setValues(initialState)
+  }, [])
+  // console.log('initial state:', initialState);
+  console.log('value state:', values);
   return (
     <Wrapper>
       <div className="stages">
         {/* onclick will dynamically change the class name to visually render active mode */}
-        <div className={`sent btn ${values.sent_resume ? 'active' : ''}`} onClick={() =>
+        <div className={`sent btn ${values.resume_sent ? 'active' : ''}`} onClick={() =>
           setValues({
             ...values,
-            sent_resume: true,
+            resume_sent: true,
             hr_interview: false,
             tech_interview: false,
             job_offer: false
@@ -26,7 +36,7 @@ function Stages({ stage }) {
           onClick={() =>
             setValues({
               ...values,
-              sent_resume: false,
+              resume_sent: false,
               hr_interview: true,
               tech_interview: false,
               job_offer: false
@@ -34,7 +44,7 @@ function Stages({ stage }) {
         <div className={`tech btn ${values.tech_interview ? 'active' : ''}`} onClick={() =>
           setValues({
             ...values,
-            sent_resume: false,
+            resume_sent: false,
             hr_interview: false,
             tech_interview: true,
             job_offer: false
@@ -42,7 +52,7 @@ function Stages({ stage }) {
         <div className={`offer btn ${values.job_offer ? 'active' : ''}`} onClick={() =>
           setValues({
             ...values,
-            sent_resume: false,
+            resume_sent: false,
             hr_interview: false,
             tech_interview: false,
             job_offer: true

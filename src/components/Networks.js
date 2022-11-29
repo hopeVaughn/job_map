@@ -67,7 +67,8 @@ function Networks(props) {
             setCarousel(true);
             setIndex(index+1);
             setAddNetwork(false);
-            setEnableAddNetwork(true)
+            setEnableAddNetwork(true);
+            getNetworks(company_id);
           }  
         })       
       } catch (err) {
@@ -87,8 +88,6 @@ function Networks(props) {
         console.error(err.message);
       }    
   }
-
-
 
 
   const nextSlide = () => {
@@ -119,9 +118,12 @@ function Networks(props) {
     setAddNetwork(false);
   }
 
-
   useEffect(() => {
-    getCompany() ; 
+    getCompany();     
+  }, [])
+
+ 
+  useEffect(() => {
     let slider = setInterval(() => {
       setIndex((oldIndex) => {
         let index = oldIndex + 1;
@@ -138,7 +140,7 @@ function Networks(props) {
 
   return (
     <Wrapper className='section'>
-      
+    
       <div className="title">
         <h2>
           <span>Network</span>
@@ -146,6 +148,7 @@ function Networks(props) {
       </div>
       
       {carousel &&
+      <>
         <button className="btn" disabled= {EnableAddNetwork} onClick={() => {
           if (carousel) {
             setCarousel(false)
@@ -155,6 +158,8 @@ function Networks(props) {
 
           }}   
         >Add New Network</button>
+        <div>number of network   {network.length}</div>
+      </>
       }
 
       {carousel &&
