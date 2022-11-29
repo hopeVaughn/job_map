@@ -30,6 +30,48 @@ function Networks() {
     setEnableAddNetwork(result.data[0].length > 0);
   }
 
+  const btnaddNetwork = (id) =>{
+    let contact_id = id
+    let company_id = companyId
+   
+    const body = {
+    contact_id,
+    company_id
+    }
+    try {
+      const response = axios.post(`http://localhost:8080/api/networks/`, body)
+        .then((res) => {
+          getOthers()
+          console.log("aaaa", withoutnetwork);
+          const confirm = window.confirm('Do you want add another contact?')
+          if ((confirm && withoutnetwork.length === 1) || (!confirm)){
+            setCarousel(true);
+            setAddNetwork(false);
+            setEnableAddNetwork(true)
+          }  
+        })       
+      } catch (err) {
+        console.error(err.message);
+      }    
+  }
+   
+  
+  const remove = (id) =>{
+    try {
+      const response = axios.delete(`http://localhost:8080/api/networks/${id}`)
+        .then((res) => {
+          getNetworks() 
+          setIndex(index+1)
+        })   
+
+      } catch (err) {
+        console.error(err.message);
+      }    
+  }
+
+
+
+
   const nextSlide = () => {
     setIndex((oldIndex) => {
       let index = oldIndex + 1;
@@ -58,30 +100,6 @@ function Networks() {
     setAddNetwork(false);
   }
 
-  const btnaddNetwork = (id) =>{
-    let contact_id = id
-    let company_id = companyId
-   
-    const body = {
-    contact_id,
-    company_id
-    }
-    try {
-      const response = axios.post(`http://localhost:8080/api/networks/`, body)
-        .then((res) => {
-          getOthers()
-          console.log("aaaa", withoutnetwork);
-          const confirm = window.confirm('Do you want add another contact?')
-          if ((confirm && withoutnetwork.length === 1) || (!confirm)){
-            setCarousel(true);
-            setAddNetwork(false);
-            setEnableAddNetwork(true)
-          }  
-        })       
-      } catch (err) {
-        console.error(err.message);
-      }    
-  }
 
   useEffect(() => {
     getNetworks();
@@ -110,9 +128,21 @@ function Networks() {
       </div>
       
       {carousel &&
+        <button className="btn" disabled= {EnableAddNetwork} onClick={() => {
+          if (carousel) {
+            setCarousel(false)
+          }
+            setAddNetwork(true)
+            getOthers()
+
+          }}   
+        >Add New Network</button>
+      }
+
+      {carousel &&
       <div className="section-center">
         {network.map((person, personIndex) => {
-          const { id, name, image } = person;   
+          const { id, name, image, networkid } = person;   
           let position = 'nextSlide';
           if (personIndex === index) {
             position = 'activeSlide';
@@ -124,6 +154,7 @@ function Networks() {
             <article className={position} key={id}>
               <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
               <h4>{name}</h4>
+              <button className='btn' onClick={() => remove(networkid)}>Remove</button>    
             </article>
           )
         })}
@@ -132,17 +163,6 @@ function Networks() {
       </div>
       }
 
-      {carousel &&
-      <button className="btn" disabled= {EnableAddNetwork} onClick={() => {
-        if (carousel) {
-          setCarousel(false)
-        }
-          setAddNetwork(true)
-          getOthers()
-
-        }}   
-      >Add New Network</button>
-      }
 
       {addNetwork &&
         <div>
