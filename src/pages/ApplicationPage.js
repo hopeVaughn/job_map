@@ -33,7 +33,7 @@ function CompanyPage(props) {
       </div>
       <Notes applicationID={id} />
       <Stages />
-      <Networks />
+      <Networks applicationID={id}/>
       <div className="footer">
         <h5>
           &copy; {new Date().getFullYear()}

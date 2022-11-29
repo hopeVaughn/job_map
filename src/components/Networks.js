@@ -8,27 +8,88 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function Networks() {
+function Networks(props) {
+
+  
+  const applicationID = props.applicationID;
+  const [companyId, setcompanyId] = useState();
   const [network, setNetwork] = useState([]);
   const [EnableAddNetwork, setEnableAddNetwork] = useState([]);
   const [withoutnetwork, setWithoutnetwork] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [carousel, setCarousel] = useState(true);
   const [addNetwork, setAddNetwork] = useState(false);
-  const companyId = 5;
   const navigate = useNavigate();
 
-
-  async function getNetworks () {
-    const result = await axios.get(`http://localhost:8080/api/networks/`)
-    setNetwork(result.data) 
+  async function getNetworks (id) {
+    const result = await axios.get(`http://localhost:8080/api/networks/${id}`)
+    setNetwork(result.data) ;
+    setcompanyId(id);
   }
 
-  async function getOthers () {
-    const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork`)
+
+  function getCompany() {
+    try{
+      axios.get(`http://localhost:8080/api/applications/custom/${applicationID}`)
+      .then((res) => {
+      getNetworks(res.data[0].id);
+      getOthers(res.data[0].id);
+      })
+    }catch (err) {
+      console.error(err.message);
+    }   
+  }
+  
+
+  async function getOthers (id) {
+    const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork/${id}`)
     setWithoutnetwork(result.data);
     setEnableAddNetwork(result.data[0].length > 0);
+    setcompanyId(id);
   }
+
+  
+  const btnaddNetwork = (id) =>{
+    let contact_id = id
+    let company_id = companyId
+   
+    const body = {
+    contact_id,
+    company_id
+    }
+    try {
+      const response = axios.post(`http://localhost:8080/api/networks/`, body)
+        .then((res) => {
+          getOthers(company_id)
+          console.log("aaaa", withoutnetwork);
+          const confirm = window.confirm('Do you want add another contact?')
+          if ((confirm && withoutnetwork.length === 1) || (!confirm)){
+            setCarousel(true);
+            setIndex(index+1);
+            setAddNetwork(false);
+            setEnableAddNetwork(true)
+          }  
+        })       
+      } catch (err) {
+        console.error(err.message);
+      }    
+  }
+   
+  
+  const remove = (id) =>{
+    try {
+      const response = axios.delete(`http://localhost:8080/api/networks/${id}`)
+        .then((res) => {
+          getNetworks(companyId); 
+        })   
+
+      } catch (err) {
+        console.error(err.message);
+      }    
+  }
+
+
+
 
   const nextSlide = () => {
     setIndex((oldIndex) => {
@@ -53,35 +114,14 @@ function Networks() {
     navigate(`/contacts/${id}`)
   }
 
-
-  const btnaddNetwork = (id) =>{
-    let contact_id = id
-    let company_id = companyId
-   
-    const body = {
-    contact_id,
-    company_id
-    }
-    try {
-      const response = axios.post(`http://localhost:8080/api/networks/`, body)
-        .then((res) => {
-          getOthers()
-          console.log("aaaa", withoutnetwork);
-          const confirm = window.confirm('Do you want add another contact?')
-          if ((confirm && withoutnetwork.length === 1) || (!confirm)){
-            setCarousel(true);
-            setAddNetwork(false);
-            setEnableAddNetwork(true)
-          }  
-        })       
-      } catch (err) {
-        console.error(err.message);
-      }    
+  const close = () => {
+    setCarousel(true);
+    setAddNetwork(false);
   }
 
+
   useEffect(() => {
-    getNetworks();
-    getOthers();
+    getCompany() ; 
     let slider = setInterval(() => {
       setIndex((oldIndex) => {
         let index = oldIndex + 1;
@@ -106,9 +146,21 @@ function Networks() {
       </div>
       
       {carousel &&
+        <button className="btn" disabled= {EnableAddNetwork} onClick={() => {
+          if (carousel) {
+            setCarousel(false)
+          }
+            setAddNetwork(true)
+            getOthers(companyId)
+
+          }}   
+        >Add New Network</button>
+      }
+
+      {carousel &&
       <div className="section-center">
         {network.map((person, personIndex) => {
-          const { id, name, image } = person;   
+          const { id, name, image, networkid } = person;   
           let position = 'nextSlide';
           if (personIndex === index) {
             position = 'activeSlide';
@@ -120,6 +172,7 @@ function Networks() {
             <article className={position} key={id}>
               <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
               <h4>{name}</h4>
+              <button className='btn' onClick={() => remove(networkid)}>Remove</button>    
             </article>
           )
         })}
@@ -128,19 +181,9 @@ function Networks() {
       </div>
       }
 
-      {carousel &&
-      <button className="btn" disabled= {EnableAddNetwork} onClick={() => {
-        if (carousel) {
-          setCarousel(false)
-        }
-          setAddNetwork(true)
-          getOthers()
-
-        }}   
-      >Add New Network</button>
-      }
 
       {addNetwork &&
+        <div>
         <div className='addNetwork'>
           {withoutnetwork.map((c) =>
           <div className='list' key={c.id}>
@@ -152,9 +195,11 @@ function Networks() {
               className="cover"
             />
             <div className='nick'>{c.name}</div>
-            <button onClick={() => btnaddNetwork(c.id)}>add</button>
+            <button className='btn' onClick={() => btnaddNetwork(c.id)}>add</button>
           </div>
         )}
+        </div>
+          <button className='btn' onClick={close}>Close</button> 
         </div>
       }
     </Wrapper>
@@ -235,7 +280,7 @@ article h4 {
   color: var(--clr-primary-5);
 }
 
-.addNetwork{
+.addNetwork {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -246,12 +291,12 @@ article h4 {
   color: #eff1e4;
   display: flex;
   flex-direction: row; 
-  width: 28vw;
+  width: 300px;
   justify-content: center;
   border-radius: 0.5rem;
   align-items: center;
-  cursor: pointer;
 }
+
 .nick {
   display: flex;
   flex-direction: column;
@@ -262,8 +307,6 @@ article h4 {
   border-radius: 0.5rem;
   height: 3vh;
 }
-
-
 
 .prev,
 .next {
