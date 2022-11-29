@@ -7,7 +7,6 @@ import styled from 'styled-components'
 
 function CompanyPage(props) {
   const [company, setCompany] = useState({})
-  const [stage, setStage] = useState({});
   // take the id   
   let applicationId = useParams();
 
@@ -20,18 +19,8 @@ function CompanyPage(props) {
     setCompany(response.data[0])
   }
 
-  const getStage = async () => {
-    try {
-      const response = await axios.get(`http://localhost:8080/api/applications/${applicationId.id}`);
-      setStage(response.data[0])
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   useEffect(() => {
     getCompany()
-    getStage()
   }, []);
 
 
@@ -43,7 +32,7 @@ function CompanyPage(props) {
         <h3>{company.stack} Stack</h3>
       </div>
       <Notes applicationID={applicationId.id} />
-      <Stages stage={stage} />
+      <Stages />
       <Networks applicationID={applicationId.id} />
       <div className="footer">
         <h5>

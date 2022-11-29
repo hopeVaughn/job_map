@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Networks(props) {
 
-  
+
   const applicationID = props.applicationID;
   const [companyId, setcompanyId] = useState();
   const [network, setNetwork] = useState([]);
@@ -21,41 +21,41 @@ function Networks(props) {
   const [addNetwork, setAddNetwork] = useState(false);
   const navigate = useNavigate();
 
-  async function getNetworks (id) {
+  async function getNetworks(id) {
     const result = await axios.get(`http://localhost:8080/api/networks/${id}`)
-    setNetwork(result.data) ;
+    setNetwork(result.data);
     setcompanyId(id);
   }
 
 
   function getCompany() {
-    try{
+    try {
       axios.get(`http://localhost:8080/api/applications/custom/${applicationID}`)
-      .then((res) => {
-      getNetworks(res.data[0].id);
-      getOthers(res.data[0].id);
-      })
-    }catch (err) {
+        .then((res) => {
+          getNetworks(res.data[0].id);
+          getOthers(res.data[0].id);
+        })
+    } catch (err) {
       console.error(err.message);
-    }   
+    }
   }
-  
 
-  async function getOthers (id) {
+
+  async function getOthers(id) {
     const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork/${id}`)
     setWithoutnetwork(result.data);
     setEnableAddNetwork(result.data[0].length > 0);
     setcompanyId(id);
   }
 
-  
-  const btnaddNetwork = (id) =>{
+
+  const btnaddNetwork = (id) => {
     let contact_id = id
     let company_id = companyId
-   
+
     const body = {
-    contact_id,
-    company_id
+      contact_id,
+      company_id
     }
     try {
       const response = axios.post(`http://localhost:8080/api/networks/`, body)
@@ -63,30 +63,30 @@ function Networks(props) {
           getOthers(company_id)
           console.log("aaaa", withoutnetwork);
           const confirm = window.confirm('Do you want add another contact?')
-          if ((confirm && withoutnetwork.length === 1) || (!confirm)){
+          if ((confirm && withoutnetwork.length === 1) || (!confirm)) {
             setCarousel(true);
-            setIndex(index+1);
+            setIndex(index + 1);
             setAddNetwork(false);
             setEnableAddNetwork(true);
             getNetworks(company_id);
-          }  
-        })       
-      } catch (err) {
-        console.error(err.message);
-      }    
+          }
+        })
+    } catch (err) {
+      console.error(err.message);
+    }
   }
-   
-  
-  const remove = (id) =>{
+
+
+  const remove = (id) => {
     try {
       const response = axios.delete(`http://localhost:8080/api/networks/${id}`)
         .then((res) => {
-          getNetworks(companyId); 
-        })   
+          getNetworks(companyId);
+        })
 
-      } catch (err) {
-        console.error(err.message);
-      }    
+    } catch (err) {
+      console.error(err.message);
+    }
   }
 
 
@@ -119,92 +119,92 @@ function Networks(props) {
   }
 
   useEffect(() => {
-    getCompany();     
+    getCompany();
   }, [])
 
- 
-  useEffect(() => {
-    let slider = setInterval(() => {
-      setIndex((oldIndex) => {
-        let index = oldIndex + 1;
-        if (index > network.length - 1) {
-          index = 0
-        }
-        return index
-      })
-    }, 3000)
-    return () => {
-      clearInterval(slider)
-    }
-  }, [index])
+
+  // useEffect(() => {
+  //   let slider = setInterval(() => {
+  //     setIndex((oldIndex) => {
+  //       let index = oldIndex + 1;
+  //       if (index > network.length - 1) {
+  //         index = 0
+  //       }
+  //       return index
+  //     })
+  //   }, 3000)
+  //   return () => {
+  //     clearInterval(slider)
+  //   }
+  // }, [index])
 
   return (
     <Wrapper className='section'>
-    
+
       <div className="title">
         <h2>
           <span>Network</span>
         </h2>
       </div>
-      
+
       {carousel &&
-      <>
-        <button className="btn" disabled= {EnableAddNetwork} onClick={() => {
-          if (carousel) {
-            setCarousel(false)
-          }
+        <>
+          <button className="btn" disabled={EnableAddNetwork} onClick={() => {
+            if (carousel) {
+              setCarousel(false)
+            }
             setAddNetwork(true)
             getOthers(companyId)
 
-          }}   
-        >Add New Network</button>
-        <div>number of network   {network.length}</div>
-      </>
+          }}
+          >Add New Network</button>
+          <div>number of network   {network.length}</div>
+        </>
       }
 
       {carousel &&
-      <div className="section-center">
-        {network.map((person, personIndex) => {
-          const { id, name, image, networkid } = person;   
-          let position = 'nextSlide';
-          if (personIndex === index) {
-            position = 'activeSlide';
-          }
-          if (personIndex === index - 1 || (index === 0 && personIndex == network.length - 1)) {
-            position = 'lastSlide'
-          }
-          return (
-            <article className={position} key={id}>
-              <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
-              <h4>{name}</h4>
-              <button className='btn' onClick={() => remove(networkid)}>Remove</button>    
-            </article>
-          )
-        })}
-        <button className='prev' onClick={prevSlide}> <FiChevronLeft /></button>
-        <button className='next' onClick={nextSlide}> <FiChevronRight /></button>
-      </div>
+        <div className="section-center">
+          {network.map((person, personIndex) => {
+            const { id, name, image, networkid } = person;
+            let position = 'nextSlide';
+            if (personIndex === index) {
+              position = 'activeSlide';
+            }
+            if (personIndex === index - 1 || (index === 0 && personIndex == network.length - 1)) {
+              position = 'lastSlide'
+            }
+            return (
+              <article className={position} key={id}>
+                <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
+                <h4>{name}</h4>
+                <button className='btn' onClick={() => remove(networkid)}>Remove</button>
+              </article>
+            )
+          })}
+          <button className='prev' onClick={prevSlide}> <FiChevronLeft /></button>
+          <button className='next' onClick={nextSlide}> <FiChevronRight /></button>
+        </div>
       }
 
 
       {addNetwork &&
         <div>
-        <div className='addNetwork'>
-          {withoutnetwork.map((c) =>
-          <div className='list' key={c.id}>
-            <Avatar
-              alt="contact photo"
-              src={c.image}
-              size="50"
-              round={true}
-              className="cover"
-            />
-            <div className='nick'>{c.name}</div>
-            <button className='btn' onClick={() => btnaddNetwork(c.id)}>add</button>
+          <div className='addNetwork'>
+            {withoutnetwork.map((c) =>
+              <div className='list' key={c.id}>
+                <Avatar
+                  alt="contact photo"
+                  src={c.image}
+                  size="50"
+                  round={true}
+                  className="cover"
+                />
+                <div className='nick'>{c.name}</div>
+                <button className='btn' onClick={() => btnaddNetwork(c.id)}>add</button>
+              </div>
+            )}
           </div>
-        )}
-        </div>
-          <button className='btn' onClick={close}>Close</button> 
+          <button className='btn' onClick={close}>Close</button>
         </div>
       }
     </Wrapper>
