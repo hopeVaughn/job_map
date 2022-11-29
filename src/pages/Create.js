@@ -72,7 +72,7 @@ function Create() {
             <span className='company-name'> Company Name: <br /></span>
             <input type='text' name="company" value={companyName} onChange={handleChange} placeholder="Add Company Name" />
           </label>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className='btn' />
         </form>
       }
       {addExisting &&
