@@ -8,28 +8,47 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function Networks() {
+function Networks(props) {
+
+  
+  const applicationID = props.applicationID;
+  const [companyId, setcompanyId] = useState();
   const [network, setNetwork] = useState([]);
   const [EnableAddNetwork, setEnableAddNetwork] = useState([]);
   const [withoutnetwork, setWithoutnetwork] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [carousel, setCarousel] = useState(true);
   const [addNetwork, setAddNetwork] = useState(false);
-  const companyId = 5;
   const navigate = useNavigate();
 
-
-  async function getNetworks () {
-    const result = await axios.get(`http://localhost:8080/api/networks/`)
-    setNetwork(result.data) 
+  async function getNetworks (id) {
+    const result = await axios.get(`http://localhost:8080/api/networks/${id}`)
+    setNetwork(result.data) ;
+    setcompanyId(id);
   }
 
-  async function getOthers () {
-    const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork`)
+
+  function getCompany() {
+    try{
+      axios.get(`http://localhost:8080/api/applications/custom/${applicationID}`)
+      .then((res) => {
+      getNetworks(res.data[0].id);
+      getOthers(res.data[0].id);
+      })
+    }catch (err) {
+      console.error(err.message);
+    }   
+  }
+  
+
+  async function getOthers (id) {
+    const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork/${id}`)
     setWithoutnetwork(result.data);
     setEnableAddNetwork(result.data[0].length > 0);
+    setcompanyId(id);
   }
 
+  
   const btnaddNetwork = (id) =>{
     let contact_id = id
     let company_id = companyId
@@ -41,11 +60,12 @@ function Networks() {
     try {
       const response = axios.post(`http://localhost:8080/api/networks/`, body)
         .then((res) => {
-          getOthers()
+          getOthers(company_id)
           console.log("aaaa", withoutnetwork);
           const confirm = window.confirm('Do you want add another contact?')
           if ((confirm && withoutnetwork.length === 1) || (!confirm)){
             setCarousel(true);
+            setIndex(index+1);
             setAddNetwork(false);
             setEnableAddNetwork(true)
           }  
@@ -60,8 +80,7 @@ function Networks() {
     try {
       const response = axios.delete(`http://localhost:8080/api/networks/${id}`)
         .then((res) => {
-          getNetworks() 
-          setIndex(index+1)
+          getNetworks(companyId); 
         })   
 
       } catch (err) {
@@ -102,8 +121,7 @@ function Networks() {
 
 
   useEffect(() => {
-    getNetworks();
-    getOthers();
+    getCompany() ; 
     let slider = setInterval(() => {
       setIndex((oldIndex) => {
         let index = oldIndex + 1;
@@ -133,7 +151,7 @@ function Networks() {
             setCarousel(false)
           }
             setAddNetwork(true)
-            getOthers()
+            getOthers(companyId)
 
           }}   
         >Add New Network</button>
