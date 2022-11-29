@@ -3,21 +3,29 @@ import axios from "axios";
 import styled from 'styled-components'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 //import { contacts } from '../util/constants'
+import Avatar from 'react-avatar';
 import { useNavigate } from "react-router-dom";
 
 
 
 function Networks() {
   const [network, setNetwork] = useState([]);
+  const [withoutnetwork, setWithoutnetwork] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [carousel, setCarousel] = useState(true);
   const [addNetwork, setAddNetwork] = useState(false);
+  const companyId = 5;
   const navigate = useNavigate();
 
 
   async function getNetworks () {
     const result = await axios.get(`http://localhost:8080/api/networks/`)
     setNetwork(result.data) 
+  }
+
+  async function getOthers () {
+    const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork`)
+    setWithoutnetwork(result.data) 
   }
 
   const nextSlide = () => {
@@ -41,6 +49,25 @@ function Networks() {
 
   const imgClicked = (id) => {
     navigate(`/contacts/${id}`)
+  }
+
+
+  const btnaddNetwork = (id) =>{
+    let contact_id = id
+    let company_id = companyId
+    console.log("aaa", id);
+    const body = {
+    contact_id,
+    company_id
+    }
+    try {
+      const response = axios.post(`http://localhost:8080/api/networks/`, body)
+        .then((res) => {
+          getOthers()
+        })       
+      } catch (err) {
+        console.error(err.message);
+      }    
   }
 
   useEffect(() => {
@@ -90,16 +117,35 @@ function Networks() {
         <button className='next' onClick={nextSlide}> <FiChevronRight /></button>
       </div>
       }
+
       {carousel &&
       <button className="btn" onClick={() => {
         if (carousel) {
           setCarousel(false)
         }
           setAddNetwork(true)
-          getNetworks()
+          getOthers()
 
         }}   
       >Add New Network</button>
+      }
+
+      {addNetwork &&
+        <div className='addNetwork'>
+          {withoutnetwork.map((c) =>
+          <div className='list' key={c.id}>
+            <Avatar
+              alt="contact photo"
+              src={c.image}
+              size="50"
+              round={true}
+              className="cover"
+            />
+            <div className='nick'>{c.name}</div>
+            <button onClick={() => btnaddNetwork(c.id)}>add</button>
+          </div>
+        )}
+        </div>
       }
     </Wrapper>
   )
@@ -178,6 +224,36 @@ article h4 {
   margin-top: 1rem;
   color: var(--clr-primary-5);
 }
+
+.addNetwork{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.list {
+  color: #eff1e4;
+  display: flex;
+  flex-direction: row; 
+  width: 28vw;
+  justify-content: center;
+  border-radius: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+.nick {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #5480a2;
+  flex-basis: calc(65% - -30px);
+  border-radius: 0.5rem;
+  height: 3vh;
+}
+
+
 
 .prev,
 .next {
