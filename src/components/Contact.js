@@ -77,7 +77,6 @@ function Contact() {
   }, []);
 
 
-
   return (
 
     <Wrapper>
@@ -115,6 +114,7 @@ function Contact() {
       {showEditDelBtn &&
         <div className='press'>
           <button type="button" className="btn" onClick={() => toggleEdit(id)} > EDIT</button>
+          <button type="button" className="btn" href="#" onClick={() => navigate(-1) } > Return</button>
           <button type="button" className="btn" onClick={() => deleteContact(id)}> DELETE</button>
         </div>
       }
