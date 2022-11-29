@@ -53,6 +53,10 @@ function Networks() {
     navigate(`/contacts/${id}`)
   }
 
+  const close = () => {
+    setCarousel(true);
+    setAddNetwork(false);
+  }
 
   const btnaddNetwork = (id) =>{
     let contact_id = id
@@ -141,6 +145,7 @@ function Networks() {
       }
 
       {addNetwork &&
+        <div>
         <div className='addNetwork'>
           {withoutnetwork.map((c) =>
           <div className='list' key={c.id}>
@@ -152,9 +157,11 @@ function Networks() {
               className="cover"
             />
             <div className='nick'>{c.name}</div>
-            <button onClick={() => btnaddNetwork(c.id)}>add</button>
+            <button className='btn' onClick={() => btnaddNetwork(c.id)}>add</button>
           </div>
         )}
+        </div>
+          <button className='btn' onClick={close}>Close</button> 
         </div>
       }
     </Wrapper>
@@ -235,7 +242,7 @@ article h4 {
   color: var(--clr-primary-5);
 }
 
-.addNetwork{
+.addNetwork {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -250,8 +257,8 @@ article h4 {
   justify-content: center;
   border-radius: 0.5rem;
   align-items: center;
-  cursor: pointer;
 }
+
 .nick {
   display: flex;
   flex-direction: column;
@@ -262,8 +269,6 @@ article h4 {
   border-radius: 0.5rem;
   height: 3vh;
 }
-
-
 
 .prev,
 .next {
