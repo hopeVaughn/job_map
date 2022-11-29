@@ -97,6 +97,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
 
     padding: 0 4px;
     overflow-y: scroll;
@@ -121,6 +122,7 @@ const Wrapper = styled.div`
     outline: none;
     color: #102a43;
     height: 6vh;
+    font-size: 1.4rem;
     
   }
   .notes-component {
@@ -141,6 +143,7 @@ const Wrapper = styled.div`
     font-size: min(3vh, 3vw);
     height: 6vh;
   }
+
   .note-date {
     background-color: #ae88d1;
     border-radius: 10px;
