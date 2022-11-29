@@ -143,6 +143,7 @@ const Wrapper = styled.div`
 
 .editNote-toggle:hover {
   color: var(--clr-red-dark);
+  font-size: 1.4rem;
  
 }
 
@@ -157,6 +158,7 @@ const Wrapper = styled.div`
 
 .deleteNote-toggle:hover {
   color: var(--clr-red-dark);
+  font-size: 1.4rem
  
 }
 `
