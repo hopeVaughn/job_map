@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Networks() {
   const [network, setNetwork] = useState([]);
+  const [EnableAddNetwork, setEnableAddNetwork] = useState([]);
   const [withoutnetwork, setWithoutnetwork] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [carousel, setCarousel] = useState(true);
@@ -25,7 +26,8 @@ function Networks() {
 
   async function getOthers () {
     const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork`)
-    setWithoutnetwork(result.data) 
+    setWithoutnetwork(result.data);
+    setEnableAddNetwork(result.data[0].length > 0);
   }
 
   const nextSlide = () => {
@@ -55,7 +57,7 @@ function Networks() {
   const btnaddNetwork = (id) =>{
     let contact_id = id
     let company_id = companyId
-    console.log("aaa", id);
+   
     const body = {
     contact_id,
     company_id
@@ -64,6 +66,13 @@ function Networks() {
       const response = axios.post(`http://localhost:8080/api/networks/`, body)
         .then((res) => {
           getOthers()
+          console.log("aaaa", withoutnetwork);
+          const confirm = window.confirm('Do you want add another contact?')
+          if ((confirm && withoutnetwork.length === 1) || (!confirm)){
+            setCarousel(true);
+            setAddNetwork(false);
+            setEnableAddNetwork(true)
+          }  
         })       
       } catch (err) {
         console.error(err.message);
@@ -71,7 +80,8 @@ function Networks() {
   }
 
   useEffect(() => {
-    getNetworks()
+    getNetworks();
+    getOthers();
     let slider = setInterval(() => {
       setIndex((oldIndex) => {
         let index = oldIndex + 1;
@@ -119,7 +129,7 @@ function Networks() {
       }
 
       {carousel &&
-      <button className="btn" onClick={() => {
+      <button className="btn" disabled= {EnableAddNetwork} onClick={() => {
         if (carousel) {
           setCarousel(false)
         }
