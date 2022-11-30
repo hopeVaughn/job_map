@@ -127,7 +127,7 @@ function Networks(props) {
 
   useEffect(() => {
     getCompany();
-  }, [remove])
+  }, [])
 
 
   // useEffect(() => {
