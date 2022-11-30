@@ -61,9 +61,8 @@ function Networks(props) {
       const response = axios.post(`http://localhost:8080/api/networks/`, body)
         .then((res) => {
           getOthers(company_id)
-          console.log("aaaa", withoutnetwork);
-          const confirm = window.confirm('Do you want add another contact?')
-          if ((confirm && withoutnetwork.length === 1) || (!confirm)) {
+                   // const confirm = window.confirm('Do you want add another contact?')
+          if (withoutnetwork.length === 1) {
             setCarousel(true);
             setIndex(index + 1);
             setAddNetwork(false);
@@ -113,7 +112,8 @@ function Networks(props) {
     navigate(`/contacts/${id}`)
   }
 
-  const close = () => {
+  const closeAdd = () => {
+    getNetworks(companyId);
     setCarousel(true);
     setAddNetwork(false);
   }
@@ -123,20 +123,20 @@ function Networks(props) {
   }, [])
 
 
-  // useEffect(() => {
-  //   let slider = setInterval(() => {
-  //     setIndex((oldIndex) => {
-  //       let index = oldIndex + 1;
-  //       if (index > network.length - 1) {
-  //         index = 0
-  //       }
-  //       return index
-  //     })
-  //   }, 3000)
-  //   return () => {
-  //     clearInterval(slider)
-  //   }
-  // }, [index])
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex((oldIndex) => {
+        let index = oldIndex + 1;
+        if (index > network.length - 1) {
+          index = 0
+        }
+        return index
+      })
+    }, 3000)
+    return () => {
+      clearInterval(slider)
+    }
+  }, [index])
 
   return (
     <Wrapper className='section'>
@@ -162,7 +162,7 @@ function Networks(props) {
         </>
       }
 
-      {carousel &&
+      {carousel && 
         <div className="section-center">
           {network.map((person, personIndex) => {
             const { id, name, image, networkid } = person;
@@ -204,7 +204,7 @@ function Networks(props) {
               </div>
             )}
           </div>
-          <button className='btn' onClick={close}>Close</button>
+          <button className='btn' onClick={closeAdd}>Close</button>
         </div>
       }
     </Wrapper>
