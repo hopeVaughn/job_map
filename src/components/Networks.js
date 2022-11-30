@@ -115,6 +115,10 @@ function Networks(props) {
     navigate(`/contacts/${id}`)
   }
 
+  const nameImgClicked = (id) => {
+    navigate(`/contacts/${id}`)
+  }
+
   const closeAdd = () => {
     getNetworks(companyId);
     setCarousel(true);
@@ -126,20 +130,20 @@ function Networks(props) {
   }, [])
 
 
-  // useEffect(() => {
-  //   let slider = setInterval(() => {
-  //     setIndex((oldIndex) => {
-  //       let index = oldIndex + 1;
-  //       if (index > network.length - 1) {
-  //         index = 0
-  //       }
-  //       return index
-  //     })
-  //   }, 3000)
-  //   return () => {
-  //     clearInterval(slider)
-  //   }
-  // }, [index])
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex((oldIndex) => {
+        let index = oldIndex + 1;
+        if (index > network.length - 1) {
+          index = 0
+        }
+        return index
+      })
+    }, 3000)
+    return () => {
+      clearInterval(slider)
+    }
+  }, [index])
 
   return (
     <Wrapper className='section'>
@@ -205,8 +209,9 @@ function Networks(props) {
                   size="50"
                   round={true}
                   className="cover"
+                  onClick={() => nameImgClicked(c.id)}
                 />
-                <div className='nick'>{c.name}</div>
+                <div className='nick' onClick={() => nameImgClicked(c.id)}>{c.name}</div>
                 <button className='btn' onClick={() => btnaddNetwork(c.id)}>add</button>
               </div>
             )}
@@ -223,6 +228,10 @@ const Wrapper = styled.section`
   text-align: center;
   margin-bottom: 2rem;
   
+}
+
+.cover{
+  cursor: zoom-in;
 }
 
 .title h2 {
@@ -261,7 +270,7 @@ const Wrapper = styled.section`
   object-fit: cover;
   border: 4px solid var(--clr-grey-8);
   box-shadow: var(--dark-shadow);
-  cursor: pointer;
+  cursor: zoom-in;
 }
 
 article h4 {
@@ -307,6 +316,7 @@ article h4 {
   justify-content: center;
   border-radius: 0.5rem;
   align-items: center;
+  padding-bottom: 5px;
 }
 
 .nick {
@@ -318,6 +328,7 @@ article h4 {
   flex-basis: calc(65% - -30px);
   border-radius: 0.5rem;
   height: 3vh;
+  cursor: zoom-in;
 }
 
 .prev,

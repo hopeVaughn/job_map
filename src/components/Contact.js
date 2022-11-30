@@ -35,7 +35,7 @@ function Contact() {
         .then((res) => {
 
           alert("Contact Deleted")
-          navigate('/contacts');
+          navigate(-1)
 
         })
 
