@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import styled from 'styled-components'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
-//import { contacts } from '../util/constants'
 import Avatar from 'react-avatar';
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +43,11 @@ function Networks(props) {
   async function getOthers(id) {
     const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork/${id}`)
     setWithoutnetwork(result.data);
-    setEnableAddNetwork(result.data[0].length > 0);
+    console.log( result.data)
+    if (result.data.length > 0)
+      setEnableAddNetwork(false)
+    else
+      setEnableAddNetwork(true)
     setcompanyId(id);
   }
 
@@ -61,7 +64,6 @@ function Networks(props) {
       const response = axios.post(`http://localhost:8080/api/networks/`, body)
         .then((res) => {
           getOthers(company_id)
-                   // const confirm = window.confirm('Do you want add another contact?')
           if (withoutnetwork.length === 1) {
             setCarousel(true);
             setIndex(index + 1);
@@ -81,8 +83,8 @@ function Networks(props) {
       const response = axios.delete(`http://localhost:8080/api/networks/${id}`)
         .then((res) => {
           getNetworks(companyId);
+          getOthers(companyId) 
         })
-
     } catch (err) {
       console.error(err.message);
     }
@@ -98,6 +100,7 @@ function Networks(props) {
       return index
     })
   }
+  
   const prevSlide = () => {
     setIndex((oldIndex) => {
       let index = oldIndex - 1
@@ -112,6 +115,10 @@ function Networks(props) {
     navigate(`/contacts/${id}`)
   }
 
+  const nameImgClicked = (id) => {
+    navigate(`/contacts/${id}`)
+  }
+
   const closeAdd = () => {
     getNetworks(companyId);
     setCarousel(true);
@@ -123,20 +130,20 @@ function Networks(props) {
   }, [])
 
 
-  // useEffect(() => {
-  //   let slider = setInterval(() => {
-  //     setIndex((oldIndex) => {
-  //       let index = oldIndex + 1;
-  //       if (index > network.length - 1) {
-  //         index = 0
-  //       }
-  //       return index
-  //     })
-  //   }, 3000)
-  //   return () => {
-  //     clearInterval(slider)
-  //   }
-  // }, [index])
+  useEffect(() => {
+    let slider = setInterval(() => {
+      setIndex((oldIndex) => {
+        let index = oldIndex + 1;
+        if (index > network.length - 1) {
+          index = 0
+        }
+        return index
+      })
+    }, 3000)
+    return () => {
+      clearInterval(slider)
+    }
+  }, [index])
 
   return (
     <Wrapper className='section'>
@@ -170,7 +177,7 @@ function Networks(props) {
             if (personIndex === index) {
               position = 'activeSlide';
             }
-            if (personIndex === index - 1 || (index === 0 && personIndex == network.length - 1)) {
+            if (personIndex === index - 1 || (index === 0 && personIndex === network.length - 1)) {
               position = 'lastSlide'
             }
             if (network.length === 1) {
@@ -202,8 +209,9 @@ function Networks(props) {
                   size="50"
                   round={true}
                   className="cover"
+                  onClick={() => nameImgClicked(c.id)}
                 />
-                <div className='nick'>{c.name}</div>
+                <div className='nick' onClick={() => nameImgClicked(c.id)}>{c.name}</div>
                 <button className='btn' onClick={() => btnaddNetwork(c.id)}>add</button>
               </div>
             )}
@@ -220,6 +228,10 @@ const Wrapper = styled.section`
   text-align: center;
   margin-bottom: 2rem;
   
+}
+
+.cover{
+  cursor: zoom-in;
 }
 
 .title h2 {
@@ -258,7 +270,7 @@ const Wrapper = styled.section`
   object-fit: cover;
   border: 4px solid var(--clr-grey-8);
   box-shadow: var(--dark-shadow);
-  cursor: pointer;
+  cursor: zoom-in;
 }
 
 article h4 {
@@ -304,6 +316,7 @@ article h4 {
   justify-content: center;
   border-radius: 0.5rem;
   align-items: center;
+  padding-bottom: 5px;
 }
 
 .nick {
@@ -315,6 +328,7 @@ article h4 {
   flex-basis: calc(65% - -30px);
   border-radius: 0.5rem;
   height: 3vh;
+  cursor: zoom-in;
 }
 
 .prev,

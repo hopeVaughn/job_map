@@ -35,7 +35,7 @@ function Contact() {
         .then((res) => {
 
           alert("Contact Deleted")
-          navigate('/contacts');
+          navigate(-1)
 
         })
 
@@ -43,7 +43,6 @@ function Contact() {
       console.error(err.message);
     }
   }
-
 
   ///////////////////////////////////////////////////////////
   const updateContact = (body) => {
@@ -97,15 +96,14 @@ function Contact() {
             />
 
             <div className='nick'>
-
               <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
-                <h2><FaLinkedin /></h2>
+                <h2><FaLinkedin className='socialMediaIcon'/></h2>
               </a>
               <a href={contact.github} target="_blank" rel="noopener noreferrer">
-                <h2><FaGithub /></h2>
+                <h2><FaGithub className='socialMediaIcon'/></h2>
               </a>
               <a href={contact.twitter} target="_blank" rel="noopener noreferrer" >
-                <h2><FaTwitterSquare /></h2>
+                <h2><FaTwitterSquare className='socialMediaIcon'/></h2>
               </a>
             </div>
           </div>
@@ -126,6 +124,13 @@ function Contact() {
 export default Contact
 
 const Wrapper = styled.section`
+.socialMediaIcon{
+  color: white;
+}
+.socialMediaIcon:hover{
+  color: blue;
+}
+
 p{
   font-size: 7vh;
   text-align: -webkit-center;
@@ -138,8 +143,7 @@ p{
   justify-content: center;
   align-items: center;
   justify-content: space-evenly;
-  padding-top: 4vh;
-  padding-bottom: 4vh;
+  padding: 4vh 25vh 4vh 25vh;
 }
 
 .press{

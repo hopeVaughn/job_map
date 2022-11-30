@@ -5,9 +5,9 @@ function ContactForm(props) {
 
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [github, setGithub] = useState("");
-  const [twitter, setTwitter] = useState("");
+  const [linkedin, setLinkedin] = useState("https://www.linkedin.com/");
+  const [github, setGithub] = useState("https://github.com/");
+  const [twitter, setTwitter] = useState("https://twitter.com/");
 
  function handleSubmit(e) {
     e.preventDefault()
@@ -87,7 +87,7 @@ function ContactForm(props) {
               placeholder='https://'
               pattern='https://.*' 
               onChange={(e) => setTwitter(e.target.value)}
-              value={twitter || ""}  
+              value={twitter}  
             />
           </div>
 
