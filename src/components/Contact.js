@@ -28,19 +28,19 @@ function Contact() {
     setContact(result.data[0])
   }
 
-
+/////////////////////////////////////////////////////
   const deleteContact = (id) => {
-    try {
-      axios.delete(`http://localhost:8080/api/contacts/${id}`)
-        .then((res) => {
-
-          alert("Contact Deleted")
-          navigate(-1)
-
-        })
-
-    } catch (err) {
-      console.error(err.message);
+    const choice = window.confirm("Are you sure you want to delete this contact?")
+    if (choice) {
+      try {
+        axios.delete(`http://localhost:8080/api/contacts/${id}`)
+          .then((res) => {
+            alert("Contact Deleted")
+            navigate(-1)
+          })
+      } catch (err) {
+        console.error(err.message);
+      }
     }
   }
 
