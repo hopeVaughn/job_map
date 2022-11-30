@@ -123,20 +123,20 @@ function Networks(props) {
   }, [])
 
 
-  useEffect(() => {
-    let slider = setInterval(() => {
-      setIndex((oldIndex) => {
-        let index = oldIndex + 1;
-        if (index > network.length - 1) {
-          index = 0
-        }
-        return index
-      })
-    }, 3000)
-    return () => {
-      clearInterval(slider)
-    }
-  }, [index])
+  // useEffect(() => {
+  //   let slider = setInterval(() => {
+  //     setIndex((oldIndex) => {
+  //       let index = oldIndex + 1;
+  //       if (index > network.length - 1) {
+  //         index = 0
+  //       }
+  //       return index
+  //     })
+  //   }, 3000)
+  //   return () => {
+  //     clearInterval(slider)
+  //   }
+  // }, [index])
 
   return (
     <Wrapper className='section'>
@@ -173,6 +173,10 @@ function Networks(props) {
             if (personIndex === index - 1 || (index === 0 && personIndex == network.length - 1)) {
               position = 'lastSlide'
             }
+            if (network.length === 1) {
+              position = 'activeSlide';
+            }
+
             return (
               <article className={position} key={id}>
                 <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
