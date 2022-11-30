@@ -78,9 +78,9 @@ function Networks(props) {
   }
 
 
-  const remove = (id) => {
+  const remove = async (id) => {
     try {
-      axios.delete(`http://localhost:8080/api/networks/${id}`)
+      await axios.delete(`http://localhost:8080/api/networks/${id}`)
         .then(() => {
           getNetworks(companyId);
           getOthers(companyId)
