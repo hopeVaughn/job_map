@@ -43,7 +43,7 @@ function Create() {
 
   console.log(companies);
   return (
-    <Wrapper>
+    <Wrapper className='parent'>
       <Navbar />
       <div className="title">
         <h2>Create Application</h2>
@@ -94,6 +94,9 @@ function Create() {
 }
 
 const Wrapper = styled.main`
+.parent{
+  min-height:100vh;
+}
 .title{
   color:white;
   margin-top: 2rem;
@@ -113,7 +116,7 @@ padding-bottom:1rem;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* position: fixed; */
+  position:absolute;
   bottom: 0;
   width: 100%;
   height: 5rem;
@@ -133,6 +136,9 @@ padding-bottom:1rem;
   @media (min-width: 776px) {
     flex-direction: row;
   }
+}
+.btn{
+  box-shadow:none;
 }
 `
 export default Create

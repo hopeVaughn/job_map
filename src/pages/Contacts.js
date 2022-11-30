@@ -8,10 +8,10 @@ import React from 'react'
 
 function Contact() {
   return (
-    <Wrapper>
+    <Wrapper >
       <Navbar />
 
-      <div>
+      <div className='parent'>
 
         <ListAllContact />
 
@@ -29,6 +29,9 @@ function Contact() {
 }
 
 const Wrapper = styled.main`
+.parent {
+  min-height:100vh;
+}
 .footer { 
   display: flex;
   align-items: center;

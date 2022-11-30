@@ -35,6 +35,7 @@ function Stages() {
       console.error(error)
     }
   }
+  //handle hr call
   const handleHR = async () => {
     const resume_sent = false;
     const hr_interview = true;
@@ -52,6 +53,7 @@ function Stages() {
       console.error(error)
     }
   }
+  //handle tech call
   const handleTech = async () => {
     const resume_sent = false;
     const hr_interview = false;
@@ -68,6 +70,7 @@ function Stages() {
       console.error(error)
     }
   }
+  //handle offer call
   const handleOffer = async () => {
     const resume_sent = false;
     const hr_interview = false;

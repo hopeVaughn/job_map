@@ -6,24 +6,27 @@ import styled from 'styled-components';
 
 function SingleContact() {
   return (
-    <>
+
+    <Wrapper >
       <Navbar />
-      <div>
+      <div className='parent'>
         <Contact />
       </div>
-      <Wrapper>
-        <div className="footer">
-          <h5>
-            &copy; {new Date().getFullYear()}
-            <span> job.map()</span>
-          </h5>
-          <h5> All rights reserved</h5>
-        </div>
-      </Wrapper>
-    </>
+      <div className="footer">
+        <h5>
+          &copy; {new Date().getFullYear()}
+          <span> job.map()</span>
+        </h5>
+        <h5> All rights reserved</h5>
+      </div>
+    </Wrapper>
+
   )
 }
-const Wrapper = styled.div`
+const Wrapper = styled.main`
+.parent{
+  min-height:78vh;
+}
 .footer { 
   display: flex;
   align-items: center;

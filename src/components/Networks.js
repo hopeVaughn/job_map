@@ -43,7 +43,7 @@ function Networks(props) {
   async function getOthers(id) {
     const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork/${id}`)
     setWithoutnetwork(result.data);
-    console.log( result.data)
+    console.log(result.data)
     if (result.data.length > 0)
       setEnableAddNetwork(false)
     else
@@ -66,7 +66,7 @@ function Networks(props) {
           getOthers(company_id)
           if (withoutnetwork.length === 1) {
             setCarousel(true);
-            setIndex(index + 1);
+            setIndex(index + 1); // setIndex((oldIndex) => oldIndex + 1);
             setAddNetwork(false);
             setEnableAddNetwork(true);
             getNetworks(company_id);
@@ -80,10 +80,10 @@ function Networks(props) {
 
   const remove = (id) => {
     try {
-      const response = axios.delete(`http://localhost:8080/api/networks/${id}`)
-        .then((res) => {
+      axios.delete(`http://localhost:8080/api/networks/${id}`)
+        .then(() => {
           getNetworks(companyId);
-          getOthers(companyId) 
+          getOthers(companyId)
         })
     } catch (err) {
       console.error(err.message);
@@ -100,7 +100,7 @@ function Networks(props) {
       return index
     })
   }
-  
+
   const prevSlide = () => {
     setIndex((oldIndex) => {
       let index = oldIndex - 1
@@ -127,23 +127,23 @@ function Networks(props) {
 
   useEffect(() => {
     getCompany();
-  }, [])
+  }, [remove])
 
 
-  useEffect(() => {
-    let slider = setInterval(() => {
-      setIndex((oldIndex) => {
-        let index = oldIndex + 1;
-        if (index > network.length - 1) {
-          index = 0
-        }
-        return index
-      })
-    }, 3000)
-    return () => {
-      clearInterval(slider)
-    }
-  }, [index])
+  // useEffect(() => {
+  //   let slider = setInterval(() => {
+  //     setIndex((oldIndex) => {
+  //       let index = oldIndex + 1;
+  //       if (index > network.length - 1) {
+  //         index = 0
+  //       }
+  //       return index
+  //     })
+  //   }, 3000)
+  //   return () => {
+  //     clearInterval(slider)
+  //   }
+  // }, [index])
 
   return (
     <Wrapper className='section'>
@@ -169,7 +169,7 @@ function Networks(props) {
         </>
       }
 
-      {carousel && 
+      {carousel &&
         <div className="section-center">
           {network.map((person, personIndex) => {
             const { id, name, image, networkid } = person;

@@ -4,21 +4,27 @@ import { AddContact, Navbar, Footer } from '../components'
 function CreateContact() {
   return (
 
-    <>
+
+    <Wrapper >
       <Navbar />
-      <AddContact />
-      <Wrapper className="footer">
+      <div className="parent">
+        <AddContact />
+      </div>
+      <div className="footer">
         <h5>
           &copy; {new Date().getFullYear()}
           <span> job.map()</span>
         </h5>
         <h5> All rights reserved</h5>
-      </Wrapper>
-    </>
+      </div>
+    </Wrapper>
 
   )
 }
-const Wrapper = styled.div`
+const Wrapper = styled.main`
+.parent {
+  min-height:78vh;
+}
 .footer { 
   display: flex;
   align-items: center;

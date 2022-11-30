@@ -13,7 +13,7 @@ function Levels(props) {
       Axios.get(`http://localhost:8080/api/applications`).then((res) => {
         setQuantity(res.data)
       })
-      .catch(err => console.log(err))
+        .catch(err => console.log(err))
 
     } catch (error) {
       console.error(error.message);
@@ -30,26 +30,36 @@ function Levels(props) {
     props.setLevelClicked(button)
     navigate("/companies")
   }
+  /*
+  if(outputdata.length % 2 === 0){
+    let name = 'resumes'
+  }else{
+    name='resume'
+  }
+  
+  let names = [resume,interview,offer]
+  */
+
 
   return (
     <Wrapper>
       <div className="statistics">
         <div
           className="statistics_btn offers_btn btn" onClick={() => buttonClicked(1)}>
-          <h4>{`${quantity[3]} Offers`}</h4>
+          <h4>{` Offers: ${quantity[3]}`}</h4>
         </div>
 
         <div
           className="statistics_btn tech_iterviews_btn btn" onClick={() => buttonClicked(2)}>
-          <h4>{`${quantity[2]} Tech Interviews`}</h4>
+          <h4>{`Tech Interviews: ${quantity[2]} `}</h4>
         </div>
 
         <div className="statistics_btn hr_iterviews_btn btn" onClick={() => buttonClicked(3)}>
-          <h4>{`${quantity[1]} HR Interviews`}</h4>
+          <h4>{`HR Interviews: ${quantity[1]} `}</h4>
         </div>
 
         <div className="statistics_btn resume_btn btn" onClick={() => buttonClicked(4)}>
-          <h4>{`${quantity[0]} Resumes Sent`}</h4>
+          <h4>{` Resumes Sent: ${quantity[0]}`}</h4>
         </div>
       </div>
     </Wrapper>

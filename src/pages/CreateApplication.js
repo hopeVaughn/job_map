@@ -105,13 +105,14 @@ const CreateApplication = () => {
               setValues({ ...values, resume_sent: true, resume_sent_date: today })
             }>Apply now</button>
         </form>
-      </div>
-      <div className="footer">
-        <h5>
-          &copy; {new Date().getFullYear()}
-          <span> job.map()</span>
-        </h5>
-        <h5> All rights reserved</h5>
+        <div className="footer">
+          <h5>
+            &copy; {new Date().getFullYear()}
+            <span> job.map()</span>
+          </h5>
+          <h5> All rights reserved</h5>
+        </div>
+
       </div>
     </Wrapper>
   )
@@ -140,7 +141,7 @@ const Wrapper = styled.main`
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* position: fixed; */
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 5rem;

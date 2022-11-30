@@ -4,7 +4,7 @@ const Company = ({ id, name, url }) => {
   const navigate = useNavigate()
   return (
     <Wrapper>
-      <div className="container btn">
+      <div className="container">
         <footer>
           <h5 className="btn" onClick={() => navigate(`${url}${id}`)}>{name}</h5>
         </footer>
