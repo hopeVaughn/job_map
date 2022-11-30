@@ -19,6 +19,7 @@ function Stages() {
     }
   }
   //start of handleSubmit calls to dynamically change back end data and className data for front end
+  //handle resume sent call
   const handleSent = async () => {
     const resume_sent = true;
     const hr_interview = false;

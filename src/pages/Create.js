@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
-import { useNavigate, Links } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { Navbar, Footer, Company } from '../components';
+import { Navbar, Company } from '../components';
 
 function Create() {
   const url = '/create/'
