@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Axios from "axios";
-import { FaRegEdit, FaRegCheckSquare } from "react-icons/fa";
-import { MdDeleteOutline, MdClose } from "react-icons/md";
+import { FaRegEdit, FaRegSave } from "react-icons/fa";
+import { MdDeleteOutline,} from "react-icons/md";
+import { IoMdClose, IoMdCheckmark} from "react-icons/io";
+import { ImCheckmark2} from "react-icons/im";
+
+
+
+
+
+
 
 function NoteElement(props) {
   const note = props.note;
@@ -75,7 +83,9 @@ function NoteElement(props) {
               value={noteText}
               onChange={(event) => setNoteText(event.target.value)}
             />
-            <button onClick={saveNote}>save</button>
+            <button className="button-toggle" onClick={saveNote}>
+              <FaRegSave/>
+            </button>
           </div>
         )}
 
@@ -85,11 +95,11 @@ function NoteElement(props) {
             <div className="note-buttons">
               
               <button className="button-toggle" onClick={deleteNote}>
-                Delete
+                <ImCheckmark2/>
               </button>
 
               <button className="button-toggle" onClick={() => setNoteMode("showText")}>
-                Cancel
+                <IoMdClose/>
               </button>
               
             </div>
@@ -111,7 +121,7 @@ const Wrapper = styled.div`
   flex-direction: row;    
   align-items: center;
   font-size: min(3vh, 3vw);
-  height: 6vh;
+  min-height: 6vh;
 }
 
   .red {
@@ -138,6 +148,7 @@ const Wrapper = styled.div`
 
   .note-text {
     width: 70%;
+    text-align: left;
   }
 
   .note-show-wrapper {
@@ -150,16 +161,17 @@ const Wrapper = styled.div`
   
   .button-toggle {
     font-size: 1.2rem;
-    color: var(--clr-black);
+    color: var(--clr-red-dark);
     background: transparent;
     border-color: transparent;
     transition: var(--transition);
     cursor: pointer;
     margin 0 5px;
     
+    
   }
   .button-toggle:hover {
-    color: var(--clr-red-dark);
+    color: var(--clr-grey-800);
     font-size: 1.7rem;
   }
   

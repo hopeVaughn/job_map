@@ -121,7 +121,7 @@ const Wrapper = styled.div`
     border: none;
     outline: none;
     color: #102a43;
-    height: 6vh;
+    min-height: 6vh;
     font-size: 1.4rem;
     
   }
@@ -141,7 +141,7 @@ const Wrapper = styled.div`
     flex-direction: row;    
     align-items: center;
     font-size: min(3vh, 3vw);
-    height: 6vh;
+    min-height: 6vh;
   }
 
   .note-date {
