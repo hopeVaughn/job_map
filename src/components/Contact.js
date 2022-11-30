@@ -44,7 +44,6 @@ function Contact() {
     }
   }
 
-
   ///////////////////////////////////////////////////////////
   const updateContact = (body) => {
     try {
@@ -97,7 +96,6 @@ function Contact() {
             />
 
             <div className='nick'>
-
               <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
                 <h2><FaLinkedin className='socialMediaIcon'/></h2>
               </a>
