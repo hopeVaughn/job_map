@@ -65,12 +65,9 @@ function ListCompanies(props) {
           setStrstage('  Resumes Sent')
           setColor('red')
           break;
-
         default:
-
           break;
       }
-
     } catch (err) {
       console.error(err.message);
     }
@@ -86,7 +83,7 @@ function ListCompanies(props) {
   //pass the id 
   const btnSingleCompanie = (id) => {
     console.log(stage);
-    if (stage == 0) {
+    if (stage === 0) {
       navigate(`/companies/${id}`)
     } else {
       navigate(`/application/${id}`)
@@ -115,8 +112,8 @@ function ListCompanies(props) {
           <div className={`${color} child btn`} onClick={() => btnSingleCompanie(info.id)}>
             {info.name}
           </div>
-          <div className={`${color} child btn`}>{info.stack}</div>
-          <div className={`${color} child btn`}>{info.resume_sent_date.slice(0, 10)}</div>
+          <div className="title">{info.stack}</div>
+          <div className="title">{info.resume_sent_date.slice(0, 10)}</div>
         </div>
       )}
     </Wrapper>
@@ -126,6 +123,9 @@ function ListCompanies(props) {
 export default ListCompanies
 
 const Wrapper = styled.section`
+.title{
+  color: var(--clr-white)
+}
 .childa {
   flex-basis: calc(100% - 40px);
   height: 8vw;
