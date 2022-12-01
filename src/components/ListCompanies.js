@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
-import { Company } from '../components'
 
 function ListCompanies(props) {
 
@@ -103,13 +102,21 @@ function ListCompanies(props) {
         <div className='childb'>
           Company Name
         </div>
+        <div className='childb'>
+          stack
+        </div>
+        <div className='childb'>
+          application date
+        </div>
         {/* <div className='childb'> Resume Submission Date base on the request </div> */}
       </div>
       {list.map((info) =>
         <div className='container' key={info.id}>
-          <button className={`${color} child `} onClick={() => btnSingleCompanie(info.id)}>
-            {info.name} {info.stack}
-          </button>
+          <div className={`${color} child btn`} onClick={() => btnSingleCompanie(info.id)}>
+            {info.name}
+          </div>
+          <div className={`${color} child btn`}>{info.stack}</div>
+          <div className={`${color} child btn`}>{info.resume_sent_date.slice(0, 10)}</div>
         </div>
       )}
     </Wrapper>
@@ -138,8 +145,8 @@ const Wrapper = styled.section`
  }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+ grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   justify-content: center;
   align-items: space-between;

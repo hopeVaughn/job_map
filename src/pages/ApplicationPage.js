@@ -16,6 +16,7 @@ function CompanyPage(props) {
   // get all information about the company by id
   async function getCompany() {
     const response = await axios.get(`http://localhost:8080/api/applications/custom/${applicationId.id}`)
+    console.log(response.data[0]);
     setCompany(response.data[0])
   }
 
@@ -29,7 +30,10 @@ function CompanyPage(props) {
       <Navbar />
       <div >
         <h1 className='title underline'>{company.name}</h1>
-        <h3>{company.stack} Stack</h3>
+        <h3>Stack: {company.stack}</h3>
+        {company.front_end && <h3>Front End</h3>}
+        {company.back_end && <h3>Back End</h3>}
+        {company.full_stack && <h3>Full Stack</h3>}
       </div>
       <Notes applicationID={applicationId.id} />
       <Stages />
