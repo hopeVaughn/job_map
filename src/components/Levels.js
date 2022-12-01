@@ -100,25 +100,25 @@ const Wrapper = styled.section`
   width: 70%;
   margin-left: 15%;
   
-  background-color: red;
+   background-color: #9A031E;
 }
 
 .hr_iterviews_btn {
   width: 55%;
   margin-left: 22.5%;
-  background:orange;
+ background-color: #D95D39;
 }
 
 .tech_iterviews_btn {
   width: 40%;
   margin-left: 30%;
-  background:blue;
+  background-color: #F18805;
 }
 
 .offers_btn {
   width: 25%;
   margin-left: 37.5%;
-  background:green;
+  background-color: #F0A202;
 }
 
 .all_companies_btn {

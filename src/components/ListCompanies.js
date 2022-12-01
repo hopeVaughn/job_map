@@ -182,19 +182,19 @@ const Wrapper = styled.section`
 }
 
 .green {
-  background-color: green;
+  background-color: #F0A202;
 }
 
 .blue {
-  background-color: blue;
+  background-color: #F18805;
 }
 
 .orange {
-  background-color: orange;
+  background-color: #D95D39;
 }
 
 .red {
-  background-color: red;
+  background-color: #9A031E;
 }
 
 .container .b {
