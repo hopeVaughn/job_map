@@ -25,7 +25,7 @@ function Contact() {
 
   async function getContact() {
     const result = await axios.get(`http://localhost:8080/api/contacts/${id}`)
-    setContact(result.data[0])
+      setContact(result.data[0])
   }
 
 /////////////////////////////////////////////////////

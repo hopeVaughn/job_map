@@ -10,6 +10,11 @@ export const navLinks = [
     text: 'Contacts',
     url: '/contacts',
   },
+  {
+    id: 3,
+    text: 'Search Aplications',
+    url: '/all',
+  },
 ]
 export const social = [
   {

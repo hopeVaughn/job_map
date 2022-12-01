@@ -3,6 +3,7 @@ import axios from "axios";
 import Avatar from 'react-avatar';
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AllAplications from './AllApplic';
 
 function ListAllContact() {
 
@@ -37,7 +38,7 @@ const [allContact, setAllContact] = useState([])
 
           <div className='addbtn '>
         <Link to="/contact">
-             <button type="button" className="btn" > ADD New Contact </button>
+             <button type="button" className="btn1" > ADD New Contact </button>
         </Link>
           </div>
 

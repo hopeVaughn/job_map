@@ -14,6 +14,8 @@ import FormRow from "./FormRow";
 import Logo from "./Logo";
 import AddContact from "./AddContact";
 import Company from './Company'
+import AllApplic from './AllApplic'
+
 export {
   Logo,
   Navbar,
@@ -30,5 +32,6 @@ export {
   FormRow,
   ListAllContact,
   AddContact,
-  Company
+  Company,
+  AllApplic
 }
