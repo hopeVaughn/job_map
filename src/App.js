@@ -1,6 +1,6 @@
 import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home, LandingPage, ListedCompanies, ApplicationPage, Register, Contacts, SingleContact, Create, CreateContact, CreateApplication } from './pages';
+import { Home, LandingPage, ListedCompanies, ApplicationPage, Register, Contacts, SingleContact, Create, CreateContact, CreateApplication, AllApplications } from './pages';
 
 import { useState } from "react";
 
@@ -22,6 +22,7 @@ function App() {
         <Route path='contacts' element={<Contacts />} />
         <Route path='contacts/:id' element={<SingleContact />} />
         <Route path='contact' element={<CreateContact />} />
+        <Route path='all' element={<AllApplications />} />
       </Routes>
     </Router>
 

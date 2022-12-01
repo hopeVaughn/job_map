@@ -38,19 +38,19 @@ function AddContact() {
   return (
     <Wrapper>
       <div className="Appform">
-      <div className='form-add'>
-        <h2>ADD New contact:</h2>
+        <div className='form-add'>
+          <h2>ADD New contact:</h2>
 
-       <ContactForm onSubmit={handleSubmit} action="AddContact"/> 
-      
-      </div>
-      <Link to="/contacts">
-        <div className='addbtn'>
-          <button type="button" > CANCEL </button>
+          <ContactForm onSubmit={handleSubmit} action="Add Contact"/> 
+        
         </div>
-      </Link>
-    
-    </div>
+        <Link to="/contacts">
+        <div>
+          <br/>
+          <button type="button" className='btn' > Cancel </button>
+        </div>
+        </Link>
+      </div>
     </Wrapper>
   )
 }
@@ -61,7 +61,7 @@ const Wrapper = styled.section`
 color: white;
 text-align: center;
 
-.form-control{
-  font-size: 30px;
+.Appform{
+  padding-top: 20px;
 }
 `
