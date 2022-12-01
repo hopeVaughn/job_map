@@ -6,6 +6,12 @@ Variables
 
 :root {
   /* colors */
+  --clr-complement-1: #F4E8C1;
+  --clr-complement-2: #A0C1B9;
+  --clr-complement-5: #6fd5bd;
+  --clr-complement-3: #70A0AF;
+  --clr-complement-3-hover: #1a6f89;
+  --clr-complement-4: #EDC79B;
   --clr-primary-50: #f8efff;
   --clr-primary-100: #efdbfe;
   --clr-primary-200: #e5bffe;
@@ -80,7 +86,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Montserrat', 'Helvetica Neue', sans-serif;
   background: var(--clr-primary-900);
-  color: var(--clr-grey-1);
+  color: var(--clr-complement-1);
   line-height: 1.5;
   font-size: 0.875rem;
 }
@@ -295,8 +301,8 @@ ul {
 
 .btn {
   cursor: pointer;
-  color: var(--clr-white);
-  background: var(--clr-primary-500);
+  color: var(--clr-complement-1);
+  background: var(--clr-complement-3-hover);
   border: transparent;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
@@ -308,8 +314,9 @@ ul {
 }
 
 .btn:hover {
-  background: var(--clr-primary-700);
+  background: var(--clr-complement-3);
   box-shadow: var(--clr-shadow-3);
+  color: var(--clr-white)
 }
 
 .btn-hipster {
@@ -372,7 +379,7 @@ ul {
 .form {
   width: 90vw;
   max-width: var(--fixed-width);
-  background: var(--clr-white);
+  background: var(--clr-complement-2);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
   padding: 2rem 2.5rem;

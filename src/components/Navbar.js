@@ -61,8 +61,7 @@ const Navbar = () => {
 
 const Wrapper = styled.nav`
  .nav-center {
- 
-  background: var(--clr-primary-400);
+  background: var(--clr-primary-600);
   box-shadow: var(--shadow-1);
 }
 
