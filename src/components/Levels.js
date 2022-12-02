@@ -39,26 +39,31 @@ function Levels(props) {
       <div className="statistics">
         <div
           className="statistics_btn offers_btn offer" onClick={() => buttonClicked(1)}>
-          <h4>{` Offers: ${quantity[3]}`}</h4>
+          <h4>{` Offers:`} <span className="statistics_number">{quantity[3]}</span></h4>
         </div>
 
         <div
           className="statistics_btn tech_iterviews_btn btn" onClick={() => buttonClicked(2)}>
-          <h4>{`Tech Interviews: ${quantity[2]} `}</h4>
+          <h4>{`Tech Interviews:`} <span className="statistics_number">{quantity[2]} </span></h4>
         </div>
 
         <div className="statistics_btn hr_iterviews_btn btn" onClick={() => buttonClicked(3)}>
-          <h4>{`HR Interviews: ${quantity[1]} `}</h4>
+          <h4>{`HR Interviews:`} <span className="statistics_number"> {quantity[1]}</span></h4>
         </div>
 
         <div className="statistics_btn resume_btn btn" onClick={() => buttonClicked(4)}>
-          <h4>{` Resumes Sent: ${quantity[0]}`}</h4>
+          <h4>{` Resumes Sent:`} <span className="statistics_number"> {quantity[0]}</span></h4>
         </div>
       </div>
     </Wrapper>
   )
 }
 const Wrapper = styled.section`
+.statistics_number {
+  font-family: 'Delight Coffee', sans-serif;
+  font-size: 4vw;
+  color: #A0C1B9;
+}
 .statistics {
   display: flex;
   flex-direction: column;
@@ -66,14 +71,14 @@ const Wrapper = styled.section`
   justify-content: space-around;
   column-gap: 40px;
   width: 100%;
-  height: 80vh;
+  height: 68.5vh;
   background: var(--clr-primary-900);
   align-items: flex-start;  
 }
 .statistics_btn {
   display: flex;
   width: 80%;
-  height: 6vh;
+  height: 9vh;
   justify-content:center;
   align-items:center;
   font-size: min(3vh, 4vw);
