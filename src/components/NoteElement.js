@@ -132,7 +132,7 @@ const Wrapper = styled.div`
     background-color: #829ab1 !important;    
   }
   .note-date {
-    background-color: #ae88d1;
+    background-color: #F18805;
     border-radius: 10px;
     margin: 2px 7px;
     padding: 0 0.5em;

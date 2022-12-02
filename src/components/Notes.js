@@ -37,14 +37,14 @@ function Notes(props) {
     Axios.post(
       `http://localhost:8080/api/applications/${applicationID}/notes`,
       data
-    ).then((res) => {      
-      const { id, timestamp, note } = res.data[0];
-      setNotes([{ id: id, timestamp: timestamp, note: note }, ...notes]);
-    })
-    .catch (error => {
-      console.error(error.message);
-    }) 
-
+    )
+      .then((res) => {
+        const { id, timestamp, note } = res.data[0];
+        setNotes([{ id: id, timestamp: timestamp, note: note }, ...notes]);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   };
 
   //focus a cursor in the input field if it appears
@@ -58,9 +58,9 @@ function Notes(props) {
   };
 
   return (
-    <Wrapper>
+    <Wrapper className="notes-component-wrapper">
       <div className="notes-component">
-        <h5>Notes</h5>
+        <h3>Notes</h3>
 
         <button
           className="btn"
@@ -81,6 +81,7 @@ function Notes(props) {
                 id="typeText"
                 className="input"
                 placeholder="Add Note"
+                autoComplete="off"
                 onChange={(event) => setNewNote(event.target.value)}
               />
             </div>
@@ -94,7 +95,7 @@ function Notes(props) {
             />
           ))}
           {notes.length === 0 && !showAdd && (
-            <p>There are no notes yet, click the button above to add one!</p>
+            <p className="no-notes-message">There are no notes yet, click the button above to add first!</p>
           )}
         </div>
       </div>
@@ -102,31 +103,57 @@ function Notes(props) {
   );
 }
 const Wrapper = styled.div`
+  .notes-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #627d98;
+    padding: 2vh 0;
+    border-radius: 5px;
+    width: 100vw;
+}
   .notes-container {
+    background-color: #334e68;
     height: 30vh;
-    background-color: #681e8a;
-    width: 75vw;
+    width: 85%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    border-radius: 10px;
+    padding: 50px;
 
     padding: 0 4px;
     overflow-y: scroll;
     overflow-x: hidden;
     &::-webkit-scrollbar {
-      width: 0.4em;
+      width: 0.8em;
+      border-radius: 10px;
+
     }
     &::-webkit-scrollbar-track {
-      background: #681e8a;
+      border-radius: 10px;
+      background: #334e68;
     }
     &::-webkit-scrollbar-thumb {
-      background: #d393fd;
+      border-radius: 10px;
+      background: #F18805;
     }
     &::-webkit-scrollbar-thumb:hover {
       background: white;
     }
   }
+
+  .no-notes-message {
+    width: 100%;
+    height: 80%;
+    text-align: center;
+    padding 13vh 0;
+    font-size: 1.4rem;
+    background-color: transparent;
+  }
+
   .input {
     width: 100%;
     background-color: transparent;
@@ -136,12 +163,7 @@ const Wrapper = styled.div`
     min-height: 6vh;
     font-size: 1.4rem;
   }
-  .notes-component {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+
   .note {
     width: 100%;
     background-color: #bcccdc;
