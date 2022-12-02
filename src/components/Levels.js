@@ -21,7 +21,7 @@ function Levels(props) {
       console.error(error.message);
     }
   };
-  
+
   // fetch applications data after page is rendered
   useEffect(() => {
     fetchData()
@@ -36,7 +36,7 @@ function Levels(props) {
 
   return (
     <Wrapper>
-      <div className="statistics">
+      <div className="statistics parent">
         <div
           className="statistics_btn offers_btn offer" onClick={() => buttonClicked(1)}>
           <h4>{` Offers:`} <span className="statistics_number">{quantity[3]}</span></h4>
@@ -59,10 +59,17 @@ function Levels(props) {
   )
 }
 const Wrapper = styled.section`
+.parent{
+  min-height:78.5vh;
+}
+h4 {
+  font-family: 'Delight Coffee', sans-serif;
+
+}
 .statistics_number {
   font-family: 'Delight Coffee', sans-serif;
-  font-size: 4vw;
-  color: #A0C1B9;
+  font-size: 2vw;
+  color:var(--clr-complement-1);
 }
 .statistics {
   display: flex;
@@ -72,8 +79,8 @@ const Wrapper = styled.section`
   column-gap: 40px;
   width: 100%;
   height: 68.5vh;
-  background: var(--clr-primary-900);
-  align-items: flex-start;  
+  align-items: flex-start;   
+  background: rgb(35, 6, 51)
 }
 .statistics_btn {
   display: flex;
@@ -90,27 +97,26 @@ const Wrapper = styled.section`
   
 }
 .statistics_btn:hover {
-  background-color: #041f0b;
+  background-color: var(--clr-primary-200);
   cursor: pointer;
 }
 
 .resume_btn {
   width: 70%;
   margin-left: 15%;
-  
-   background-color: #9A031E;
+  background-color: var(--clr-primary-700);
 }
 
 .hr_iterviews_btn {
   width: 55%;
   margin-left: 22.5%;
- background-color: #D95D39;
+  background-color: var(--clr-primary-600);
 }
 
 .tech_iterviews_btn {
   width: 40%;
   margin-left: 30%;
-  background-color: #F18805;
+  background-color: var(--clr-primary-500);
 }
 
 .offers_btn {
@@ -123,7 +129,7 @@ const Wrapper = styled.section`
   width: 10%;
   margin-left: 45%;
   font-size: min(2vh, 2vw);
-  background:purple;
+  /* background:purple; */
 }
  h4, h5{
   margin:0;
@@ -132,15 +138,15 @@ const Wrapper = styled.section`
 @keyframes progress {
   from {width: 0%;}
   0% {
-    background-color: white;
+    background-color: var(--clr-primary-50);
   }
  
   50% {
-    background-color: grey;
+    background-color: var(--clr-primary-100);
   }
   
   100% {
-    background-color: black;
+    background-color: var(--clr-primary-200);
   }
 }
 
@@ -156,7 +162,7 @@ const Wrapper = styled.section`
 
 .offer {
   border-radius: 0.5rem;
-  background: #F0A202;
+  background: var(--clr-primary-700);
   font-size: 2vw;
   margin-top: 0.3em;
   color: white;
@@ -166,7 +172,17 @@ const Wrapper = styled.section`
 
 .offer:before {
   content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+ background: linear-gradient(45deg, 
+  #681e8a, 
+  #9525eb, 
+  #bc60fa, 
+  #e5bffe,
+  #ae3bf6, 
+  #efdbfe, 
+  #d393fd, 
+  #8d1dd8, 
+  #751eaf
+  );
   position: absolute;
   top: -2px;
   left:-2px;
@@ -197,7 +213,7 @@ const Wrapper = styled.section`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #F0A202;
+  background-color:var(--clr-primary-400);
   left: 0;
   top: 0;
   border-radius: 10px;

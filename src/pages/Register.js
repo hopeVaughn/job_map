@@ -88,7 +88,7 @@ function Register() {
           submit
         </Link>
         <p>
-          {values.isMember ? 'Not a user yet?' : 'Already a user'}
+          {values.isMember ? 'Not a user yet? ' : 'Already a user '}
           <button type='button' onClick={toggleMember} className="member-btn">
             {values.isMember ? 'Register' : 'Login'}
           </button>
@@ -109,6 +109,7 @@ const Wrapper = styled.section`
     color:var(--clr-white);
   }
   .form {
+    font-family: 'Delight Coffee', sans-serif;
     max-width: 400px;
     border-top: 5px solid var(--clr-primary-200);
   }

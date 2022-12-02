@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React, { useState, useRef, useEffect } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { navLinks, social } from '../util/constants'
@@ -18,8 +18,6 @@ const Navbar = () => {
       linksContainerRef.current.style.height = '0px';
     }
   }, [showLinks])
-
-  const navigate = useNavigate();
 
   return (
     <Wrapper>
@@ -59,9 +57,12 @@ const Navbar = () => {
 
 
 const Wrapper = styled.nav`
+
  .nav-center {
   background: var(--clr-primary-600);
   box-shadow: var(--shadow-1);
+  font-family: 'Delight Coffee', sans-serif;
+  font-size: 1.5rem;
 }
 
 .nav-header {

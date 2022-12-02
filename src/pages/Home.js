@@ -35,7 +35,7 @@ const Wrapper = styled.section`
   padding-bottom: 20%;
   padding-right: 30%;
 }                                  
-}
+
 
  .login {
     border-radius: 0.5rem;
@@ -50,7 +50,18 @@ const Wrapper = styled.section`
 
   .login:before {
     content: '';
-    background: linear-gradient(45deg, #efdbfe, #e5bffe, #d393fd, #bc60fa, #ae3bf6, #9525eb, #8d1dd8, #751eaf, #681e8a);
+ background: linear-gradient(45deg, 
+  #681e8a, 
+  #bc60fa, 
+  #9525eb, 
+  #e5bffe,
+  #ae3bf6, 
+  #8d1dd8, 
+  #efdbfe, 
+  #d393fd, 
+  #751eaf
+  );
+
     position: absolute;
     top: -2px;
     left:-2px;
