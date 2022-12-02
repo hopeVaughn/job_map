@@ -17,32 +17,34 @@ function Home() {
 }
 
 const Wrapper = styled.section`
-  .job {
-    margin: 0;
-    padding: 0;
-    color: antiquewhite;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 5vw;
-    width: 100%;
-    height: 95vh;  
-    
-    animation: zoomInDown; 
-    animation-duration: 2s;
-  }
+.job {
+  margin: 0;
+  padding: 0;
+  color: antiquewhite;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 11vw;
+  width: 100%;
+  height: 95vh;
+  animation: zoomInDown; 
+  animation-duration: 2s;
+  font-family: 'Delight Coffee', sans-serif;
+  white-space: pre-wrap;                                     
+}
 
  .login {
     border-radius: 0.5rem;
     background: var(--clr-primary-900);
-    font-size: 2vw;
-    margin-top: 0.3em;
-    color: white;
+    font-size: 7vw;
+    color: var(--clr-complement-3);
     position: relative;
     z-index: 0;
-  } 
+    font-family: sans-serif;
+    padding-bottom: 1%;
+ } 
 
   .login:before {
     content: '';
@@ -79,12 +81,16 @@ const Wrapper = styled.section`
     position: absolute;
     width: 100%;
     height: 100%;
-    background:var(--clr-primary-300);
+    background:var(--clr-primary-900);
     left: 0;
     top: 0;
     border-radius: 10px;
   }
 
+  a, button {
+    line-height: 0.8;
+
+}
   @keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }

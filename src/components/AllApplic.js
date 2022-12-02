@@ -41,7 +41,7 @@ function AllApplic() {
   }
 
   const handleChange = (event) => {
-    setInputSearch(event.target.value);
+    setInputSearch(event.target.value.charAt(0).toUpperCase());
   };
 
   useEffect (() => {
@@ -51,14 +51,10 @@ function AllApplic() {
   return (
     <Wrapper>
      <section>
-        <button className='btn'
-          onClick={listAll}
-        >
+        <button className='btn' onClick={listAll}>
           See All Applications
         </button >
-        <button className='btn'
-          onClick={clear}
-        >
+        <button className='btn'onClick={clear}>
           Clear
         </button >
         <br/>
@@ -73,15 +69,21 @@ function AllApplic() {
         ></input>
         <br/>
         <br/>
-        <br/>
-        <div className='outer-div'> 
-          <div className='grid-box header'>
-            <div>Company</div>
-            <div>Resume Sent Date</div>
-            <div>Stage</div>
-            <div>Applied Position</div>
+        <br/>     
+          <div className='container'>
+            <div className='childb'>
+              Company Name
+            </div>
+            <div className='childb'>
+              Application Date
+            </div>
+            <div className='childb'>
+              Stage
+            </div>
+            <div className='childb'>
+              Applied Position
+            </div>
           </div>
-        </div>
 
       {searchData.length > 0 &&
         searchData.map((x) =>
@@ -104,22 +106,23 @@ function AllApplic() {
               message = "⭐ Got a Offer"
               color = 'yellow'
             } 
-          return (<div className='outer-div b' key={x.id}> 
-            <div className={` ${color} grid-box b`} onClick={() => listApplications(x.id)}>
-              <div>{x.name}</div>
-              <div>{x.resume_sent_date.slice(0, 10)}</div>
-              <div>{message}</div>
-              <div>
-                {x.front_end ? "Front End" : " "}
-                {x.back_end ? "Back End" : " "}
-                {x.full_stack ? "Full Stack" : " "}
+          return (    
+              <div className='container b' key={x.id}>
+                <div className={`${color} child btn`} onClick={() => listApplications(x.id)}>
+                  {x.name}
+                </div>
+                <div className="title">{x.resume_sent_date.slice(0, 10)}</div>
+                <div className="title">{message}</div>
+                <div className="title">
+                  {x.front_end ? "Front End" : " "}
+                  {x.back_end ? "Back End" : " "}
+                  {x.full_stack ? "Full Stack" : " "}
+                </div>
               </div>
-            </div>
-          </div>)}
+          )}
         )}
       </section>
     </Wrapper>
-  
   )
 }
 
@@ -129,42 +132,55 @@ const Wrapper = styled.main`
 color: white;
 text-align: center;
 
-.header{
-  background-color: gray;
-  font-size: 120%;
-}
-
-.outer-div {
-  width: 100%;
-  text-align: -webkit-center;
-}
-
 .btn{
   margin: 1%;
+  border-radius: 0.5rem;
 }
 
-.b {
-  cursor: pointer;
-}
 .b:hover {
   transform: scale(1.03);
+  background: var(--clr-primary-600);
+  border-radius: 0.5rem;
 }
 
-.title{
-  margin-bottom: 2vw;
+.childa {
+  flex-basis: calc(100% - 40px);
+  height: 8vw;
+  border-radius: 0.5rem;
+  background-color: rgb(238, 160, 70);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4% 30% 4% 30%;
+  font-size: 2vw;
+  white-space:pre;
 }
 
-.grid-box {
+.childa .quantity{
+  font-size:5vw
+}
+
+.container {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-gap: 1.5rem;
-  justify-items: center;
-  padding: 0;
-  border: groove;
-  border-radius: 0.5rem;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  align-items: space-between;
+  font-size: 1.5vw;
+}
+
+.container .childb {
   background-color: gray;
+  flex-basis: calc(50% - 40px);
+  height: 3vw;
+  border-radius: 0.5rem;
   color: #FFFFFF;
-  width: 70% 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2vw;
 }
 
 .red {
