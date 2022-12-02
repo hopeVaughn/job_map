@@ -65,6 +65,7 @@ function AllApplic() {
         </button >
         
         <br/>
+        <div>OR</div>
         <br/>
         <span>Search by company name: </span>
         <input
