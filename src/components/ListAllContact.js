@@ -38,7 +38,7 @@ const [allContact, setAllContact] = useState([])
 
           <div className='addbtn '>
         <Link to="/contact">
-             <button type="button" className="btn1" > ADD New Contact </button>
+             <button type="button" className="btn" > ADD New Contact </button>
         </Link>
           </div>
 

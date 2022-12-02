@@ -7,20 +7,33 @@ import useDebounce from '../hooks/useDebounce';
 
 function AllApplic() {
   const [inputSearch, setInputSearch] = useState(""); 
-  const [all, setAll] = useState([]); 
+  const [searchData, setSearchData] = useState([]); 
+  const [getAll, setGetAll] = useState([]);
+  const [color, setColor] = useState([])
 
-  //a busca so vai ser executada apos 500ms , por causa do debounce 
+ 
+  //debounce used to wait user type couple words before call
   const debouncedValue = useDebounce(inputSearch, 500);
 
 
   async function allApplic(parameter) {
     try {
       const res = await axios.get(`http://localhost:8080/api/applications/all/`);
+      setGetAll(res.data);
       const filteredData = res.data.filter(app => app.name.includes(parameter))
-      setAll(filteredData);
+      setSearchData(filteredData);
     } catch (err) {
       console.error(err.message);
     }
+  }
+
+  const listAll = () => {
+    allApplic("");
+    setSearchData(getAll);
+  }
+
+  const clear = () => {
+    setSearchData([]);
   }
   
   const navigate = useNavigate();
@@ -34,17 +47,25 @@ function AllApplic() {
   };
 
   useEffect (() => {
-    inputSearch === '' ? setAll([]) : allApplic(inputSearch);
+    inputSearch === '' ? setSearchData([]) : allApplic(inputSearch);
   }, [debouncedValue])
 
   return (
     <Wrapper>
      <section>
-        <button type="submit">
+        <button className='btn'
+          onClick={listAll}
+        >
           See All Applications
+        </button >
+        <button className='btn'
+          onClick={clear}
+        >
+          Clear
         </button >
         
         <br/>
+        <div>OR</div>
         <br/>
         <span>Search by company name: </span>
         <input
@@ -56,24 +77,41 @@ function AllApplic() {
         <br/>
         <br/>
         <br/>
+        <div className='outer-div'> 
+          <div className='grid-box header'>
+            <div>Company</div>
+            <div>Resume Sent Date</div>
+            <div>Stage</div>
+            <div>Applied Position</div>
+          </div>
+        </div>
 
-        {/* <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Submit
-        </button> */}
-      {all.length > 0 &&
-        all.map((x) =>
-        <div className='outer-div b' key={x.id}> 
-          <div className='grid-box b' onClick={() => listApplications(x.id)}>
-            <div>{x.name}</div>
-            <div>{x.resume_sent_date}</div>
-            <div>
-              {x.resume_sent ? "Resume Sent" : " "}      
-              {x.hr_interview ? "Hr Interview" : " "}
-              {x.tech_interview ? "Tech Interview" : " "}
-              {x.job_offer ? " ⭐ Got a Offer" : " "}
+      {searchData.length > 0 &&
+        searchData.map((x) =>
+        {
+          let message;
+          let color;
+            if(x.resume_sent){
+              message = "Resume Sent"
+              color = 'red'
+            } 
+            if(x.hr_interview){
+              message = "Hr Interview"
+              color = 'orange'
+            } 
+            if(x.tech_interview){
+              message = "Tech Interview"
+              color = 'blue'
+            } 
+            if(x.job_offer){
+              message = "⭐ Got a Offer"
+              color = 'green'
+            } 
+          return (<div className='outer-div b' key={x.id}> 
+            <div className={` ${color} grid-box b`} onClick={() => listApplications(x.id)}>
+              <div>{x.name}</div>
+              <div>{x.resume_sent_date.slice(0, 10)}</div>
+              <div>{message}
             </div>
             <div>
               {x.front_end ? "Front End" : " "}
@@ -81,7 +119,7 @@ function AllApplic() {
               {x.full_stack ? "Full Stack" : " "}
             </div>
           </div>
-        </div>
+        </div>)}
         )}
     </section>
     </Wrapper>
@@ -95,9 +133,17 @@ const Wrapper = styled.main`
 color: white;
 text-align: center;
 
+.header{
+  background-color: gray;
+  font-size: 120%;
+}
+
 .outer-div {
   width: 100%;
   text-align: -webkit-center;
+}
+.btn{
+  margin: 1%;
 }
 
 .b {
@@ -105,7 +151,6 @@ text-align: center;
 }
 .b:hover {
   transform: scale(1.05);
-
 }
 
 .title{
@@ -123,6 +168,26 @@ text-align: center;
   background-color: gray;
   color: #FFFFFF;
   width: 70% 
+}
+
+
+
+
+
+.green {
+  background-color: #F0A202;
+}
+
+.blue {
+  background-color: #F18805;
+}
+
+.orange {
+  background-color: #D95D39;
+}
+
+.red {
+  background-color: #9A031E;
 }
 
 `
