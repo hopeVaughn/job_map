@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Axios from "axios";
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import { IoMdClose, IoMdCheckmark } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 import { ImCheckmark2 } from "react-icons/im";
 
 function NoteElement(props) {

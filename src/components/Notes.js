@@ -12,6 +12,7 @@ function Notes(props) {
   const [showAdd, setShowAdd] = useState(false);
   const [newNote, setNewNote] = useState("");
 
+  //fetch all notes related to a given application
   useEffect(() => {
     Axios.get(
       `http://localhost:8080/api/applications/${applicationID}/notes`
@@ -32,16 +33,21 @@ function Notes(props) {
     setNewNote("");
     const data = { note: newNote };
 
+    //post new note related to a given application
     Axios.post(
       `http://localhost:8080/api/applications/${applicationID}/notes`,
       data
-    ).then((res) => {
-      console.log("reeeeees", res);
+    ).then((res) => {      
       const { id, timestamp, note } = res.data[0];
       setNotes([{ id: id, timestamp: timestamp, note: note }, ...notes]);
-    });
+    })
+    .catch (error => {
+      console.error(error.message);
+    }) 
+
   };
 
+  //focus a cursor in the input field if it appears
   useEffect(() => {
     if (!showAdd) return;
     document.getElementById("typeText").focus();
