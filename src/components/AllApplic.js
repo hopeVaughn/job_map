@@ -7,20 +7,32 @@ import useDebounce from '../hooks/useDebounce';
 
 function AllApplic() {
   const [inputSearch, setInputSearch] = useState(""); 
-  const [all, setAll] = useState([]); 
+  const [searchData, setSearchData] = useState([]); 
+  const [getAll, setGetAll] = useState([]);
 
-  //a busca so vai ser executada apos 500ms , por causa do debounce 
+ 
+  //debounce used to wait user type couple words before call
   const debouncedValue = useDebounce(inputSearch, 500);
 
 
   async function allApplic(parameter) {
     try {
       const res = await axios.get(`http://localhost:8080/api/applications/all/`);
+      setGetAll(res.data);
       const filteredData = res.data.filter(app => app.name.includes(parameter))
-      setAll(filteredData);
+      setSearchData(filteredData);
     } catch (err) {
       console.error(err.message);
     }
+  }
+
+  const listAll = () => {
+    allApplic("");
+    setSearchData(getAll);
+  }
+
+  const clear = () => {
+    setSearchData([]);
   }
   
   const navigate = useNavigate();
@@ -34,14 +46,21 @@ function AllApplic() {
   };
 
   useEffect (() => {
-    inputSearch === '' ? setAll([]) : allApplic(inputSearch);
+    inputSearch === '' ? setSearchData([]) : allApplic(inputSearch);
   }, [debouncedValue])
 
   return (
     <Wrapper>
      <section>
-        <button type="submit">
+        <button className='btn'
+          onClick={listAll}
+        >
           See All Applications
+        </button >
+        <button className='btn'
+          onClick={clear}
+        >
+          Clear
         </button >
         
         <br/>
@@ -56,19 +75,21 @@ function AllApplic() {
         <br/>
         <br/>
         <br/>
+        <div className='outer-div'> 
+          <div className='grid-box header'>
+            <div>Company</div>
+            <div>Resume Sent Date</div>
+            <div>Stage</div>
+            <div>Applied Position</div>
+          </div>
+        </div>
 
-        {/* <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Submit
-        </button> */}
-      {all.length > 0 &&
-        all.map((x) =>
+      {searchData.length > 0 &&
+        searchData.map((x) =>
         <div className='outer-div b' key={x.id}> 
           <div className='grid-box b' onClick={() => listApplications(x.id)}>
             <div>{x.name}</div>
-            <div>{x.resume_sent_date}</div>
+            <div>{x.resume_sent_date.slice(0, 10)}</div>
             <div>
               {x.resume_sent ? "Resume Sent" : " "}      
               {x.hr_interview ? "Hr Interview" : " "}
@@ -99,13 +120,16 @@ text-align: center;
   width: 100%;
   text-align: -webkit-center;
 }
+.btn{
+  margin: 1%;
+}
 
 .b {
   cursor: pointer;
 }
 .b:hover {
   transform: scale(1.05);
-
+  
 }
 
 .title{
@@ -125,4 +149,7 @@ text-align: center;
   width: 70% 
 }
 
+.header{
+  background: black;
+}
 `
