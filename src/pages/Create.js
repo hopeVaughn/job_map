@@ -70,7 +70,7 @@ function Create() {
         <form onSubmit={companySubmit} className="title company-form">
           <label>
             <span className='company-name'> Company Name: <br /></span>
-            <input type='text' name="company" value={companyName} onChange={handleChange} placeholder="Add Company Name" />
+            <input type='text' name="company" value={companyName} onChange={handleChange} placeholder="Add Company Name" className='place-holder' />
           </label>
           <input type="submit" value="Submit" className='btn' />
         </form>
@@ -85,7 +85,7 @@ function Create() {
       <div className="footer">
         <h5>
           &copy; {new Date().getFullYear()}
-          <span> job.map()</span>
+          <span> job.map( )</span>
         </h5>
         <h5> All rights reserved</h5>
       </div>
@@ -97,11 +97,26 @@ const Wrapper = styled.main`
 .parent{
   min-height:100vh;
 }
+h2{
+    font-family: 'Delight Coffee', sans-serif;
+    color:var(--clr-complement-1)
+}
+.btn{
+  font-family: 'Delight Coffee', sans-serif;
+  font-size:1rem;
+}
+.place-holder{
+  font-family: 'Delight Coffee', sans-serif;
+  font-size:1rem;
+}
 .title{
   color:white;
   margin-top: 2rem;
 }
 .company-form{
+  font-family: 'Delight Coffee', sans-serif;
+  color: var(--clr-complement-1);
+  font-size:1.5rem;
   margin-top: 3rem;
 }
 .company-name{
@@ -141,6 +156,9 @@ padding-bottom:1rem;
 }
 .btn{
   box-shadow:none;
+}
+.container{
+  background:rgb(35, 6, 51);
 }
 `
 export default Create

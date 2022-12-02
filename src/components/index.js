@@ -14,7 +14,7 @@ import FormRow from "./FormRow";
 import Logo from "./Logo";
 import AddContact from "./AddContact";
 import Company from './Company'
-import AllApplic from './AllApplic'
+import AllApplications from './AllApplications'
 
 export {
   Logo,
@@ -33,5 +33,5 @@ export {
   ListAllContact,
   AddContact,
   Company,
-  AllApplic
+  AllApplications
 }

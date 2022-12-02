@@ -128,22 +128,6 @@ function Networks(props) {
     getCompany();
   }, [])
 
-
-  // useEffect(() => {
-  //   let slider = setInterval(() => {
-  //     setIndex((oldIndex) => {
-  //       let index = oldIndex + 1;
-  //       if (index > network.length - 1) {
-  //         index = 0
-  //       }
-  //       return index
-  //     })
-  //   }, 3000)
-  //   return () => {
-  //     clearInterval(slider)
-  //   }
-  // }, [index])
-
   return (
     <Wrapper className='section'>
 
@@ -161,17 +145,16 @@ function Networks(props) {
             }
             setAddNetwork(true)
             getOthers(companyId)
-
           }}
           >Add New Network</button>
-          <div>number of network   {network.length}</div>
+          <div className='number'>number of network: {network.length}</div>
         </>
       }
 
       {carousel &&
         <div className="section-center">
           {network.map((person, personIndex) => {
-            const { id, name, image, networkid } = person;
+            const { id, name, image, networkId } = person;
             let position = 'nextSlide';
             if (personIndex === index) {
               position = 'activeSlide';
@@ -187,7 +170,7 @@ function Networks(props) {
               <article className={position} key={id}>
                 <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
                 <h4>{name}</h4>
-                <button className='btn' onClick={() => remove(networkid)}>Remove</button>
+                <button className='btn' onClick={() => remove(networkId)}>Remove</button>
               </article>
             )
           })}
@@ -200,18 +183,18 @@ function Networks(props) {
       {addNetwork &&
         <div>
           <div className='addNetwork'>
-            {withoutNetwork.map((c) =>
-              <div className='list' key={c.id}>
+            {withoutNetwork.map((contact) =>
+              <div className='list' key={contact.id}>
                 <Avatar
                   alt="contact photo"
-                  src={c.image}
+                  src={contact.image}
                   size="50"
                   round={true}
                   className="cover"
-                  onClick={() => nameImgClicked(c.id)}
+                  onClick={() => nameImgClicked(contact.id)}
                 />
-                <div className='nick' onClick={() => nameImgClicked(c.id)}>{c.name}</div>
-                <button className='btn' onClick={() => btnAddNetwork(c.id)}>add</button>
+                <div className='nick' onClick={() => nameImgClicked(contact.id)}>{contact.name}</div>
+                <button className='btn' onClick={() => btnAddNetwork(contact.id)}>add</button>
               </div>
             )}
           </div>
@@ -226,13 +209,24 @@ const Wrapper = styled.section`
 .title {
   text-align: center;
   margin-bottom: 2rem;
-  
 }
-
+h2{
+    font-family: 'Delight Coffee', sans-serif;
+    color: var(--clr-complement-1);
+    font-size:3.5rem;
+}
+.btn{
+    font-family: 'Delight Coffee', sans-serif;
+    color: var(--clr-complement-1);
+    font-size:1.5rem;
+}
 .cover{
   cursor: zoom-in;
 }
-
+.number{
+      font-family: 'Delight Coffee', sans-serif;
+    color: var(--clr-complement-1);
+}
 .title h2 {
   display: flex;
   align-items: center;
@@ -387,6 +381,7 @@ article {
 article.activeSlide {
   opacity: 1;
   transform: translateX(0);
+  color: var(--clr-complement-1);
 }
 
 article.lastSlide {

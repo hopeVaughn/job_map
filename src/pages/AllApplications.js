@@ -1,6 +1,6 @@
 // add edit
 import React from 'react'
-import AllApplic from '../components/AllApplic'
+import AllApplic from '../components/AllApplications'
 import { Navbar } from '../components';
 import styled from 'styled-components';
 

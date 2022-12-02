@@ -54,8 +54,15 @@ text-align: center;
 .title{
   padding-top:2rem;
   text-decoration-line: underline;  
+  font-family: 'Delight Coffee', sans-serif;
+  color: var(--clr-complement-1);
+  font-size:4rem;
 }
-
+h3{
+  font-family: 'Delight Coffee', sans-serif;
+  color: var(--clr-complement-1);
+  font-size:3rem;
+}
 .notes-component-wrapper {
   display: flex;
   justify-content: center;
@@ -66,8 +73,6 @@ text-align: center;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* position: fixed; */
-  /* z-index: 1; */
   bottom: 0;
   width: 100%;
   height: 5rem;

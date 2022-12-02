@@ -129,7 +129,8 @@ const Wrapper = styled.main`
   margin-top: 2rem;
 }
 .create-forms{
-  background-color: var(--clr-complement-2);
+  background-color: var(--clr-primary-300);
+  font-size:2.5rem;
 }
 .position-row{
   display: flex;

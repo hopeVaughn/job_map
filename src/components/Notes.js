@@ -102,21 +102,25 @@ function Notes(props) {
     </Wrapper>
   );
 }
-const Wrapper = styled.div`
+const Wrapper = styled.section`
+
   .notes-component {
+    font-family: 'Delight Coffee', sans-serif;
+    color: var(--clr-complement-1);
+    font-size:2.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-    background-color: #627d98;
+    background: rgb(35, 6, 51);
     padding: 2vh 0;
     border-radius: 5px;
     width: 100vw;
 }
   .notes-container {
-    background-color: #334e68;
+    background: rgb(35, 6, 51);
     height: 30vh;
-    width: 85%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -149,9 +153,9 @@ const Wrapper = styled.div`
     width: 100%;
     height: 80%;
     text-align: center;
-    padding 13vh 0;
+    padding: 13vh 0;
     font-size: 1.4rem;
-    background-color: transparent;
+    background: rgb(35, 6, 51);
   }
 
   .input {
@@ -190,6 +194,9 @@ const Wrapper = styled.div`
   }
   .wrap-note {
     width: 100%;
+  }
+  .btn{
+    font-size:1.5rem;
   }
 `;
 

@@ -64,7 +64,7 @@ const Wrapper = styled.section`
 }
 h4 {
   font-family: 'Delight Coffee', sans-serif;
-  color: var(--clr-complement-1)
+   color: var(--clr-complement-1);
 }
 .statistics_number {
   font-family: 'Delight Coffee', sans-serif;
@@ -110,13 +110,13 @@ h4 {
 .hr_iterviews_btn {
   width: 55%;
   margin-left: 22.5%;
-  background-color: var(--clr-primary-600);
+  background-color: var(--clr-primary-500);
 }
 
 .tech_iterviews_btn {
   width: 40%;
   margin-left: 30%;
-  background-color: var(--clr-primary-500);
+  background-color: var(--clr-primary-400);
 }
 
 .offers_btn {
@@ -203,7 +203,7 @@ h4 {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color:var(--clr-primary-400);
+  background-color:var(--clr-primary-300);
   left: 0;
   top: 0;
   border-radius: 10px;
