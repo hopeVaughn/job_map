@@ -8,6 +8,7 @@ function Levels(props) {
 
   const [quantity, setQuantity] = useState([]);
 
+  //get the quantity of applications from the server
   const fetchData = () => {
     try {
       Axios.get(`http://localhost:8080/api/applications`).then((res) => {
@@ -20,7 +21,8 @@ function Levels(props) {
       console.error(error.message);
     }
   };
-
+  
+  // fetch applications data after page is rendered
   useEffect(() => {
     fetchData()
   }, []);
@@ -31,16 +33,6 @@ function Levels(props) {
     props.setLevelClicked(button)
     navigate("/companies")
   }
-  /*
-  if(outputdata.length % 2 === 0){
-    let name = 'resumes'
-  }else{
-    name='resume'
-  }
-  
-  let names = [resume,interview,offer]
-  */
-
 
   return (
     <Wrapper>

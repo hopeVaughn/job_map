@@ -2,15 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Axios from "axios";
 import { FaRegEdit, FaRegSave } from "react-icons/fa";
-import { MdDeleteOutline,} from "react-icons/md";
-import { IoMdClose, IoMdCheckmark} from "react-icons/io";
-import { ImCheckmark2} from "react-icons/im";
-
-
-
-
-
-
+import { MdDeleteOutline } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
+import { ImCheckmark2 } from "react-icons/im";
 
 function NoteElement(props) {
   const note = props.note;
@@ -50,7 +44,11 @@ function NoteElement(props) {
 
   return (
     <Wrapper className="wrap-note">
-      <div className={`note ${noteMode === "delete" && "red" } ${noteMode === "edit" && "blue" }`}>
+      <div
+        className={`note ${noteMode === "delete" && "red"} ${
+          noteMode === "edit" && "blue"
+        }`}
+      >
         <span className="note-date">
           {Date(note.timestamp).toString().split(" ").slice(1, 4).join("-")}
         </span>
@@ -84,7 +82,7 @@ function NoteElement(props) {
               onChange={(event) => setNoteText(event.target.value)}
             />
             <button className="button-toggle" onClick={saveNote}>
-              <FaRegSave/>
+              <FaRegSave />
             </button>
           </div>
         )}
@@ -93,15 +91,16 @@ function NoteElement(props) {
           <div className="note-show-wrapper">
             <span className="delete-confirmation">Delete the note?</span>
             <div className="note-buttons">
-              
               <button className="button-toggle" onClick={deleteNote}>
-                <ImCheckmark2/>
+                <ImCheckmark2 />
               </button>
 
-              <button className="button-toggle" onClick={() => setNoteMode("showText")}>
-                <IoMdClose/>
+              <button
+                className="button-toggle"
+                onClick={() => setNoteMode("showText")}
+              >
+                <IoMdClose />
               </button>
-              
             </div>
           </div>
         )}
@@ -133,7 +132,7 @@ const Wrapper = styled.div`
     background-color: #829ab1 !important;    
   }
   .note-date {
-    background-color: #ae88d1;
+    background-color: #F18805;
     border-radius: 10px;
     margin: 2px 7px;
     padding: 0 0.5em;

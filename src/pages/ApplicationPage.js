@@ -56,6 +56,11 @@ text-align: center;
   text-decoration-line: underline;  
 }
 
+.notes-component-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .footer { 
   display: flex;
   align-items: center;
@@ -67,6 +72,7 @@ text-align: center;
   width: 100%;
   height: 5rem;
   background: var(--clr-primary-400);
+
 
   span {
     color: var(--clr-primary-5);
