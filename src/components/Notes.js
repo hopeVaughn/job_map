@@ -23,7 +23,7 @@ function Notes(props) {
   const removeNoteById = (id) => {
     const newNotes = notes.filter((el) => el.id !== id);
     setNotes(newNotes);
-  }
+  };
 
   const saveClicked = () => {
     setShowAdd(false);
@@ -44,8 +44,8 @@ function Notes(props) {
 
   useEffect(() => {
     if (!showAdd) return;
-    document.getElementById('typeText').focus()
-  }, [showAdd])
+    document.getElementById("typeText").focus();
+  }, [showAdd]);
 
   const addNewNoteClicked = () => {
     setShowAdd(true);
@@ -80,10 +80,16 @@ function Notes(props) {
             </div>
           )}
 
-          {notes.map((note) => (          
-            <NoteElement note={note} key={note.id} removeNoteById={removeNoteById}/>
+          {notes.map((note) => (
+            <NoteElement
+              note={note}
+              key={note.id}
+              removeNoteById={removeNoteById}
+            />
           ))}
-          {notes.length === 0 && !showAdd && <p>There are no notes yet, click the button above to add one!</p>}
+          {notes.length === 0 && !showAdd && (
+            <p>There are no notes yet, click the button above to add one!</p>
+          )}
         </div>
       </div>
     </Wrapper>
@@ -123,7 +129,6 @@ const Wrapper = styled.div`
     color: #102a43;
     min-height: 6vh;
     font-size: 1.4rem;
-    
   }
   .notes-component {
     display: flex;
@@ -138,7 +143,7 @@ const Wrapper = styled.div`
     margin: 2px 0;
     border-radius: 5px;
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
     align-items: center;
     font-size: min(3vh, 3vw);
     min-height: 6vh;
