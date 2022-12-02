@@ -37,7 +37,7 @@ function Levels(props) {
     <Wrapper>
       <div className="statistics">
         <div
-          className="statistics_btn offers_btn btn" onClick={() => buttonClicked(1)}>
+          className="statistics_btn offers_btn offer" onClick={() => buttonClicked(1)}>
           <h4>{` Offers: ${quantity[3]}`}</h4>
         </div>
 
@@ -110,7 +110,7 @@ const Wrapper = styled.section`
 .offers_btn {
   width: 25%;
   margin-left: 37.5%;
-  background-color: #F0A202;
+  
 }
 
 .all_companies_btn {
@@ -143,6 +143,65 @@ const Wrapper = styled.section`
   75%{color: transparent;}
   100% {color: inherit;}
 }
+
+
+
+
+
+.offer {
+  border-radius: 0.5rem;
+  background: #F0A202;
+  font-size: 2vw;
+  margin-top: 0.3em;
+  color: white;
+  position: relative;
+  z-index: 0;
+} 
+
+.offer:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+.offer {
+  color: var(--clr-complement-1);
+}
+
+.offer {
+  background: transparent;
+}
+
+.offer:after {
+  color: white;
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #F0A202;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+} 
 
 `
 export default Levels

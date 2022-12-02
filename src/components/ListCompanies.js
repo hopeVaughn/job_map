@@ -146,7 +146,7 @@ const Wrapper = styled.section`
 
 .container {
   display: grid;
- grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   justify-content: center;
   align-items: space-between;
