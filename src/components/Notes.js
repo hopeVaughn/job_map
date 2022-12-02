@@ -178,7 +178,7 @@ const Wrapper = styled.div`
   }
 
   .note-date {
-    background-color: #ae88d1;
+    background-color: #F18805;
     border-radius: 10px;
     margin: 2px 7px;
     padding: 0 0.5em;

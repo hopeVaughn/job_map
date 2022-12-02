@@ -8,10 +8,12 @@ function ListedCompanies(props) {
 
   return (
     <>
+      <Wrapper>
       <Navbar />
+      <div className='parent'>
       <ListCompanies levelClicked={props.levelClicked} />
       <br />
-      <Wrapper>
+      </div>
         <div className="footer">
           <h5>
             &copy; {new Date().getFullYear()}
@@ -24,6 +26,9 @@ function ListedCompanies(props) {
   )
 }
 const Wrapper = styled.main`
+.parent {
+  min-height:60vh;
+}
 .footer { 
   display: flex;
   align-items: center;

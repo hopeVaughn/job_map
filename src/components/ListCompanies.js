@@ -78,7 +78,6 @@ function ListCompanies(props) {
     getList(props.levelClicked || 0)
   }, [props.levelClicked]);
 
-
   const navigate = useNavigate();
   //pass the id 
   const btnSingleCompanie = (id) => {
