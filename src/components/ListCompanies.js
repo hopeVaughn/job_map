@@ -108,7 +108,7 @@ function ListCompanies(props) {
         {/* <div className='childb'> Resume Submission Date base on the request </div> */}
       </div>
       {list.map((info) =>
-        <div className='container' key={info.id}>
+        <div className='container b' key={info.id}>
           <div className={`${color} child btn`} onClick={() => btnSingleCompanie(info.id)}>
             {info.name}
           </div>
@@ -175,6 +175,14 @@ const Wrapper = styled.section`
   justify-content: center;
   margin-bottom: 0.5vw;
   font-size: 1.5vw;
+  margin: 1%;
+  border-radius: 0.5rem;
+}
+
+.b:hover {
+  transform: scale(1.03);
+  background: var(--clr-primary-600);
+  border-radius: 0.5rem;
 }
 
 .purple {

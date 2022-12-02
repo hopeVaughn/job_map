@@ -17,11 +17,10 @@ function Home() {
 }
 
 const Wrapper = styled.section`
-
 .job {
   margin: 0;
   padding: 0;
-  color: antiquewhite;
+  color: #954ccd;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,12 +31,15 @@ const Wrapper = styled.section`
   animation: zoomInDown; 
   animation-duration: 2s;
   font-family: 'Delight Coffee', sans-serif;
-  white-space: pre-wrap;                                     
+  white-space: pre-wrap;   
+  padding-bottom: 20%;
+  padding-right: 30%;
+}                                  
 }
 
  .login {
     border-radius: 0.5rem;
-    background: var(--clr-primary-900);
+    background:  rgb(35, 6, 51);
     font-size: 7vw;
     color: var(--clr-complement-3);
     position: relative;
@@ -48,7 +50,7 @@ const Wrapper = styled.section`
 
   .login:before {
     content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: linear-gradient(45deg, #efdbfe, #e5bffe, #d393fd, #bc60fa, #ae3bf6, #9525eb, #8d1dd8, #751eaf, #681e8a);
     position: absolute;
     top: -2px;
     left:-2px;
@@ -81,7 +83,7 @@ const Wrapper = styled.section`
     position: absolute;
     width: 100%;
     height: 100%;
-    background:var(--clr-primary-900);
+    background:  rgb(35, 6, 51);
     left: 0;
     top: 0;
     border-radius: 10px;
@@ -98,3 +100,4 @@ const Wrapper = styled.section`
   } 
 `
 export default Home
+
