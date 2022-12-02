@@ -45,6 +45,7 @@ const Wrapper = styled.main`
   h5 {
     font-family: 'Delight Coffee', sans-serif;
     color: var(--clr-complement-1);
+    font-size:1.5rem;
     margin: 0.1rem;
     font-weight: 400;
     text-transform: none;

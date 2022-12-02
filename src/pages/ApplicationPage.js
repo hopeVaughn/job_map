@@ -78,8 +78,9 @@ text-align: center;
     color: var(--clr-primary-5);
   }
   h5 {
-    color: var(--clr-white);
-    /* margin: 0.1rem; */
+    font-family: 'Delight Coffee', sans-serif;
+    color: var(--clr-complement-1);
+    font-size:1.5rem;
     font-weight: 400;
     text-transform: none;
     line-height: 1.25;

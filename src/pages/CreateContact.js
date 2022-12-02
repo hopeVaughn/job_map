@@ -30,7 +30,6 @@ const Wrapper = styled.main`
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* position: fixed; */
   bottom: 0;
   width: 100%;
   height: 5rem;
@@ -40,7 +39,9 @@ const Wrapper = styled.main`
     color: var(--clr-primary-5);
   }
   h5 {
-    color: var(--clr-white);
+    font-family: 'Delight Coffee', sans-serif;
+    color: var(--clr-complement-1);
+    font-size:1.5rem;
     margin: 0.1rem;
     font-weight: 400;
     text-transform: none;

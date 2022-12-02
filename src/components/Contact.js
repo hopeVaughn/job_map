@@ -24,10 +24,10 @@ function Contact() {
 
   async function getContact() {
     const result = await axios.get(`http://localhost:8080/api/contacts/${id}`)
-      setContact(result.data[0])
+    setContact(result.data[0])
   }
 
-/////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////
   const deleteContact = (id) => {
     const choice = window.confirm("Are you sure you want to delete this contact?")
     if (choice) {
@@ -43,7 +43,7 @@ function Contact() {
     }
   }
 
-///////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////
   const updateContact = (body) => {
     try {
       axios.put(`http://localhost:8080/api/contacts/${id}`,
@@ -76,10 +76,10 @@ function Contact() {
 
     <Wrapper>
       {showEdit &&
-      <>     
-        <h2 className='editTitle'>Edit Contact:</h2>
-        <ContactForm onSubmit={updateContact} contact={contact} action="Submit" />
-      </>
+        <>
+          <h2 className='editTitle'>Edit Contact:</h2>
+          <ContactForm onSubmit={updateContact} contact={contact} action="Submit" />
+        </>
       }
 
       {!showEdit &&
@@ -91,16 +91,16 @@ function Contact() {
               src={contact.image}
               size="300"
               round={true}
-          />
+            />
             <div className='nick'>
               <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
-                <h2><FaLinkedin className='socialMediaIcon'/></h2>
+                <h2><FaLinkedin className='socialMediaIcon' /></h2>
               </a>
               <a href={contact.github} target="_blank" rel="noopener noreferrer">
-                <h2><FaGithub className='socialMediaIcon'/></h2>
+                <h2><FaGithub className='socialMediaIcon' /></h2>
               </a>
               <a href={contact.twitter} target="_blank" rel="noopener noreferrer" >
-                <h2><FaTwitterSquare className='socialMediaIcon'/></h2>
+                <h2><FaTwitterSquare className='socialMediaIcon' /></h2>
               </a>
             </div>
           </div>
@@ -109,9 +109,9 @@ function Contact() {
 
       {showEditDelBtn &&
         <div className='press'>
-          <button type="button" className="btn" onClick={() => toggleEdit(id)} > EDIT</button>
-          <button type="button" className="btn" href="#" onClick={() => navigate(-1) } > Return</button>
-          <button type="button" className="btn" onClick={() => deleteContact(id)}> DELETE</button>
+          <button type="button" className="btn" onClick={() => toggleEdit(id)} >EDIT</button>
+          <button type="button" className="btn" href="#" onClick={() => navigate(-1)} >RETURN</button>
+          <button type="button" className="btn" onClick={() => deleteContact(id)}>DELETE</button>
         </div>
       }
     </Wrapper>
@@ -131,6 +131,8 @@ const Wrapper = styled.section`
 }
 
 p{
+  font-family: 'Delight Coffee', sans-serif;
+  color: var(--clr-complement-1);
   font-size: 7vh;
   text-align: -webkit-center;
   color: #eff1e4;

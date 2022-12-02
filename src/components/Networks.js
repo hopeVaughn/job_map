@@ -11,10 +11,10 @@ function Networks(props) {
 
 
   const applicationID = props.applicationID;
-  const [companyId, setcompanyId] = useState();
+  const [companyId, setCompanyId] = useState();
   const [network, setNetwork] = useState([]);
   const [EnableAddNetwork, setEnableAddNetwork] = useState([]);
-  const [withoutnetwork, setWithoutnetwork] = useState([]);
+  const [withoutNetwork, setWithoutNetwork] = useState([]);
   const [index, setIndex] = React.useState(0);
   const [carousel, setCarousel] = useState(true);
   const [addNetwork, setAddNetwork] = useState(false);
@@ -23,7 +23,7 @@ function Networks(props) {
   async function getNetworks(id) {
     const result = await axios.get(`http://localhost:8080/api/networks/${id}`)
     setNetwork(result.data);
-    setcompanyId(id);
+    setCompanyId(id);
   }
 
 
@@ -41,18 +41,17 @@ function Networks(props) {
 
 
   async function getOthers(id) {
-    const result = await axios.get(`http://localhost:8080/api/networks/withoutnetwork/${id}`)
-    setWithoutnetwork(result.data);
-    console.log(result.data)
+    const result = await axios.get(`http://localhost:8080/api/networks/withoutNetwork/${id}`)
+    setWithoutNetwork(result.data);
     if (result.data.length > 0)
       setEnableAddNetwork(false)
     else
       setEnableAddNetwork(true)
-    setcompanyId(id);
+    setCompanyId(id);
   }
 
 
-  const btnaddNetwork = (id) => {
+  const btnAddNetwork = (id) => {
     let contact_id = id
     let company_id = companyId
 
@@ -61,10 +60,10 @@ function Networks(props) {
       company_id
     }
     try {
-      const response = axios.post(`http://localhost:8080/api/networks/`, body)
+      axios.post(`http://localhost:8080/api/networks/`, body)
         .then((res) => {
           getOthers(company_id)
-          if (withoutnetwork.length === 1) {
+          if (withoutNetwork.length === 1) {
             setCarousel(true);
             setIndex(index + 1); // setIndex((oldIndex) => oldIndex + 1);
             setAddNetwork(false);
@@ -201,7 +200,7 @@ function Networks(props) {
       {addNetwork &&
         <div>
           <div className='addNetwork'>
-            {withoutnetwork.map((c) =>
+            {withoutNetwork.map((c) =>
               <div className='list' key={c.id}>
                 <Avatar
                   alt="contact photo"
@@ -212,7 +211,7 @@ function Networks(props) {
                   onClick={() => nameImgClicked(c.id)}
                 />
                 <div className='nick' onClick={() => nameImgClicked(c.id)}>{c.name}</div>
-                <button className='btn' onClick={() => btnaddNetwork(c.id)}>add</button>
+                <button className='btn' onClick={() => btnAddNetwork(c.id)}>add</button>
               </div>
             )}
           </div>

@@ -1,5 +1,5 @@
 import ListAllContact from '../components/ListAllContact';
-import { Navbar, Footer } from '../components';
+import { Navbar } from '../components';
 import styled from 'styled-components';
 
 
@@ -10,11 +10,8 @@ function Contact() {
   return (
     <Wrapper >
       <Navbar />
-
       <div className='parent'>
-
         <ListAllContact />
-
       </div>
       <div className="footer">
         <h5>
@@ -33,6 +30,7 @@ const Wrapper = styled.main`
   min-height:100vh;
 }
 .footer { 
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +45,9 @@ const Wrapper = styled.main`
     color: var(--clr-primary-5);
   }
   h5 {
-    color: var(--clr-white);
+    font-family: 'Delight Coffee', sans-serif;
+    color: var(--clr-complement-1);
+    font-size:1.5rem;
     margin: 0.1rem;
     font-weight: 400;
     text-transform: none;

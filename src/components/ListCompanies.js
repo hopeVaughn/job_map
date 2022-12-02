@@ -114,6 +114,9 @@ function ListCompanies(props) {
 }
 
 const Wrapper = styled.section`
+button {
+  cursor: pointer;
+}
 .title{
   font-family: 'Delight Coffee', sans-serif;
   color: var(--clr-complement-1)
@@ -206,8 +209,5 @@ background-color: var(--clr-primary-500);
   background-color: rgb(189,183,107);
 }
 
-button {
-  cursor: pointer;
-}
-`;
+`
 export default ListCompanies

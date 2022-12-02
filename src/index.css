@@ -301,6 +301,7 @@ ul {
 
 .btn {
   cursor: pointer;
+  font-family: 'Delight Coffee', sans-serif;
   color: var(--clr-complement-1);
   background: var(--clr-complement-3-hover);
   border: transparent;
