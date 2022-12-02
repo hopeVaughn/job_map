@@ -90,7 +90,7 @@ function ContactForm(props) {
               value={twitter}  
             />
           </div>
-
+          <br/>
           <input type="submit" className="btn" value={props.action} />
       </form>
       </Wrapper>

@@ -23,7 +23,7 @@ const CreateApplication = () => {
   const dd = String(today.getDate()).padStart(2, '0');
   const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   const yyyy = today.getFullYear();
-  today = mm + '/' + dd + '/' + yyyy;
+  today = yyyy + "-" + mm + "-" + dd;
   // end of format day
 
   let companyId = useParams();
@@ -67,7 +67,7 @@ const CreateApplication = () => {
   return (
     <Wrapper>
       <Navbar />
-      <div className="title">
+      <div className="title parent">
         <h2 className="create-title">Create Application</h2>
         <form className='form create-forms' onSubmit={onSubmit}>
           {/* stack field */}
@@ -105,19 +105,21 @@ const CreateApplication = () => {
               setValues({ ...values, resume_sent: true, resume_sent_date: today })
             }>Apply now</button>
         </form>
-        <div className="footer">
-          <h5>
-            &copy; {new Date().getFullYear()}
-            <span> job.map()</span>
-          </h5>
-          <h5> All rights reserved</h5>
-        </div>
-
+      </div>
+      <div className="footer">
+        <h5>
+          &copy; {new Date().getFullYear()}
+          <span> job.map()</span>
+        </h5>
+        <h5> All rights reserved</h5>
       </div>
     </Wrapper>
   )
 }
 const Wrapper = styled.main`
+.parent{
+  min-height:74.25vh;
+}
 .title{
   color:white;
   margin-top: 2rem;
@@ -127,7 +129,7 @@ const Wrapper = styled.main`
   margin-top: 2rem;
 }
 .create-forms{
-  background-color: var(--clr-primary-900);
+  background-color: var(--clr-complement-2);
 }
 .position-row{
   display: flex;

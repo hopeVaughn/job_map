@@ -25,7 +25,7 @@ function Contact() {
 
   async function getContact() {
     const result = await axios.get(`http://localhost:8080/api/contacts/${id}`)
-    setContact(result.data[0])
+      setContact(result.data[0])
   }
 
 /////////////////////////////////////////////////////
@@ -80,7 +80,11 @@ function Contact() {
 
     <Wrapper>
       {showEdit &&
+      <>     
+        <h2 className='editTitle'>Edit Contact:</h2>
         <ContactForm onSubmit={updateContact} contact={contact} action="Submit" />
+      </>
+
       }
 
 
@@ -149,6 +153,12 @@ p{
 .press{
   display: flex;
   justify-content: space-evenly;
+}
+
+.editTitle{
+  padding-top: 20px;
+  color: white;
+  text-align: center;
 }
 
 `

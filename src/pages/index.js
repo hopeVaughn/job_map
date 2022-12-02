@@ -11,6 +11,8 @@ import CreateContact from "./CreateContact";
 import CreateApplication from "./CreateApplication";
 import Contacts from "./Contacts";
 import SingleContact from "./SingleContact";
+import AllApplications from "./AllApplications";
+
 export {
   Home,
   LandingPage,
@@ -24,6 +26,7 @@ export {
   CreateContact,
   CreateApplication,
   SingleContact,
-  Contacts
+  Contacts,
+  AllApplications
 }
 

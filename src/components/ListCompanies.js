@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
-import { Company } from '../components'
 
 function ListCompanies(props) {
 
@@ -66,12 +65,9 @@ function ListCompanies(props) {
           setStrstage('  Resumes Sent')
           setColor('red')
           break;
-
         default:
-
           break;
       }
-
     } catch (err) {
       console.error(err.message);
     }
@@ -87,7 +83,7 @@ function ListCompanies(props) {
   //pass the id 
   const btnSingleCompanie = (id) => {
     console.log(stage);
-    if (stage == 0) {
+    if (stage === 0) {
       navigate(`/companies/${id}`)
     } else {
       navigate(`/application/${id}`)
@@ -103,13 +99,21 @@ function ListCompanies(props) {
         <div className='childb'>
           Company Name
         </div>
+        <div className='childb'>
+          stack
+        </div>
+        <div className='childb'>
+          application date
+        </div>
         {/* <div className='childb'> Resume Submission Date base on the request </div> */}
       </div>
       {list.map((info) =>
         <div className='container' key={info.id}>
-          <button className={`${color} child `} onClick={() => btnSingleCompanie(info.id)}>
-            {info.name} {info.stack}
-          </button>
+          <div className={`${color} child btn`} onClick={() => btnSingleCompanie(info.id)}>
+            {info.name}
+          </div>
+          <div className="title">{info.stack}</div>
+          <div className="title">{info.resume_sent_date.slice(0, 10)}</div>
         </div>
       )}
     </Wrapper>
@@ -119,6 +123,9 @@ function ListCompanies(props) {
 export default ListCompanies
 
 const Wrapper = styled.section`
+.title{
+  color: var(--clr-white)
+}
 .childa {
   flex-basis: calc(100% - 40px);
   height: 8vw;
@@ -138,8 +145,8 @@ const Wrapper = styled.section`
  }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+ grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   justify-content: center;
   align-items: space-between;
@@ -175,19 +182,19 @@ const Wrapper = styled.section`
 }
 
 .green {
-  background-color: green;
+  background-color: #F0A202;
 }
 
 .blue {
-  background-color: blue;
+  background-color: #F18805;
 }
 
 .orange {
-  background-color: orange;
+  background-color: #D95D39;
 }
 
 .red {
-  background-color: red;
+  background-color: #9A031E;
 }
 
 .container .b {
