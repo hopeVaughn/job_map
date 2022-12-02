@@ -9,6 +9,7 @@ function AllApplic() {
   const [inputSearch, setInputSearch] = useState(""); 
   const [searchData, setSearchData] = useState([]); 
   const [getAll, setGetAll] = useState([]);
+  const [color, setColor] = useState([])
 
  
   //debounce used to wait user type couple words before call
@@ -86,15 +87,30 @@ function AllApplic() {
 
       {searchData.length > 0 &&
         searchData.map((x) =>
-        <div className='outer-div b' key={x.id}> 
-          <div className='grid-box b' onClick={() => listApplications(x.id)}>
-            <div>{x.name}</div>
-            <div>{x.resume_sent_date.slice(0, 10)}</div>
-            <div>
-              {x.resume_sent ? "Resume Sent" : " "}      
-              {x.hr_interview ? "Hr Interview" : " "}
-              {x.tech_interview ? "Tech Interview" : " "}
-              {x.job_offer ? " ⭐ Got a Offer" : " "}
+        {
+          let message;
+          let color;
+            if(x.resume_sent){
+              message = "Resume Sent"
+              color = 'red'
+            } 
+            if(x.hr_interview){
+              message = "Hr Interview"
+              color = 'orange'
+            } 
+            if(x.tech_interview){
+              message = "Tech Interview"
+              color = 'blue'
+            } 
+            if(x.job_offer){
+              message = "⭐ Got a Offer"
+              color = 'green'
+            } 
+          return (<div className='outer-div b' key={x.id}> 
+            <div className={` ${color} grid-box b`} onClick={() => listApplications(x.id)}>
+              <div>{x.name}</div>
+              <div>{x.resume_sent_date.slice(0, 10)}</div>
+              <div>{message}
             </div>
             <div>
               {x.front_end ? "Front End" : " "}
@@ -102,7 +118,7 @@ function AllApplic() {
               {x.full_stack ? "Full Stack" : " "}
             </div>
           </div>
-        </div>
+        </div>)}
         )}
     </section>
     </Wrapper>
@@ -115,6 +131,11 @@ export default AllApplic
 const Wrapper = styled.main`
 color: white;
 text-align: center;
+
+.header{
+  background-color: gray;
+  font-size: 120%;
+}
 
 .outer-div {
   width: 100%;
@@ -129,7 +150,6 @@ text-align: center;
 }
 .b:hover {
   transform: scale(1.05);
-  
 }
 
 .title{
@@ -149,7 +169,24 @@ text-align: center;
   width: 70% 
 }
 
-.header{
-  background: black;
+
+
+
+
+.green {
+  background-color: #F0A202;
 }
+
+.blue {
+  background-color: #F18805;
+}
+
+.orange {
+  background-color: #D95D39;
+}
+
+.red {
+  background-color: #9A031E;
+}
+
 `
