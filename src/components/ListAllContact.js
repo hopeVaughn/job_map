@@ -3,26 +3,19 @@ import axios from "axios";
 import Avatar from 'react-avatar';
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AllAplications from './AllApplic';
 
 function ListAllContact() {
 
-
 const [allContact, setAllContact] = useState([])
 
+  async function getAllContact () {
+    const result = await axios.get(`http://localhost:8080/api/contacts/`)
+    setAllContact(result.data) 
+  }
 
-
- async function getAllContact () {
-  const result = await axios.get(`http://localhost:8080/api/contacts/`)
-  setAllContact(result.data) 
-}
-
-
-
- useEffect(() => {
-  getAllContact()      
+  useEffect(() => {
+    getAllContact()      
   }, []);
-
 
   const navigate = useNavigate();
   //pass the id to btnnnn
@@ -30,19 +23,14 @@ const [allContact, setAllContact] = useState([])
     navigate(`/contacts/${id}`)
   }
 
-
   return (
-
-    <>
-      <Wrapper>
-
-          <div className='addbtn '>
+    <Wrapper>
+      <div className='addbtn '>
         <Link to="/contact">
-             <button type="button" className="btn" > ADD New Contact </button>
+          <button type="button" className="btn" > ADD New Contact </button>
         </Link>
-          </div>
-
-        <h1>List of All Contacts</h1>
+      </div>
+      <h1>List of All Contacts</h1>
         {allContact.map((c) =>
           <div className='list' key={c.id} onClick={() => btnSingleContact(c.id)}>
             <Avatar
@@ -52,15 +40,11 @@ const [allContact, setAllContact] = useState([])
               round={true}
               className="cover"
             />
-
             <div className='nick'>{c.name}</div>
           </div>
         )}
-      </Wrapper>
-    </>
-
+    </Wrapper>
   )
-
 }
 
 export default ListAllContact

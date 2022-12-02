@@ -10,7 +10,7 @@ import ContactForm from './ContactForm';
 function Contact() {
   const [contact, setContact] = useState({})
   const [showEdit, setShowEdit] = useState(false)
-  const [showEditDelBtn, setshowEditDelBtn] = useState(true)
+  const [showEditDelBtn, setShowEditDelBtn] = useState(true)
   const navigate = useNavigate();
 
   // take the id   
@@ -19,8 +19,7 @@ function Contact() {
   const toggleEdit = () => {
     setShowEdit(true);
     getContact();
-    setshowEditDelBtn(false);
-
+    setShowEditDelBtn(false);
   };
 
   async function getContact() {
@@ -44,7 +43,7 @@ function Contact() {
     }
   }
 
-  ///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
   const updateContact = (body) => {
     try {
       axios.put(`http://localhost:8080/api/contacts/${id}`,
@@ -60,15 +59,12 @@ function Contact() {
         })
         .then(() => {
           setShowEdit(false);
-          setshowEditDelBtn(true);
-
+          setShowEditDelBtn(true);
         })
-
     } catch (err) {
       console.error(err.message);
     }
   }
-
   /////////////////////////////////////////////////////////////
 
   useEffect(() => {
@@ -84,9 +80,7 @@ function Contact() {
         <h2 className='editTitle'>Edit Contact:</h2>
         <ContactForm onSubmit={updateContact} contact={contact} action="Submit" />
       </>
-
       }
-
 
       {!showEdit &&
         <>
@@ -97,8 +91,7 @@ function Contact() {
               src={contact.image}
               size="300"
               round={true}
-            />
-
+          />
             <div className='nick'>
               <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
                 <h2><FaLinkedin className='socialMediaIcon'/></h2>
@@ -113,6 +106,7 @@ function Contact() {
           </div>
         </>
       }
+
       {showEditDelBtn &&
         <div className='press'>
           <button type="button" className="btn" onClick={() => toggleEdit(id)} > EDIT</button>
@@ -131,6 +125,7 @@ const Wrapper = styled.section`
 .socialMediaIcon{
   color: white;
 }
+
 .socialMediaIcon:hover{
   color: blue;
 }
@@ -160,5 +155,4 @@ p{
   color: white;
   text-align: center;
 }
-
 `

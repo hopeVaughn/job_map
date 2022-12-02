@@ -9,7 +9,6 @@ function AllApplic() {
   const [inputSearch, setInputSearch] = useState(""); 
   const [searchData, setSearchData] = useState([]); 
   const [getAll, setGetAll] = useState([]);
-  const [color, setColor] = useState([])
 
  
   //debounce used to wait user type couple words before call
@@ -41,7 +40,6 @@ function AllApplic() {
     navigate(`/application/${id}`)
   }
 
-
   const handleChange = (event) => {
     setInputSearch(event.target.value);
   };
@@ -63,7 +61,6 @@ function AllApplic() {
         >
           Clear
         </button >
-        
         <br/>
         <div>OR</div>
         <br/>
@@ -101,27 +98,26 @@ function AllApplic() {
             } 
             if(x.tech_interview){
               message = "Tech Interview"
-              color = 'blue'
+              color = 'lightOrange'
             } 
             if(x.job_offer){
               message = "⭐ Got a Offer"
-              color = 'green'
+              color = 'yellow'
             } 
           return (<div className='outer-div b' key={x.id}> 
             <div className={` ${color} grid-box b`} onClick={() => listApplications(x.id)}>
               <div>{x.name}</div>
               <div>{x.resume_sent_date.slice(0, 10)}</div>
-              <div>{message}
+              <div>{message}</div>
+              <div>
+                {x.front_end ? "Front End" : " "}
+                {x.back_end ? "Back End" : " "}
+                {x.full_stack ? "Full Stack" : " "}
+              </div>
             </div>
-            <div>
-              {x.front_end ? "Front End" : " "}
-              {x.back_end ? "Back End" : " "}
-              {x.full_stack ? "Full Stack" : " "}
-            </div>
-          </div>
-        </div>)}
+          </div>)}
         )}
-    </section>
+      </section>
     </Wrapper>
   
   )
@@ -142,6 +138,7 @@ text-align: center;
   width: 100%;
   text-align: -webkit-center;
 }
+
 .btn{
   margin: 1%;
 }
@@ -150,7 +147,7 @@ text-align: center;
   cursor: pointer;
 }
 .b:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .title{
@@ -170,24 +167,20 @@ text-align: center;
   width: 70% 
 }
 
-
-
-
-
-.green {
-  background-color: #F0A202;
-}
-
-.blue {
-  background-color: #F18805;
+.red {
+  background-color: #9A031E;
 }
 
 .orange {
   background-color: #D95D39;
 }
 
-.red {
-  background-color: #9A031E;
+.lightOrange {
+  background-color: #F18805;
+}
+
+.yellow {
+  background-color: #F0A202;
 }
 
 `
