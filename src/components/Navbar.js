@@ -62,7 +62,7 @@ const Wrapper = styled.nav`
   background: var(--clr-primary-600);
   box-shadow: var(--shadow-1);
   font-family: 'Delight Coffee', sans-serif;
-  font-size: 1.5rem;
+  
 }
 
 .nav-header {
@@ -70,6 +70,7 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+ 
 }
 
 .nav-toggle {
@@ -91,13 +92,14 @@ const Wrapper = styled.nav`
 }
 
 .links a {
-  color: var(--clr-white);
+  color: var(--clr-complement-1);
   font-size: 1rem;
   text-transform: capitalize;
   letter-spacing: var(--spacing);
   display: block;
   padding: 0.5rem 1rem;
   transition: var(--transition);
+   font-size: 1.5rem;
 }
 
 .links a:hover {

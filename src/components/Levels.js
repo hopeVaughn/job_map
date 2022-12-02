@@ -64,7 +64,7 @@ const Wrapper = styled.section`
 }
 h4 {
   font-family: 'Delight Coffee', sans-serif;
-
+  color: var(--clr-complement-1)
 }
 .statistics_number {
   font-family: 'Delight Coffee', sans-serif;
@@ -138,15 +138,15 @@ h4 {
 @keyframes progress {
   from {width: 0%;}
   0% {
-    background-color: var(--clr-primary-50);
-  }
- 
-  50% {
     background-color: var(--clr-primary-100);
   }
+ 
+  25% {
+    background-color: var(--clr-primary-300);
+  }
   
-  100% {
-    background-color: var(--clr-primary-200);
+  75% {
+    background-color: var(--clr-primary-400);
   }
 }
 
@@ -157,15 +157,12 @@ h4 {
 }
 
 
-
-
-
 .offer {
   border-radius: 0.5rem;
   background: var(--clr-primary-700);
   font-size: 2vw;
   margin-top: 0.3em;
-  color: white;
+  color: var(--clr-complement-1);
   position: relative;
   z-index: 0;
 } 
@@ -198,13 +195,6 @@ h4 {
   opacity: 1;
 }
 
-.offer {
-  color: var(--clr-complement-1);
-}
-
-.offer {
-  background: transparent;
-}
 
 .offer:after {
   color: white;

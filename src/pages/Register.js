@@ -38,7 +38,7 @@ function Register() {
     if (!values.isMember) {
       try {
         const body = { email, password, name };
-        const response = Axios.post(`http://localhost:8080/api/authentication/register`, body)
+        Axios.post(`http://localhost:8080/api/authentication/register`, body)
           .then((res) => {
             const parseRes = res.data;
             if (parseRes.jwtToken) {
