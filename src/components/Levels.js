@@ -11,6 +11,7 @@ function Levels(props) {
   const fetchData = () => {
     try {
       Axios.get(`http://localhost:8080/api/applications`).then((res) => {
+        console.log(res.data);
         setQuantity(res.data)
       })
         .catch(err => console.log(err))
