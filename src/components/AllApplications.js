@@ -129,8 +129,10 @@ function AllApplications() {
 
 
 const Wrapper = styled.main`
-color: var(--clr-complement-1);
 text-align: center;
+.title{
+  font-size:1.5rem;
+}
 .section-container{
   font-family: 'Delight Coffee', sans-serif;
   color: var(--clr-complement-1)
@@ -138,11 +140,12 @@ text-align: center;
 .btn{
   margin: 1%;
   border-radius: 0.5rem;
+  font-size:1rem;
 }
 
 .b:hover {
   transform: scale(1.03);
-  background: var(--clr-primary-600);
+  background: var(--clr-primary-700);
   border-radius: 0.5rem;
 }
 
@@ -187,19 +190,24 @@ text-align: center;
 }
 
 .resume-sent {
-  background-color: var(--clr-primary-700);
+  background-color: var(--clr-primary-600);
+  font-size:1.5rem;
 }
 
+
 .hr-interview {
-   background-color: var(--clr-primary-500);
+  background-color: var(--clr-primary-500);
+  font-size:1.5rem;
 }
 
 .tech-interview {
-  background-color: var(--clr-primary-400);
+  background-color: var(--clr-primary-500);
+  font-size:1.5rem;
 }
 
 .job-offer {
 background-color:var(--clr-primary-300);
+font-size:1.5rem;
 }
 
 `
