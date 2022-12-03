@@ -16,7 +16,6 @@ function CompanyPage(props) {
   // get all information about the company by id
   async function getCompany() {
     const response = await axios.get(`http://localhost:8080/api/applications/custom/${applicationId.id}`)
-    console.log(response.data[0]);
     setCompany(response.data[0])
   }
 

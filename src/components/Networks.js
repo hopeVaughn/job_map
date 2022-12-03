@@ -154,7 +154,7 @@ function Networks(props) {
       {carousel &&
         <div className="section-center">
           {network.map((person, personIndex) => {
-            const { id, name, image, networkId } = person;
+            const { id, name, image, networkid } = person;
             console.log(person);
             let position = 'nextSlide';
             if (personIndex === index) {
@@ -170,7 +170,7 @@ function Networks(props) {
               <article className={position} key={id}>
                 <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
                 <h4>{name}</h4>
-                <button className='btn' onClick={() => remove(networkId)}>Remove</button>
+                <button className='btn' onClick={() => remove(networkid)}>Remove</button>
               </article>
             )
           })}
