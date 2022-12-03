@@ -68,8 +68,9 @@ function Contact() {
   /////////////////////////////////////////////////////////////
 
   useEffect(() => {
+    // eslint-disable-next-line
     getContact()
-  }, []);
+  });
 
 
   return (

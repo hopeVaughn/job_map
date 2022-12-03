@@ -1,6 +1,6 @@
 // add edit
 import React from 'react'
-import AllApplic from '../components/AllApplications'
+import AllApplication from '../components/AllApplication'
 import { Navbar } from '../components';
 import styled from 'styled-components';
 
@@ -10,7 +10,7 @@ function AllApplications() {
     <Wrapper >
       <Navbar />
       <div className='parent'>
-        <AllApplic />
+        <AllApplication />
       </div>
       <div className="footer">
         <h5>
@@ -32,7 +32,6 @@ const Wrapper = styled.main`
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* position: fixed; */
   bottom: 0;
   width: 100%;
   height: 5rem;

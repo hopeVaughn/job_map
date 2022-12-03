@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Levels(props) {
-
   const [quantity, setQuantity] = useState([]);
-
   //get the quantity of applications from the server
   const fetchData = () => {
     try {
@@ -21,38 +19,34 @@ function Levels(props) {
       console.error(error.message);
     }
   };
-
   // fetch applications data after page is rendered
   useEffect(() => {
     fetchData()
   }, []);
-
   const navigate = useNavigate();
-
   const buttonClicked = (button) => {
     props.setLevelClicked(button)
     navigate("/companies")
   }
-
   return (
     <Wrapper>
       <div className="statistics parent">
         <div
-          className="statistics_btn offers_btn offer" onClick={() => buttonClicked(1)}>
+          className="statistics-btn offers_btn offer" onClick={() => buttonClicked(1)}>
           <h4>{` Offers:`} <span className="statistics_number">{quantity[3]}</span></h4>
         </div>
 
         <div
-          className="statistics_btn tech_iterviews_btn btn" onClick={() => buttonClicked(2)}>
+          className="statistics-btn tech-interviews-btn btn" onClick={() => buttonClicked(2)}>
           <h4>{`Tech Interviews:`} <span className="statistics_number">{quantity[2]} </span></h4>
         </div>
 
-        <div className="statistics_btn hr_iterviews_btn btn" onClick={() => buttonClicked(3)}>
+        <div className="statistics-btn hr-interviews-btn btn" onClick={() => buttonClicked(3)}>
           <h4>{`HR Interviews:`} <span className="statistics_number"> {quantity[1]}</span></h4>
         </div>
 
-        <div className="statistics_btn resume_btn btn" onClick={() => buttonClicked(4)}>
-          <h4>{` Resumes Sent:`} <span className="statistics_number"> {quantity[0]}</span></h4>
+        <div className="statistics-btn resume-btn btn" onClick={() => buttonClicked(4)}>
+          <h4>{`Resumes Sent:`} <span className="statistics_number"> {quantity[0]}</span></h4>
         </div>
       </div>
     </Wrapper>
@@ -82,7 +76,7 @@ h4 {
   align-items: flex-start;   
   background: rgb(35, 6, 51)
 }
-.statistics_btn {
+.statistics-btn {
   display: flex;
   width: 80%;
   height: 9vh;
@@ -96,24 +90,24 @@ h4 {
   color: white;
   
 }
-.statistics_btn:hover {
+.statistics-btn:hover {
   background-color: var(--clr-primary-200);
   cursor: pointer;
 }
 
-.resume_btn {
+.resume-btn {
   width: 70%;
   margin-left: 15%;
   background-color: var(--clr-primary-700);
 }
 
-.hr_iterviews_btn {
+.hr-interviews-btn {
   width: 55%;
   margin-left: 22.5%;
   background-color: var(--clr-primary-500);
 }
 
-.tech_iterviews_btn {
+.tech-interviews-btn {
   width: 40%;
   margin-left: 30%;
   background-color: var(--clr-primary-400);
@@ -151,9 +145,9 @@ h4 {
 }
 
 @keyframes font {
-  0% {color: transparent;}
-  75%{color: transparent;}
-  100% {color: inherit;}
+  25% {color: transparent;}
+  50%{color: transparent;}
+  75% {color: inherit;}
 }
 
 

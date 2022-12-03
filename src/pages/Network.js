@@ -1,5 +1,5 @@
 import ListAllContact from '../components/ListAllContact';
-import { Navbar, Footer } from '../components';
+import { Navbar } from '../components';
 import styled from 'styled-components';
 
 

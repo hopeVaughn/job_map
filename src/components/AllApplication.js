@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useDebounce from '../hooks/useDebounce';
 
-function AllApplications() {
+function AllApplication() {
   const [inputSearch, setInputSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [getAll, setGetAll] = useState([]);
@@ -211,4 +211,4 @@ font-size:1.5rem;
 }
 
 `
-export default AllApplications
+export default AllApplication

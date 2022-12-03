@@ -21,6 +21,7 @@ function CompanyPage(props) {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line
     getCompany()
   }, []);
 

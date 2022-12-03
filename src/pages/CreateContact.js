@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { AddContact, Navbar, Footer } from '../components'
+import { AddContact, Navbar } from '../components'
 
 function CreateContact() {
   return (
