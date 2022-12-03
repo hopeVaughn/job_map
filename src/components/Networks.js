@@ -155,6 +155,7 @@ function Networks(props) {
         <div className="section-center">
           {network.map((person, personIndex) => {
             const { id, name, image, networkId } = person;
+            console.log(person);
             let position = 'nextSlide';
             if (personIndex === index) {
               position = 'activeSlide';
@@ -165,7 +166,6 @@ function Networks(props) {
             if (network.length === 1) {
               position = 'activeSlide';
             }
-
             return (
               <article className={position} key={id}>
                 <img src={image} alt={name} className='person-img' onClick={() => imgClicked(id)} />
