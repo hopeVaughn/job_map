@@ -4,25 +4,21 @@ import styled from 'styled-components';
 
 function ListedCompanies(props) {
 
-  console.log(props.levelClicked)
-
   return (
-    <>
-      <Wrapper>
-        <Navbar />
-        <div className='parent'>
-          <ListCompanies levelClicked={props.levelClicked} />
-          <br />
-        </div>
-        <div className="footer">
-          <h5>
-            &copy; {new Date().getFullYear()}
-            <span> job.map()</span>
-          </h5>
-          <h5> All rights reserved</h5>
-        </div>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Navbar />
+      <div className='parent'>
+        <ListCompanies levelClicked={props.levelClicked} />
+        <br />
+      </div>
+      <div className="footer">
+        <h5>
+          &copy; {new Date().getFullYear()}
+          <span> job.map()</span>
+        </h5>
+        <h5> All rights reserved</h5>
+      </div>
+    </Wrapper>
   )
 }
 const Wrapper = styled.main`
