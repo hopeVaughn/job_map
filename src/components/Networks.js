@@ -43,13 +43,17 @@ function Networks(props) {
 
 
   async function getOthers(id) {
-    const result = await axios.get(`http://localhost:8080/api/networks/withoutNetwork/${id}`)
-    setWithoutNetwork(result.data);
-    if (result.data.length > 0)
-      setEnableAddNetwork(false)
-    else
-      setEnableAddNetwork(true)
-    setCompanyId(id);
+    try {
+      const result = await axios.get(`http://localhost:8080/api/networks/withoutNetwork/${id}`)
+      setWithoutNetwork(result.data);
+      if (result.data.length > 0)
+        setEnableAddNetwork(false)
+      else
+        setEnableAddNetwork(true)
+      setCompanyId(id);
+    } catch (error) {
+      console.error(error.response);
+    }
   }
 
 
