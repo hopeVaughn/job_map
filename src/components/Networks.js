@@ -5,8 +5,6 @@ import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import Avatar from 'react-avatar';
 import { useNavigate } from "react-router-dom";
 
-
-
 function Networks(props) {
   const applicationID = props.applicationID;
   const [companyId, setCompanyId] = useState();
@@ -28,7 +26,6 @@ function Networks(props) {
     }
   }
 
-
   function getCompany() {
     try {
       axios.get(`http://localhost:8080/api/applications/custom/${applicationID}`)
@@ -40,7 +37,6 @@ function Networks(props) {
       console.error(err.message);
     }
   }
-
 
   async function getOthers(id) {
     try {
@@ -182,7 +178,6 @@ function Networks(props) {
           <button className='next' onClick={nextSlide}> <FiChevronRight /></button>
         </div>
       }
-
 
       {addNetwork &&
         <div>

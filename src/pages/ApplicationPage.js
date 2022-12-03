@@ -10,9 +10,6 @@ function CompanyPage(props) {
   // take the id   
   let applicationId = useParams();
 
-
-
-
   // get all information about the company by id
   async function getCompany() {
     const response = await axios.get(`http://localhost:8080/api/applications/custom/${applicationId.id}`)
@@ -24,16 +21,15 @@ function CompanyPage(props) {
     getCompany()
   }, []);
 
-
   return (
     <Wrapper>
       <Navbar />
       <div >
         <h1 className='title underline'>{company.name}</h1>
         <h3>Stack: {company.stack}</h3>
-        {company.front_end && <h3>Front End</h3>}
-        {company.back_end && <h3>Back End</h3>}
-        {company.full_stack && <h3>Full Stack</h3>}
+        {company.front_end && <h3>Position: Front End</h3>}
+        {company.back_end && <h3>Position: Back End</h3>}
+        {company.full_stack && <h3>Position: Full Stack</h3>}
       </div>
       <Notes applicationID={applicationId.id} />
       <Stages />
