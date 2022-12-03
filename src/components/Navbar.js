@@ -45,7 +45,7 @@ const Navbar = () => {
           {social.map((socialIcon) => {
             const { id, url, icon } = socialIcon;
             return <li key={id}>
-              <Link to={url}>{icon}</Link>
+              <a href={url} target="_blank" rel="noopener noreferrer" >{icon}</a>
             </li>
           })}
         </ul>
@@ -107,17 +107,24 @@ const Wrapper = styled.nav`
   color: var(--clr-grey-9);
   padding-left: 1.5rem;
 }
+
 .link-padding{
   padding-right:2 rem;
 }
+
 .social-icons {
   display: none;
+}
+
+.social-icons:hover {
+  color: var(--clr-grey-800);
 }
 
 .links-container {
   height: 0;
   overflow: hidden;
   transition: var(--transition);
+  color: var(--clr-grey-800);
 }
 
 .show-container {
