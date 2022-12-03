@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 
 function Networks(props) {
-
-
   const applicationID = props.applicationID;
   const [companyId, setCompanyId] = useState();
   const [network, setNetwork] = useState([]);
@@ -21,9 +19,13 @@ function Networks(props) {
   const navigate = useNavigate();
 
   async function getNetworks(id) {
-    const result = await axios.get(`http://localhost:8080/api/networks/${id}`)
-    setNetwork(result.data);
-    setCompanyId(id);
+    try {
+      const result = await axios.get(`http://localhost:8080/api/networks/${id}`)
+      setNetwork(result.data);
+      setCompanyId(id);
+    } catch (error) {
+      console.error(error.response)
+    }
   }
 
 
@@ -61,7 +63,7 @@ function Networks(props) {
     }
     try {
       axios.post(`http://localhost:8080/api/networks/`, body)
-        .then((res) => {
+        .then(() => {
           getOthers(company_id)
           if (withoutNetwork.length === 1) {
             setCarousel(true);
@@ -82,7 +84,7 @@ function Networks(props) {
       await axios.delete(`http://localhost:8080/api/networks/${id}`)
         .then(() => {
           getNetworks(companyId);
-          getOthers(companyId)
+          getOthers(companyId);
         })
     } catch (err) {
       console.error(err.message);
@@ -130,13 +132,11 @@ function Networks(props) {
 
   return (
     <Wrapper className='section'>
-
       <div className="title">
         <h2>
           <span>Network</span>
         </h2>
       </div>
-
       {carousel &&
         <>
           <button className="btn" disabled={EnableAddNetwork} onClick={() => {
